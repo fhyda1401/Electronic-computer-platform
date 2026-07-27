@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحاسبات المالية - منصة الحاسبات الذكية</title>
+    <meta name="description" content="مجموعة شاملة من الحاسبات المالية: حاسبة الرهن العقاري، القروض، الاستثمار، التقاعد، القروض الشخصية، والمزيد.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الهيدر وشريط التنقل -->
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الهيرو الخاص بالفئة -->
+    <section class="hero">
+        <div class="container">
+            <h2>الحاسبات المالية</h2>
+            <p>أدوات وحاسبات دقيقة للتخطيط المالي، القروض، الاستثمارات وإدارة الديون.</p>
+            <input type="text" id="searchInput" placeholder="ابحث في الحاسبات المالية..." onkeyup="searchCalculators()">
+        </div>
+    </section>
+
+    <!-- إعلان علوي -->
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <!-- شبكة الحاسبات المالية -->
+    <main class="container">
+        <div class="calculator-grid">
+
+            <div class="calc-card" data-title="حاسبة الرهن العقاري تمويل عقار بيت">
+                <h3>حاسبة الرهن العقاري</h3>
+                <p>احسب القسط الشهرية للرهن العقاري وإجمالي الفائدة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة القروض شخصي عقاري سداد">
+                <h3>حاسبة القروض</h3>
+                <p>تقدير قيمة الأقساط الشهرية بناءً على مبلغ القرض والمدة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة قروض السيارات مركبة سيارة">
+                <h3>حاسبة قروض السيارات</h3>
+                <p>حساب القسط الشهري لشراء سيارة بالتقسيط.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة القروض الشخصية تمويل">
+                <h3>حاسبة القروض الشخصية</h3>
+                <p>حساب تكلفة القروض الشخصية وفترة السداد المناسبة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة الفائدة بسيط نسبة">
+                <h3>حاسبة الفائدة</h3>
+                <p>حساب الفائدة البسيطة على المبالغ المودعة أو المقترضة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة الفائدة المركبة أرباح استثمار">
+                <h3>حاسبة الفائدة المركبة</h3>
+                <p>احسب نمو استثماراتك بمرور الوقت بفعل الفائدة المركبة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة الاستثمار نمو راس المال">
+                <h3>حاسبة الاستثمار</h3>
+                <p>تقدير العوائد المستقبلية لاستثماراتك المالية.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة الادخار توفير مال">
+                <h3>حاسبة الادخار</h3>
+                <p>خطط لخطة الادخار الشهرية لتحقيق أهدافك المالية.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة التقاعد تقاعد راتب">
+                <h3>حاسبة التقاعد</h3>
+                <p>احسب المبلغ الذي تحتاج لادخاره لضمان تقاعد مريح.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة التضخم القيمة الشرائية للعملة">
+                <h3>حاسبة التضخم</h3>
+                <p>معرفة تأثير التضخم على القدرة الشرائية لأموالك مستقبلاً.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة بطاقات الائتمان فيزا ماستركارد بطاقة">
+                <h3>حاسبة بطاقات الائتمان</h3>
+                <p>احسب الفوائد والتكلفة عند سداد حد بطاقة الائتمان الأدنى.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة سداد الديون التخلص من الدين">
+                <h3>حاسبة سداد الديون</h3>
+                <p>ضع خطة زمنية فعالة للتخلص من جميع ديونك.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة معدل الفائدة السنوي APR">
+                <h3>حاسبة معدل الفائدة السنوي (APR)</h3>
+                <p>حساب التكلفة الفعلية للتمويل بما يشمل الرسوم والفائدة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة سداد القروض التمويل المسبق">
+                <h3>حاسبة سداد القروض</h3>
+                <p>معرفة التأثير المالي للإغلاق المبكر أو التعجيل بالسداد.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة العائد على الاستثمار ROI">
+                <h3>حاسبة العائد على الاستثمار (ROI)</h3>
+                <p>قس نسبة ربحية مشروع أو استثمار معين.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- إعلان سفلي -->
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
