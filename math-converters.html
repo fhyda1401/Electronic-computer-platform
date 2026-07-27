@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبات الرياضيات والتحويلات - منصة الحاسبات الذكية</title>
+    <meta name="description" content="حاسبات رياضية متقدمة ومحولات وحدات شاملة: حاسبة الكسور، النسبة، الأحصاء، ومحولات الطول، الوزن، والعملات.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>حاسبات الرياضيات ومحولات الوحدات</h2>
+            <p>حلول رياضية دقيقة وأدوات تحويل قياسية فورية.</p>
+            <input type="text" id="searchInput" placeholder="ابحث عن حاسبة أو محول..." onkeyup="searchCalculators()">
+        </div>
+    </section>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <main class="container">
+        <!-- قسم الحاسبات الرياضية -->
+        <h2 style="margin: 20px 0 10px; color: #0f172a;">الآلات الحاسبة الرياضية</h2>
+        <div class="calculator-grid">
+            <div class="calc-card" data-title="آلة حاسبة للنسب المئوية">
+                <h3>حاسبة النسب المئوية</h3>
+                <p>حساب النسب المئوية، الخصومات، والزيادة المئوية.</p>
+                <a href="calc-percentage.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للكسور">
+                <h3>حاسبة الكسور</h3>
+                <p>جمع، طرح، ضرب، وقسمة الكسور الاعتيادية.</p>
+                <a href="calc-fractions.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للأعداد العشرية">
+                <h3>حاسبة الأعداد العشرية</h3>
+                <p>تحويل والعمليات على الأعداد العشرية.</p>
+                <a href="calc-decimals.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة علمية">
+                <h3>الحاسبة العلمية</h3>
+                <p>حساب الدوال المثلثية، اللوجاريتمات، والمعادلات.</p>
+                <a href="calc-scientific.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للنسب">
+                <h3>حاسبة النسب والتناسب</h3>
+                <p>إيجاد القيم المجهولة في النسب الرياضية.</p>
+                <a href="calc-ratios.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للمتوسطات">
+                <h3>حاسبة المتوسطات</h3>
+                <p>حساب المتوسط الحسابي، الوسيط، المنوال.</p>
+                <a href="calc-averages.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للاحتمالات">
+                <h3>حاسبة الاحتمالات</h3>
+                <p>حساب الاحتمالات المباشرة والمركبة.</p>
+                <a href="calc-probability.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للإحصاء">
+                <h3>حاسبة الإحصاء</h3>
+                <p>الانحراف المعياري، التباين، والبيانات الإحصائية.</p>
+                <a href="calc-statistics.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للأسس">
+                <h3>حاسبة الأسس والقوى</h3>
+                <p>حساب رفع الأرقام للأسس الموجبة والسالبة.</p>
+                <a href="calc-exponents.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة للجذور التربيعية">
+                <h3>حاسبة الجذور التربيعية</h3>
+                <p>إيجاد الجذر التربيعي والتكعيبي للأرقام.</p>
+                <a href="calc-roots.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+            <div class="calc-card" data-title="آلة حاسبة هندسية">
+                <h3>الحاسبة الهندسية</h3>
+                <p>حساب مساحات وأحجام الأشكال الهندسية.</p>
+                <a href="calc-geometry.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح الحاسبة</a>
+            </div>
+        </div>
+
+        <!-- قسم محولات الوحدات -->
+        <h2 style="margin: 30px 0 10px; color: #0f172a;">آلات التحويلات (محولات الوحدات)</h2>
+        <div class="calculator-grid">
+            <div class="calc-card" data-title="محول الطول">
+                <h3>محول الطول</h3>
+                <p>تحويل المتر، السنتيمتر، القدم، البوصة، والميل.</p>
+                <a href="convert-length.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول الوزن">
+                <h3>محول الوزن والكتلة</h3>
+                <p>تحويل الكيلوجرام، الجرام، الباوند، والأونصة.</p>
+                <a href="convert-weight.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول درجة الحرارة">
+                <h3>محول درجة الحرارة</h3>
+                <p>تحويل مئوي (Celius)، فهرنهايت (Fahrenheit)، وكلفن.</p>
+                <a href="convert-temp.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول المساحة">
+                <h3>محول المساحة</h3>
+                <p>تحويل المتر المربع، الهكتار، الأكر، القدم المربع.</p>
+                <a href="convert-area.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول الحجم">
+                <h3>محول الحجم</h3>
+                <p>تحويل اللتر، المليلتر، الجالون، والجم المكعب.</p>
+                <a href="convert-volume.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول السرعة">
+                <h3>محول السرعة</h3>
+                <p>تحويل كم/ساعة، ميل/ساعة، والعقدة.</p>
+                <a href="convert-speed.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول الزمن">
+                <h3>محول الزمن</h3>
+                <p>تحويل الثواني، الدقائق، الساعات، والأيام.</p>
+                <a href="convert-time.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول الطاقة">
+                <h3>محول الطاقة والعمل</h3>
+                <p>تحويل الجول، الكيلوجول، السعرة الحرارية، والوات.</p>
+                <a href="convert-energy.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول العملة">
+                <h3>محول العملات</h3>
+                <p>تحويل أسعار العملات العربية والدولية.</p>
+                <a href="convert-currency.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+            <div class="calc-card" data-title="محول سعة التخزين">
+                <h3>محول سعة التخزين الرقمية</h3>
+                <p>تحويل البايت، الميجابايت، الجيجابايت، والتيرابايت.</p>
+                <a href="convert-storage.html" class="btn-action" style="text-align:center; text-decoration:none; display:block;">افتح المحول</a>
+            </div>
+        </div>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
