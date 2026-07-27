@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة نسبة الدهون في الجسم - تقدير الدهون والكتلة العضلية أونلاين</title>
+    <meta name="description" content="احسب نسبة الدهون في جسمك بدقة باستخدام طريقة البحرية الأمريكية المعتمدة للرجال والنساء.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة نسبة الدهون في الجسم</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل قياساتك بالسنتيمتر لتقدير نسبة الدهون والكتلة الخالية من الدهون:</p>
+
+            <div class="form-group">
+                <label for="fatGender">الجنس:</label>
+                <select id="fatGender" onchange="toggleHipInput()" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="male">ذَكَر</option>
+                    <option value="female">أنثى</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fatWeight">الوزن (كيلوجرام):</label>
+                <input type="number" id="fatWeight" placeholder="مثال: 75">
+            </div>
+
+            <div class="form-group">
+                <label for="fatHeight">الطول (سنتيمتر):</label>
+                <input type="number" id="fatHeight" placeholder="مثال: 175">
+            </div>
+
+            <div class="form-group">
+                <label for="fatNeck">محيط الرقبة (سنتيمتر):</label>
+                <input type="number" id="fatNeck" placeholder="مثال: 38">
+            </div>
+
+            <div class="form-group">
+                <label for="fatWaist">محيط الخصر (سنتيمتر):</label>
+                <input type="number" id="fatWaist" placeholder="مثال: 85">
+            </div>
+
+            <div class="form-group" id="hipGroup" style="display: none;">
+                <label for="fatHip">محيط الورك / الأوراك (سنتيمتر):</label>
+                <input type="number" id="fatHip" placeholder="مثال: 95">
+            </div>
+
+            <button onclick="calculateBodyFat()" class="btn-action">احسب نسبة الدهون</button>
+
+            <div id="fatResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>كيف تُحسب نسبة الدهون بالطريقة البحرية الأمريكية؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تُعد طريقة البحرية الأمريكية (U.S. Navy Method) واحدة من أدق الطرق غير الجراحية لتقدير نسبة الدهون في الجسم عبر أخذ قياسات محيط الرقبة والخصر والورك مقارنة بالطول. تساعدك معرفة نسبة الدهون على تقييم مستوى لياقتك وصحة تركيبة جسمك.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleHipInput() {
+            const gender = document.getElementById('fatGender').value;
+            const hipGroup = document.getElementById('hipGroup');
+            if (gender === 'female') {
+                hipGroup.style.display = 'block';
+            } else {
+                hipGroup.style.display = 'none';
+            }
+        }
+
+        function calculateBodyFat() {
+            const gender = document.getElementById('fatGender').value;
+            const weight = parseFloat(document.getElementById('fatWeight').value);
+            const height = parseFloat(document.getElementById('fatHeight').value);
+            const neck = parseFloat(document.getElementById('fatNeck').value);
+            const waist = parseFloat(document.getElementById('fatWaist').value);
+            const hip = parseFloat(document.getElementById('fatHip').value);
+            const resBox = document.getElementById('fatResult');
+
+            if (isNaN(weight) || isNaN(height) || isNaN(neck) || isNaN(waist) || weight <= 0 || height <= 0 || neck <= 0 || waist <= 0) {
+                showResult(resBox, 'يرجى إدخال كافة القياسات بصورة صحيحة.', '#ef4444');
+                return;
+            }
+
+            let bodyFatPercentage = 0;
+
+            if (gender === 'male') {
+                if (waist <= neck) {
+                    showResult(resBox, 'يجب أن يكون محيط الخصر أكبر من محيط الرقبة.', '#ef4444');
+                    return;
+                }
+                bodyFatPercentage = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
+            } else {
+                if (isNaN(hip) || hip <= 0) {
+                    showResult(resBox, 'يرجى إدخال محيط الورك بشكل صحيح للنساء.', '#ef4444');
+                    return;
+                }
+                if ((waist + hip) <= neck) {
+                    showResult(resBox, 'يرجى التأكد من صحة مدخلات الخصر والورك والرقبة.', '#ef4444');
+                    return;
+                }
+                bodyFatPercentage = 163.205 * Math.log10(waist + hip - neck) - 97.684 * Math.log10(height) - 78.387;
+            }
+
+            if (bodyFatPercentage < 2 || bodyFatPercentage > 60) {
+                showResult(resBox, 'النتائج غير منطقية، يرجى مراجعة القياسات المدخلة.', '#ef4444');
+                return;
+            }
+
+            const fatMass = (weight * (bodyFatPercentage / 100)).toFixed(1);
+            const leanMass = (weight - fatMass).toFixed(1);
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                📊 <strong>نسبة الدهون المقدرة:</strong> ${bodyFatPercentage.toFixed(1)}%<br>
+                ⚖️ <strong>كتلة الدهون:</strong> ${fatMass} كجم<br>
+                💪 <strong>الكتلة الخالية من الدهون (العضلات والعظام):</strong> ${leanMass} كجم
+            `;
+        }
+    </script>
+</body>
+</html>
+
