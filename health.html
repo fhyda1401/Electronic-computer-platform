@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبات الصحة واللياقة البدنية - منصة الحاسبات الذكية</title>
+    <meta name="description" content="حاسبات صحية دقيقة: حاسبة BMI، السعرات الحرارية، معدل الأيض BMR، الوزن المثالي، حاسبة الحمل وموعد الولادة.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الهيدر وشريط التنقل -->
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الهيرو الخاص بالفئة -->
+    <section class="hero">
+        <div class="container">
+            <h2>حاسبات الصحة واللياقة البدنية</h2>
+            <p>أدوات علمية لمتابعة صحتك، لياقتك، نظامك الغذائي وفترة الحمل.</p>
+            <input type="text" id="searchInput" placeholder="ابحث في حاسبات الصحة..." onkeyup="searchCalculators()">
+        </div>
+    </section>
+
+    <!-- إعلان علوي -->
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <!-- شبكة الحاسبات الصحية -->
+    <main class="container">
+        <div class="calculator-grid">
+
+            <div class="calc-card" data-title="حاسبة مؤشر كتلة الجسم BMI وزن طول">
+                <h3>حاسبة مؤشر كتلة الجسم (BMI)</h3>
+                <p>قيم تصنيف وزنك وصحتك مقارنة بالطول.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة نسبة الدهون في الجسم طيات جسم">
+                <h3>حاسبة نسبة الدهون في الجسم</h3>
+                <p>تقدير نسبة الدهون من إجمالي وزن الجسم.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة السعرات الحرارية طعام دايت رجيم">
+                <h3>حاسبة السعرات الحرارية</h3>
+                <p>احسب احتياجك اليومي من السعرات لتخفيف الوزن أو زيادته.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة معدل الأيض الأساسي BMR طاقة">
+                <h3>حاسبة معدل الأيض الأساسي (BMR)</h3>
+                <p>حساب كمية الحراريات التي يحرقها جسمك في وضع الراحة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة الوزن المثالي طول جسم">
+                <h3>حاسبة الوزن المثالي</h3>
+                <p>اعرف الوزن الموصى به طردياً مع طولك وهيئتك.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة الحمل أسبوع حمل طفل">
+                <h3>حاسبة الحمل</h3>
+                <p>تتبعي أسابيع الحمل والنمو والتغيرات المتوقعة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة موعد الولادة المتوقع تاريخ ولادة">
+                <h3>حاسبة موعد الولادة المتوقع</h3>
+                <p>حساب تاريخ الميلاد التقديري للطفل بناءً على آخر دورة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة الإباضة خصوبة أيام تبويض">
+                <h3>حاسبة الإباضة</h3>
+                <p>تحديد أكثر أيام الخصوبة والإباضة المرتفعة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة كمية الماء المتناولة سوائل شرب">
+                <h3>حاسبة كمية الماء المتناولة</h3>
+                <p>احسب اللترات المطلوبة من الماء يومياً بناءً على وزنك ونشاطك.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة المغذيات الكبرى ماكروز بروتين كربوهيدرات دهون">
+                <h3>حاسبة المغذيات الكبرى (Macros)</h3>
+                <p>توزيع نسبة البروتين، الكربوهيدرات، والدهون لوجباتك.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+            <div class="calc-card" data-title="حاسبة معدل ضربات القلب نبض تمرين">
+                <h3>حاسبة معدل ضربات القلب</h3>
+                <p>حدد النطاق المثالي لنبضات القلب أثناء التمرين والراحة.</p>
+                <button class="btn-action">افتح الحاسبة</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- إعلان سفلي -->
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
