@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة النسبة المئوية - حساب النسب والزيادة والخصم أونلاين</title>
+    <meta name="description" content="احسب النسبة المئوية بسهولة، استخرج قيمة النسبة من المبلغ، أو احسب نسبة الزيادة والخصم بين رقمين.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة النسبة المئوية</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">اختر نوع العملية الحسابية وأدخل الأرقام للوصول للنتيجة فوراً:</p>
+
+            <div class="form-group">
+                <label for="percentType">نوع العملية:</label>
+                <select id="percentType" onchange="togglePercentForm()" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="valueOf">كم قيمة (X%) من المبلغ (Y)؟</option>
+                    <option value="ratioOf">العدد (X) يمثل كم بالمائة من العدد (Y)؟</option>
+                    <option value="change">نسبة التغير (الزيادة أو النقصان) من (X) إلى (Y)؟</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label id="lblNum1" for="num1">النسبة المئوية (%):</label>
+                <input type="number" id="num1" placeholder="مثال: 15">
+            </div>
+
+            <div class="form-group">
+                <label id="lblNum2" for="num2">العدد / المبلغ الإجمالي:</label>
+                <input type="number" id="num2" placeholder="مثال: 500">
+            </div>
+
+            <button onclick="calculatePercentage()" class="btn-action">احسب النسبة المئوية</button>
+
+            <div id="percentResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>استخدامات النسبة المئوية في الحياة اليومية</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تُعتبر النسبة المئوية وسيلة أساسية في الحياة العملية والمالية؛ حيث تُستخدم لحساب التخفيضات والخصومات التجارية، تقييم درجات الطلاب، تحديد نسبة الضرائب أو الفوائد المصرفية، ومقارنة النمو المالي والتغيرات الإحصائية.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function togglePercentForm() {
+            const type = document.getElementById('percentType').value;
+            const lbl1 = document.getElementById('lblNum1');
+            const lbl2 = document.getElementById('lblNum2');
+
+            if (type === 'valueOf') {
+                lbl1.innerText = 'النسبة المئوية (%):';
+                lbl2.innerText = 'العدد / المبلغ الإجمالي:';
+            } else if (type === 'ratioOf') {
+                lbl1.innerText = 'العدد الجزئي (X):';
+                lbl2.innerText = 'العدد الكلي (Y):';
+            } else if (type === 'change') {
+                lbl1.innerText = 'القيمة القديمة (الأصلية):';
+                lbl2.innerText = 'القيمة الجديدة:';
+            }
+        }
+
+        function calculatePercentage() {
+            const type = document.getElementById('percentType').value;
+            const val1 = parseFloat(document.getElementById('num1').value);
+            const val2 = parseFloat(document.getElementById('num2').value);
+            const resBox = document.getElementById('percentResult');
+
+            if (isNaN(val1) || isNaN(val2)) {
+                showResult(resBox, 'يرجى إدخال قيم عددية صحيحة في كلا الحقلين.', '#ef4444');
+                return;
+            }
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+
+            if (type === 'valueOf') {
+                const res = (val1 / 100) * val2;
+                resBox.innerHTML = `📌 <strong>قيمة (${val1}%) من ${val2} هي:</strong> ${res.toLocaleString()}`;
+            } else if (type === 'ratioOf') {
+                if (val2 === 0) {
+                    showResult(resBox, 'لا يمكن القسمة على الصفر.', '#ef4444');
+                    return;
+                }
+                const res = (val1 / val2) * 100;
+                resBox.innerHTML = `📊 <strong>النسبة المئوية للعدد ${val1} من ${val2} هي:</strong> ${res.toFixed(2)}%`;
+            } else if (type === 'change') {
+                if (val1 === 0) {
+                    showResult(resBox, 'القيمة الأصلية لا يمكن أن تكون صفر لحساب نسبة التغير.', '#ef4444');
+                    return;
+                }
+                const change = ((val2 - val1) / val1) * 100;
+                const status = change >= 0 ? 'زيادة' : 'نقصان (خصم)';
+                resBox.innerHTML = `📈 <strong>نسبة التغير (${status}):</strong> ${Math.abs(change).toFixed(2)}%`;
+            }
+        }
+    </script>
+</body>
+</html>
 
