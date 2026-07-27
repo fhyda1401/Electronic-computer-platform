@@ -3,127 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الحاسبات الذكية - حاسبات شاملة وسريعة</title>
-    <meta name="description" content="منصة حاسبات إلكترونية متكاملة تتضمن حاسبات مالية، حاسبة كتلة الجسم BMI، حاسبة النسبة المئوية، وحاسبة العمر.">
+    <title>منصة الحاسبات الذكية - أدوات وحاسبات شاملة ودقيقة أونلاين</title>
+    <meta name="description" content="منصة حاسبات إلكترونية متكاملة تتضمن حاسبات مالية، صحية، رياضية وتحويلات. احسب مؤشر كتلة الجسم، السعرات الحرارية، النسبة المئوية والعمر مجاناً.">
+    <link rel="canonical" href="https://calculators.com/" />
     <link rel="stylesheet" href="style.css">
-    <!-- Google AdSense Header Code -->
+
+    <!-- علامات Open Graph للمشاركة الاحترافية -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="منصة الحاسبات الذكية - أدوات وحاسبات شاملة ودقيقة أونلاين" />
+    <meta property="og:description" content="منصة حاسبات متكاملة مجانية ودقيقة لكل احتياجاتك اليومية: مالية، صحية، وعلمية." />
+    <meta property="og:url" content="https://calculators.com/" />
+    <meta property="og:site_name" content="منصة الحاسبات الذكية" />
+
+    <!-- ترميز البيانات المنظمة (JSON-LD Schema Markup) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "منصة الحاسبات الذكية",
+      "url": "https://calculators.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://calculators.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 <body>
 
-    <!-- الهيدر وشريط التنقل -->
-    <header class="navbar">
-        <div class="container">
-            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
-            <nav>
-                <a href="index.html">الرئيسية</a>
-                <a href="financial.html">مالية</a>
-                <a href="health.html">صحة ولياقة</a>
+    <!-- الهيدر المطور وقائمة التنقل ووظيفة البحث اللحظي -->
+    <header class="navbar" style="background:#1e293b; color:white; padding: 12px 0;">
+        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:15px;">
+            <!-- الشعار -->
+            <h1 class="logo" style="margin:0; font-size:1.5rem;">
+                <a href="index.html" style="color:white; text-decoration:none;">حاسبات<span style="color:#3b82f6;">.com</span></a>
+            </h1>
+
+            <!-- محرك البحث الشامل اللحظي -->
+            <div style="position:relative; flex: 1; max-width: 320px;">
+                <input type="text" id="globalSearchInput" placeholder="🔍 ابحث عن حاسبة..." style="width:100%; padding: 8px 14px; border-radius: 20px; border:1px solid #334155; background:#0f172a; color:white; font-size:0.9rem;">
+                <div id="globalSearchResults" style="display:none; position:absolute; top:110%; right:0; left:0; background:white; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:1000; max-height:280px; overflow-y:auto;"></div>
+            </div>
+
+            <!-- قائمة التنقل الشاملة -->
+            <nav style="display:flex; gap:12px; flex-wrap:wrap; font-size:0.9rem;">
+                <a href="index.html" style="color:#3b82f6; text-decoration:none; font-weight:bold;">الرئيسية</a>
+                <a href="financial.html" style="color:#cbd5e1; text-decoration:none;">المالية</a>
+                <a href="health.html" style="color:#cbd5e1; text-decoration:none;">الصحية</a>
+                <a href="math.html" style="color:#cbd5e1; text-decoration:none;">الرياضية</a>
+                <a href="converters.html" style="color:#cbd5e1; text-decoration:none;">التحويل</a>
+                <a href="blog.html" style="color:#cbd5e1; text-decoration:none;">المدونة</a>
+                <a href="about.html" style="color:#cbd5e1; text-decoration:none;">نبذة عنا</a>
+                <a href="contact.html" style="color:#cbd5e1; text-decoration:none;">اتصل بنا</a>
             </nav>
         </div>
     </header>
 
-    <!-- واجهة الترحيب والبحث -->
-    <section class="hero">
+    <!-- مسار التنقل (Breadcrumb) -->
+    <div class="container" style="margin-top: 15px;">
+        <nav aria-label="breadcrumb">
+            <ol style="display:flex; list-style:none; padding:0; margin:0; font-size:0.85rem; color:#64748b; gap:8px;">
+                <li style="color:#0f172a; font-weight:bold;">الرئيسية</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- واجهة الترحيب والفلترة داخل الصفحة -->
+    <section class="hero" style="background:#f8fafc; padding:40px 0; border-bottom:1px solid #e2e8f0; text-align:center; margin-top:10px;">
         <div class="container">
-            <h2>أدوات وحاسبات إلكترونية دقيقة وسريعة</h2>
-            <p>احسب كل ما تحتاجه في مكان واحد بسهولة ومجاناً.</p>
-            <input type="text" id="searchInput" placeholder="ابحث عن حاسبة (مثال: حاسبة العمر، BMI...)" onkeyup="searchCalculators()">
+            <h2 style="color:#0f172a; margin-bottom:10px;">أدوات وحاسبات إلكترونية دقيقة وسريعة</h2>
+            <p style="color:#64748b; margin-bottom:20px;">احسب كل ما تحتاجه في مكان واحد بسهولة، دقة، ومجاناً.</p>
+            <div style="max-width: 500px; margin: 0 auto;">
+                <input type="text" id="searchInput" placeholder="فلترة سريعة داخل الصفحة (مثال: حاسبة العمر، BMI...)" onkeyup="searchCalculators()" style="width:100%; padding:12px 18px; border-radius:8px; border:1px solid #cbd5e1; font-size:1rem;">
+            </div>
         </div>
     </section>
 
-    <!-- مساحة إعلانية علوية -->
-    <div class="container ad-slot">
-        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    <!-- 1. مساحة إعلانية علوية (Top Banner Ad) -->
+    <div class="container ad-slot" style="margin-top:20px;">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense - Auto Banner)</p>
     </div>
 
     <!-- شبكة الحاسبات الرئيسيّة -->
-    <main class="container" id="calculators">
-        <div class="calculator-grid">
+    <main class="container" id="calculators" style="margin-top: 25px;">
+        <div class="calculator-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
 
             <!-- 1. الحاسبة العامة -->
-            <div class="calc-card" data-title="حاسبة عامة رياضيات">
-                <h3>الحاسبة العامة</h3>
+            <div class="calc-card" data-title="حاسبة عامة رياضيات حساب أرقام" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
+                <h3 style="color:#0f172a; margin-bottom:15px;">الحاسبة العامة</h3>
                 <div class="calc-box">
-                    <input type="text" id="calcDisplay" readonly placeholder="0">
-                    <div class="calc-buttons">
-                        <button onclick="clearCalc()">C</button>
-                        <button onclick="appendCalc('/')">÷</button>
-                        <button onclick="appendCalc('*')">×</button>
-                        <button onclick="deleteCalc()">⌫</button>
+                    <input type="text" id="calcDisplay" readonly placeholder="0" style="width:100%; height:45px; font-size:1.2rem; text-align:left; padding:5px 10px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:6px; background:#f8fafc;">
+                    <div class="calc-buttons" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px;">
+                        <button onclick="clearCalc()" style="padding:10px; font-weight:bold; background:#fee2e2; color:#ef4444; border:none; border-radius:6px; cursor:pointer;">C</button>
+                        <button onclick="appendCalc('/')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">÷</button>
+                        <button onclick="appendCalc('*')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">×</button>
+                        <button onclick="deleteCalc()" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">⌫</button>
 
-                        <button onclick="appendCalc('7')">7</button>
-                        <button onclick="appendCalc('8')">8</button>
-                        <button onclick="appendCalc('9')">9</button>
-                        <button onclick="appendCalc('-')">-</button>
+                        <button onclick="appendCalc('7')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">7</button>
+                        <button onclick="appendCalc('8')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">8</button>
+                        <button onclick="appendCalc('9')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">9</button>
+                        <button onclick="appendCalc('-')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">-</button>
 
-                        <button onclick="appendCalc('4')">4</button>
-                        <button onclick="appendCalc('5')">5</button>
-                        <button onclick="appendCalc('6')">6</button>
-                        <button onclick="appendCalc('+')">+</button>
+                        <button onclick="appendCalc('4')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">4</button>
+                        <button onclick="appendCalc('5')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">5</button>
+                        <button onclick="appendCalc('6')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">6</button>
+                        <button onclick="appendCalc('+')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">+</button>
 
-                        <button onclick="appendCalc('1')">1</button>
-                        <button onclick="appendCalc('2')">2</button>
-                        <button onclick="appendCalc('3')">3</button>
-                        <button onclick="calculateResult()" class="btn-equal">=</button>
+                        <button onclick="appendCalc('1')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">1</button>
+                        <button onclick="appendCalc('2')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">2</button>
+                        <button onclick="appendCalc('3')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">3</button>
+                        <button onclick="calculateResult()" class="btn-equal" style="padding:10px; font-weight:bold; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer;">=</button>
 
-                        <button onclick="appendCalc('0')" class="btn-zero">0</button>
-                        <button onclick="appendCalc('.')">.</button>
+                        <button onclick="appendCalc('0')" class="btn-zero" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">0</button>
+                        <button onclick="appendCalc('.')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">.</button>
                     </div>
                 </div>
             </div>
 
             <!-- 2. حاسبة كتلة الجسم BMI -->
-            <div class="calc-card" data-title="حاسبة كتلة الجسم BMI وزن صحة">
-                <h3>حاسبة مؤشر كتلة الجسم (BMI)</h3>
-                <div class="form-group">
-                    <label for="weight">الوزن (كجم):</label>
-                    <input type="number" id="weight" placeholder="مثال: 70">
+            <div class="calc-card" data-title="حاسبة كتلة الجسم BMI وزن صحة طاقة" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
+                <h3 style="color:#0f172a; margin-bottom:15px;">حاسبة مؤشر كتلة الجسم (BMI)</h3>
+                <div class="form-group" style="margin-bottom:12px;">
+                    <label for="weight" style="display:block; margin-bottom:5px; font-size:0.9rem;">الوزن (كجم):</label>
+                    <input type="number" id="weight" placeholder="مثال: 70" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
                 </div>
-                <div class="form-group">
-                    <label for="height">الطول (سم):</label>
-                    <input type="number" id="height" placeholder="مثال: 175">
+                <div class="form-group" style="margin-bottom:15px;">
+                    <label for="height" style="display:block; margin-bottom:5px; font-size:0.9rem;">الطول (سم):</label>
+                    <input type="number" id="height" placeholder="مثال: 175" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
                 </div>
-                <button onclick="calculateBMI()" class="btn-action">احسب المؤشر</button>
-                <div id="bmiResult" class="result-box"></div>
+                <button onclick="calculateBMI()" class="btn-action" style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">احسب المؤشر</button>
+                <div id="bmiResult" class="result-box" style="margin-top:15px; padding:10px; border-radius:6px; display:none;"></div>
+                <div style="margin-top:12px; font-size:0.85rem; text-align:left;">
+                    <a href="calc-bmi.html" style="color:#2563eb; text-decoration:none;">عرض الحاسبة المتقدمة والرسم البياني ←</a>
+                </div>
             </div>
 
             <!-- 3. حاسبة النسبة المئوية -->
-            <div class="calc-card" data-title="حاسبة النسبة المئوية خصم نسبة">
-                <h3>حاسبة النسبة المئوية</h3>
-                <div class="form-group">
-                    <label for="percentVal">كم نسبة (%):</label>
-                    <input type="number" id="percentVal" placeholder="مثال: 15">
+            <div class="calc-card" data-title="حاسبة النسبة المئوية خصم نسبة حساب رياضيات" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
+                <h3 style="color:#0f172a; margin-bottom:15px;">حاسبة النسبة المئوية</h3>
+                <div class="form-group" style="margin-bottom:12px;">
+                    <label for="percentVal" style="display:block; margin-bottom:5px; font-size:0.9rem;">كم نسبة (%):</label>
+                    <input type="number" id="percentVal" placeholder="مثال: 15" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
                 </div>
-                <div class="form-group">
-                    <label for="totalVal">من العدد:</label>
-                    <input type="number" id="totalVal" placeholder="مثال: 200">
+                <div class="form-group" style="margin-bottom:15px;">
+                    <label for="totalVal" style="display:block; margin-bottom:5px; font-size:0.9rem;">من العدد:</label>
+                    <input type="number" id="totalVal" placeholder="مثال: 200" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
                 </div>
-                <button onclick="calculatePercentage()" class="btn-action">احسب النسبة</button>
-                <div id="percentResult" class="result-box"></div>
+                <button onclick="calculatePercentage()" class="btn-action" style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">احسب النسبة</button>
+                <div id="percentResult" class="result-box" style="margin-top:15px; padding:10px; border-radius:6px; display:none;"></div>
             </div>
 
             <!-- 4. حاسبة العمر -->
-            <div class="calc-card" data-title="حاسبة العمر تاريخ الميلاد سن">
-                <h3>حاسبة العمر الدقيقة</h3>
-                <div class="form-group">
-                    <label for="birthdate">تاريخ الميلاد:</label>
-                    <input type="date" id="birthdate">
+            <div class="calc-card" data-title="حاسبة العمر تاريخ الميلاد سن سنوات شهور" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
+                <h3 style="color:#0f172a; margin-bottom:15px;">حاسبة العمر الدقيقة</h3>
+                <div class="form-group" style="margin-bottom:15px;">
+                    <label for="birthdate" style="display:block; margin-bottom:5px; font-size:0.9rem;">تاريخ الميلاد:</label>
+                    <input type="date" id="birthdate" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
                 </div>
-                <button onclick="calculateAge()" class="btn-action">احسب العمر</button>
-                <div id="ageResult" class="result-box"></div>
+                <button onclick="calculateAge()" class="btn-action" style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">احسب العمر</button>
+                <div id="ageResult" class="result-box" style="margin-top:15px; padding:10px; border-radius:6px; display:none;"></div>
             </div>
 
         </div>
     </main>
 
-    <!-- مساحة إعلانية سفلية -->
-    <div class="container ad-slot">
-        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    <!-- 2. مساحة إعلانية وسط المحتوى (In-Content Ad) -->
+    <div class="container ad-slot" style="margin-top: 25px;">
+        <p class="ad-placeholder">مساحة إعلانية وسط الصفحة (Google AdSense)</p>
+    </div>
+
+    <!-- شبكة الربط الداخلي والحاسبات ذات الصلة -->
+    <section class="container" style="margin-top: 30px;">
+        <div class="related-calculators" style="background:white; padding:25px; border-radius:12px; border:1px solid #e2e8f0;">
+            <h3 style="font-size:1.15rem; color:#0f172a; margin-bottom:15px;">تصفح أقسام الآلات الحاسبة المخصصة</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+                <a href="financial.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">💰 الحاسبات المالية والعقارية ←</a>
+                <a href="health.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">🩺 حاسبات الصحة واللياقة ←</a>
+                <a href="math.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">📐 حاسبات الرياضيات والهندسة ←</a>
+                <a href="converters.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">🔄 تحويل الوحدات والعملات ←</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- منطقة التعريف بالمنصة والمؤلف (Author & E-E-A-T Section) -->
+    <section class="container" style="margin-top: 25px;">
+        <div class="author-card" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:20px; display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:250px;">
+                <h4 style="margin:0 0 5px 0; color:#0f172a; font-size:1rem;">عن منصة الحاسبات الذكية</h4>
+                <p style="margin:0; font-size:0.88rem; color:#64748b; line-height:1.6;">
+                    منصة عربية متخصصة تقدم أدوات وحاسبات دقيقة موثوقة في الماليّة، الصحة، والرياضيات وفق المعايير القياسية والمعادلات البرمجية المعتمدة لتقديم نتائج لحظية وسريعة لكل المستخدمين.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. مساحة إعلانية سفلية (Footer Banner Ad) -->
+    <div class="container ad-slot" style="margin-top: 25px; margin-bottom:25px;">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense - Footer Banner)</p>
     </div>
 
     <!-- الفوتر -->
-    <footer id="about">
-        <div class="container">
+    <footer id="about" style="background:#0f172a; color:white; padding: 25px 0;">
+        <div class="container" style="text-align: center;">
             <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
         </div>
     </footer>
