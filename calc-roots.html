@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة للجذور - حساب الجذر التربيعي والتكعيبي أونلاين</title>
+    <meta name="description" content="حاسبة الجذور أونلاين لإيجاد الجذر التربيعي، التكعيبي، والجذور النونية لأي عدد بدقة عالية.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>آلة حاسبة للجذور الرياضيات</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل العدد ورتبة الجذر (مثال: 2 للجذر التربيعي، 3 للجذر التكعيبي):</p>
+
+            <div class="form-group">
+                <label for="rootNumber">العدد المطلوب حساب جذره (x):</label>
+                <input type="number" step="any" id="rootNumber" placeholder="مثال: 16">
+            </div>
+
+            <div class="form-group">
+                <label for="rootDegree">رتبة الجذر (n):</label>
+                <input type="number" step="any" id="rootDegree" value="2" placeholder="2 للجذر التربيعي">
+            </div>
+
+            <button onclick="calculateRoot()" class="btn-action">احسب الجذر</button>
+
+            <div id="rootResult" class="result-box" style="margin-top: 20px; font-size: 1.2rem;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>ما هو الجذر الرياضي وكيف يُحسب؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                الجذر هو العملية العكسية لرفع العدد للأس. الجذر التربيعي لعدد ما هو القيمة التي إذا ضُرِبت في نفسها أعطت هذا العدد. تُمكّنك هذه الحاسبة من إيجاد الجذر التربيعي والتكعيبي والجذور النونية العليا بسهولة.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateRoot() {
+            const num = parseFloat(document.getElementById('rootNumber').value);
+            const degree = parseFloat(document.getElementById('rootDegree').value);
+            const resBox = document.getElementById('rootResult');
+
+            if (isNaN(num) || isNaN(degree) || degree === 0) {
+                showResult(resBox, 'يرجى إدخال قيم صحيحة مع التأكد أن رتبة الجذر لا تساوي صفراً.', '#ef4444');
+                return;
+            }
+
+            if (num < 0 && degree % 2 === 0) {
+                showResult(resBox, 'لا يمكن حساب جذر زوجي لعدد سالب في مجموعة الأعداد الحقيقية.', '#ef4444');
+                return;
+            }
+
+            let result;
+            if (num < 0) {
+                result = -Math.pow(-num, 1 / degree);
+            } else {
+                result = Math.pow(num, 1 / degree);
+            }
+
+            const formattedResult = Number(Math.round(result + 'e6') + 'e-6');
+            showResult(resBox, `الجذر من الرتبة ${degree} للعدد ${num} يساوي: ${formattedResult}`, '#10b981');
+        }
+    </script>
+</body>
+</html>
+
