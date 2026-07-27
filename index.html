@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الحاسبات الذكية - حاسبات شاملة وسريعة</title>
+    <meta name="description" content="منصة حاسبات إلكترونية متكاملة تتضمن الحاسبة العامة، حاسبة كتلة الجسم BMI، حاسبة النسبة المئوية، وحاسبة العمر.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google AdSense Header Code -->
+</head>
+<body>
+
+    <!-- الهيدر وشريط التنقل -->
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">حاسبات<span>.com</span></h1>
+            <nav>
+                <a href="#calculators">الحاسبات</a>
+                <a href="#about">عن الموقع</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- واجهة الترحيب والبحث -->
+    <section class="hero">
+        <div class="container">
+            <h2>أدوات وحاسبات إلكترونية دقيقة وسريعة</h2>
+            <p>احسب كل ما تحتاجه في مكان واحد بسهولة ومجاناً.</p>
+            <input type="text" id="searchInput" placeholder="ابحث عن حاسبة (مثال: حاسبة العمر، BMI...)" onkeyup="searchCalculators()">
+        </div>
+    </section>
+
+    <!-- مساحة إعلانية علوية -->
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <!-- شبكة الحاسبات الرئيسيّة -->
+    <main class="container" id="calculators">
+        <div class="calculator-grid">
+
+            <!-- 1. الحاسبة العامة -->
+            <div class="calc-card" data-title="حاسبة عامة رياضيات">
+                <h3>الحاسبة العامة</h3>
+                <div class="calc-box">
+                    <input type="text" id="calcDisplay" readonly placeholder="0">
+                    <div class="calc-buttons">
+                        <button onclick="clearCalc()">C</button>
+                        <button onclick="appendCalc('/')">÷</button>
+                        <button onclick="appendCalc('*')">×</button>
+                        <button onclick="deleteCalc()">⌫</button>
+
+                        <button onclick="appendCalc('7')">7</button>
+                        <button onclick="appendCalc('8')">8</button>
+                        <button onclick="appendCalc('9')">9</button>
+                        <button onclick="appendCalc('-')">-</button>
+
+                        <button onclick="appendCalc('4')">4</button>
+                        <button onclick="appendCalc('5')">5</button>
+                        <button onclick="appendCalc('6')">6</button>
+                        <button onclick="appendCalc('+')">+</button>
+
+                        <button onclick="appendCalc('1')">1</button>
+                        <button onclick="appendCalc('2')">2</button>
+                        <button onclick="appendCalc('3')">3</button>
+                        <button onclick="calculateResult()" class="btn-equal">=</button>
+
+                        <button onclick="appendCalc('0')" class="btn-zero">0</button>
+                        <button onclick="appendCalc('.')">.</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. حاسبة كتلة الجسم BMI -->
+            <div class="calc-card" data-title="حاسبة كتلة الجسم BMI وزن صحة">
+                <h3>حاسبة مؤشر كتلة الجسم (BMI)</h3>
+                <div class="form-group">
+                    <label for="weight">الوزن (كجم):</label>
+                    <input type="number" id="weight" placeholder="مثال: 70">
+                </div>
+                <div class="form-group">
+                    <label for="height">الطول (سم):</label>
+                    <input type="number" id="height" placeholder="مثال: 175">
+                </div>
+                <button onclick="calculateBMI()" class="btn-action">احسب المؤشر</button>
+                <div id="bmiResult" class="result-box"></div>
+            </div>
+
+            <!-- 3. حاسبة النسبة المئوية -->
+            <div class="calc-card" data-title="حاسبة النسبة المئوية خصم نسبة">
+                <h3>حاسبة النسبة المئوية</h3>
+                <div class="form-group">
+                    <label for="percentVal">كم نسبة (%):</label>
+                    <input type="number" id="percentVal" placeholder="مثال: 15">
+                </div>
+                <div class="form-group">
+                    <label for="totalVal">من العدد:</label>
+                    <input type="number" id="totalVal" placeholder="مثال: 200">
+                </div>
+                <button onclick="calculatePercentage()" class="btn-action">احسب النسبة</button>
+                <div id="percentResult" class="result-box"></div>
+            </div>
+
+            <!-- 4. حاسبة العمر -->
+            <div class="calc-card" data-title="حاسبة العمر تاريخ الميلاد سن">
+                <h3>حاسبة العمر الدقيقة</h3>
+                <div class="form-group">
+                    <label for="birthdate">تاريخ الميلاد:</label>
+                    <input type="date" id="birthdate">
+                </div>
+                <button onclick="calculateAge()" class="btn-action">احسب العمر</button>
+                <div id="ageResult" class="result-box"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- مساحة إعلانية سفلية -->
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية (Google AdSense)</p>
+    </div>
+
+    <!-- الفوتر -->
+    <footer id="about">
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
