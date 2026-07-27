@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة للأسس والقوى - حساب القوة والأسس أونلاين</title>
+    <meta name="description" content="حاسبة الأسس والقوى أونلاين لإيجاد حاصل رفع الأعداد للأسس الموجبة والسالبة والكسرية بدقة وسهولة.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>آلة حاسبة للأسس والقوى</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل قيمة الأساس وقيمة الأس لحساب النتيجة:</p>
+
+            <div class="form-group">
+                <label for="baseNum">الأساس (x):</label>
+                <input type="number" step="any" id="baseNum" placeholder="مثال: 5">
+            </div>
+
+            <div class="form-group">
+                <label for="expNum">الأس (n):</label>
+                <input type="number" step="any" id="expNum" placeholder="مثال: 3">
+            </div>
+
+            <button onclick="calculateExponent()" class="btn-action">احسب $x^n$</button>
+
+            <div id="expResult" class="result-box" style="margin-top: 20px; font-size: 1.2rem;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>ما هي الأسس والقوى الرياضيات؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                الأسس هي طريقة اختصار عملية ضرب العدد في نفسه لعدة مرات. يُسمى العدد المضروب بـ "الأساس"، بينما يمثل "الأس" عدد مرات تكرار الضرب. تُستخدم الأسس بكثرة في معادلات النمو السكاني، الفيزياء، والعلوم المالية.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateExponent() {
+            const base = parseFloat(document.getElementById('baseNum').value);
+            const exp = parseFloat(document.getElementById('expNum').value);
+            const resBox = document.getElementById('expResult');
+
+            if (isNaN(base) || isNaN(exp)) {
+                showResult(resBox, 'يرجى إدخال قيم صحيحة لكل من الأساس والأس.', '#ef4444');
+                return;
+            }
+
+            const result = Math.pow(base, exp);
+
+            if (!isFinite(result)) {
+                showResult(resBox, 'النتيجة كبيرة جداً أو غير معرفة.', '#ef4444');
+                return;
+            }
+
+            const formattedResult = Number(Math.round(result + 'e6') + 'e-6');
+            showResult(resBox, `${base} مرفوع للأس ${exp} يساوي: ${formattedResult}`, '#10b981');
+        }
+    </script>
+</body>
+</html>
+
