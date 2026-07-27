@@ -1,215 +1,555 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الحاسبات الذكية - أدوات وحاسبات شاملة ودقيقة أونلاين</title>
-    <meta name="description" content="منصة حاسبات إلكترونية متكاملة تتضمن حاسبات مالية، صحية، رياضية وتحويلات. احسب مؤشر كتلة الجسم، السعرات الحرارية، النسبة المئوية والعمر مجاناً.">
+    <title>Smart Calculators Hub - Accurate & Fast Online Tools</title>
+    <meta name="description" content="All-in-one free online calculator hub featuring financial, health, math, and conversion tools. Calculate BMI, percentages, age, loans, and more easily.">
     <link rel="canonical" href="https://calculators.com/" />
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Font: Inter for modern, clean typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #eff6ff;
+            --secondary-color: #0f172a;
+            --accent-color: #059669;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
 
-    <!-- علامات Open Graph للمشاركة الاحترافية -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="منصة الحاسبات الذكية - أدوات وحاسبات شاملة ودقيقة أونلاين" />
-    <meta property="og:description" content="منصة حاسبات متكاملة مجانية ودقيقة لكل احتياجاتك اليومية: مالية، صحية، وعلمية." />
-    <meta property="og:url" content="https://calculators.com/" />
-    <meta property="og:site_name" content="منصة الحاسبات الذكية" />
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 70px; /* Space for sticky mobile ad */
+        }
 
-    <!-- ترميز البيانات المنظمة (JSON-LD Schema Markup) -->
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Header */
+        .navbar {
+            background: var(--secondary-color);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+        .logo span { color: var(--primary-color); }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: white; }
+
+        /* Hero Section & Search Bar */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            border-bottom-left-radius: var(--radius-lg);
+            border-bottom-right-radius: var(--radius-lg);
+        }
+        .hero h2 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 800; }
+        .hero p { color: #94a3b8; margin-bottom: 25px; font-size: 1.1rem; }
+        .search-box {
+            max-width: 550px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 30px;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            font-family: inherit;
+            box-shadow: var(--shadow-lg);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box input:focus { border-color: var(--primary-color); }
+
+        /* Main Layout with Sidebar */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Card Layout for Calculators */
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .calc-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .calc-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        .calc-card h3 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* Inputs & Buttons */
+        .form-group { margin-bottom: 15px; }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: var(--bg-color);
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus { border-color: var(--primary-color); outline: none; background: white; }
+
+        .btn-action {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-action:hover { background: var(--primary-dark); }
+
+        .result-box {
+            margin-top: 15px;
+            padding: 12px;
+            background: var(--primary-light);
+            border-radius: 8px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            display: none;
+            text-align: center;
+        }
+
+        /* Ad Slots */
+        .ad-slot {
+            background: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: var(--radius-md);
+            text-align: center;
+            padding: 15px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .ad-banner-top { margin: 25px 0 0 0; }
+        .ad-inline { margin: 25px 0; }
+        .ad-sidebar { position: sticky; top: 90px; }
+        
+        /* Mobile Sticky Anchor Ad */
+        .sticky-mobile-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        /* Affiliate Cards */
+        .affiliate-section { margin-top: 40px; }
+        .affiliate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .affiliate-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .affiliate-card .tag {
+            align-self: flex-start;
+            background: #d1fae5;
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .affiliate-card h4 { font-size: 1.1rem; margin-bottom: 8px; color: var(--secondary-color); }
+        .affiliate-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 15px; }
+        .btn-affiliate {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .ad-sidebar { display: none; }
+        }
+        @media (max-width: 600px) {
+            .calculator-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 1.6rem; }
+        }
+    </style>
+
+    <!-- Structured Data (JSON-LD Schema) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "منصة الحاسبات الذكية",
-      "url": "https://calculators.com/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://calculators.com/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "name": "Smart Calculators Hub",
+      "url": "https://calculators.com/"
     }
     </script>
 </head>
 <body>
 
-    <!-- الهيدر المطور وقائمة التنقل ووظيفة البحث اللحظي -->
-    <header class="navbar" style="background:#1e293b; color:white; padding: 12px 0;">
-        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:15px;">
-            <!-- الشعار -->
-            <h1 class="logo" style="margin:0; font-size:1.5rem;">
-                <a href="index.html" style="color:white; text-decoration:none;">حاسبات<span style="color:#3b82f6;">.com</span></a>
-            </h1>
-
-            <!-- محرك البحث الشامل اللحظي -->
-            <div style="position:relative; flex: 1; max-width: 320px;">
-                <input type="text" id="globalSearchInput" placeholder="🔍 ابحث عن حاسبة..." style="width:100%; padding: 8px 14px; border-radius: 20px; border:1px solid #334155; background:#0f172a; color:white; font-size:0.9rem;">
-                <div id="globalSearchResults" style="display:none; position:absolute; top:110%; right:0; left:0; background:white; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:1000; max-height:280px; overflow-y:auto;"></div>
-            </div>
-
-            <!-- قائمة التنقل الشاملة -->
-            <nav style="display:flex; gap:12px; flex-wrap:wrap; font-size:0.9rem;">
-                <a href="index.html" style="color:#3b82f6; text-decoration:none; font-weight:bold;">الرئيسية</a>
-                <a href="financial.html" style="color:#cbd5e1; text-decoration:none;">المالية</a>
-                <a href="health.html" style="color:#cbd5e1; text-decoration:none;">الصحية</a>
-                <a href="math.html" style="color:#cbd5e1; text-decoration:none;">الرياضية</a>
-                <a href="converters.html" style="color:#cbd5e1; text-decoration:none;">التحويل</a>
-                <a href="blog.html" style="color:#cbd5e1; text-decoration:none;">المدونة</a>
-                <a href="about.html" style="color:#cbd5e1; text-decoration:none;">نبذة عنا</a>
-                <a href="contact.html" style="color:#cbd5e1; text-decoration:none;">اتصل بنا</a>
+    <!-- 1. Header & Navigation Bar -->
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">Calculators<span>.com</span></a></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="financial.html">Finance</a></li>
+                    <li><a href="health.html">Health & Fitness</a></li>
+                    <li><a href="math.html">Math</a></li>
+                    <li><a href="converters.html">Converters</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <!-- مسار التنقل (Breadcrumb) -->
-    <div class="container" style="margin-top: 15px;">
-        <nav aria-label="breadcrumb">
-            <ol style="display:flex; list-style:none; padding:0; margin:0; font-size:0.85rem; color:#64748b; gap:8px;">
-                <li style="color:#0f172a; font-weight:bold;">الرئيسية</li>
-            </ol>
-        </nav>
-    </div>
-
-    <!-- واجهة الترحيب والفلترة داخل الصفحة -->
-    <section class="hero" style="background:#f8fafc; padding:40px 0; border-bottom:1px solid #e2e8f0; text-align:center; margin-top:10px;">
+    <!-- 2. Hero Section & Live Search -->
+    <section class="hero">
         <div class="container">
-            <h2 style="color:#0f172a; margin-bottom:10px;">أدوات وحاسبات إلكترونية دقيقة وسريعة</h2>
-            <p style="color:#64748b; margin-bottom:20px;">احسب كل ما تحتاجه في مكان واحد بسهولة، دقة، ومجاناً.</p>
-            <div style="max-width: 500px; margin: 0 auto;">
-                <input type="text" id="searchInput" placeholder="فلترة سريعة داخل الصفحة (مثال: حاسبة العمر، BMI...)" onkeyup="searchCalculators()" style="width:100%; padding:12px 18px; border-radius:8px; border:1px solid #cbd5e1; font-size:1rem;">
+            <h2>Fast & Accurate Online Calculation Tools</h2>
+            <p>Calculate everything you need in one place, instantly and for free.</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search calculators (e.g., BMI, Age, Percentage, Loan...)" onkeyup="searchCalculators()">
             </div>
         </div>
     </section>
 
-    <!-- 1. مساحة إعلانية علوية (Top Banner Ad) -->
-    <div class="container ad-slot" style="margin-top:20px;">
-        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense - Auto Banner)</p>
+    <!-- 3. Top Banner Ad Slot -->
+    <div class="container">
+        <div class="ad-slot ad-banner-top">
+            <!-- Google AdSense Top Banner (728x90) -->
+            <p>Top Advertising Slot (Google AdSense Top Banner)</p>
+        </div>
     </div>
 
-    <!-- شبكة الحاسبات الرئيسيّة -->
-    <main class="container" id="calculators" style="margin-top: 25px;">
-        <div class="calculator-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+    <!-- 4. Main Content Layout & Sidebar -->
+    <div class="container main-layout">
+        
+        <!-- Main Column: Calculators -->
+        <main>
+            <div class="calculator-grid" id="calculators">
 
-            <!-- 1. الحاسبة العامة -->
-            <div class="calc-card" data-title="حاسبة عامة رياضيات حساب أرقام" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
-                <h3 style="color:#0f172a; margin-bottom:15px;">الحاسبة العامة</h3>
-                <div class="calc-box">
-                    <input type="text" id="calcDisplay" readonly placeholder="0" style="width:100%; height:45px; font-size:1.2rem; text-align:left; padding:5px 10px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:6px; background:#f8fafc;">
-                    <div class="calc-buttons" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px;">
-                        <button onclick="clearCalc()" style="padding:10px; font-weight:bold; background:#fee2e2; color:#ef4444; border:none; border-radius:6px; cursor:pointer;">C</button>
-                        <button onclick="appendCalc('/')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">÷</button>
-                        <button onclick="appendCalc('*')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">×</button>
-                        <button onclick="deleteCalc()" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">⌫</button>
-
-                        <button onclick="appendCalc('7')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">7</button>
-                        <button onclick="appendCalc('8')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">8</button>
-                        <button onclick="appendCalc('9')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">9</button>
-                        <button onclick="appendCalc('-')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">-</button>
-
-                        <button onclick="appendCalc('4')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">4</button>
-                        <button onclick="appendCalc('5')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">5</button>
-                        <button onclick="appendCalc('6')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">6</button>
-                        <button onclick="appendCalc('+')" style="padding:10px; font-weight:bold; background:#f1f5f9; border:none; border-radius:6px; cursor:pointer;">+</button>
-
-                        <button onclick="appendCalc('1')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">1</button>
-                        <button onclick="appendCalc('2')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">2</button>
-                        <button onclick="appendCalc('3')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">3</button>
-                        <button onclick="calculateResult()" class="btn-equal" style="padding:10px; font-weight:bold; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer;">=</button>
-
-                        <button onclick="appendCalc('0')" class="btn-zero" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">0</button>
-                        <button onclick="appendCalc('.')" style="padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;">.</button>
+                <!-- Calculator 1: BMI -->
+                <div class="calc-card" data-title="bmi body mass index health fitness weight">
+                    <h3>BMI Calculator</h3>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" placeholder="e.g. 70">
                     </div>
+                    <div class="form-group">
+                        <label for="height">Height (cm):</label>
+                        <input type="number" id="height" placeholder="e.g. 175">
+                    </div>
+                    <button onclick="calculateBMI()" class="btn-action">Calculate BMI</button>
+                    <div id="bmiResult" class="result-box"></div>
                 </div>
+
+                <!-- Calculator 2: Percentage -->
+                <div class="calc-card" data-title="percentage percent math discount fraction">
+                    <h3>Percentage Calculator</h3>
+                    <div class="form-group">
+                        <label for="percentVal">What is (%) :</label>
+                        <input type="number" id="percentVal" placeholder="e.g. 15">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalVal">Of total number:</label>
+                        <input type="number" id="totalVal" placeholder="e.g. 200">
+                    </div>
+                    <button onclick="calculatePercentage()" class="btn-action">Calculate Percentage</button>
+                    <div id="percentResult" class="result-box"></div>
+                </div>
+
+                <!-- Calculator 3: Age -->
+                <div class="calc-card" data-title="age birthdate date birthday years">
+                    <h3>Age Calculator</h3>
+                    <div class="form-group">
+                        <label for="birthdate">Date of Birth:</label>
+                        <input type="date" id="birthdate">
+                    </div>
+                    <button onclick="calculateAge()" class="btn-action">Calculate Age</button>
+                    <div id="ageResult" class="result-box"></div>
+                </div>
+
+                <!-- Calculator 4: Loan / Mortgage -->
+                <div class="calc-card" data-title="loan mortgage monthly payment finance interest">
+                    <h3>Loan Payment Calculator</h3>
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount ($):</label>
+                        <input type="number" id="loanAmount" placeholder="e.g. 100000">
+                    </div>
+                    <div class="form-group">
+                        <label for="loanYears">Term (Years):</label>
+                        <input type="number" id="loanYears" placeholder="e.g. 5">
+                    </div>
+                    <button onclick="calculateLoan()" class="btn-action">Calculate Payment</button>
+                    <div id="loanResult" class="result-box"></div>
+                </div>
+
             </div>
 
-            <!-- 2. حاسبة كتلة الجسم BMI -->
-            <div class="calc-card" data-title="حاسبة كتلة الجسم BMI وزن صحة طاقة" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
-                <h3 style="color:#0f172a; margin-bottom:15px;">حاسبة مؤشر كتلة الجسم (BMI)</h3>
-                <div class="form-group" style="margin-bottom:12px;">
-                    <label for="weight" style="display:block; margin-bottom:5px; font-size:0.9rem;">الوزن (كجم):</label>
-                    <input type="number" id="weight" placeholder="مثال: 70" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-                </div>
-                <div class="form-group" style="margin-bottom:15px;">
-                    <label for="height" style="display:block; margin-bottom:5px; font-size:0.9rem;">الطول (سم):</label>
-                    <input type="number" id="height" placeholder="مثال: 175" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-                </div>
-                <button onclick="calculateBMI()" class="btn-action" style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">احسب المؤشر</button>
-                <div id="bmiResult" class="result-box" style="margin-top:15px; padding:10px; border-radius:6px; display:none;"></div>
-                <div style="margin-top:12px; font-size:0.85rem; text-align:left;">
-                    <a href="calc-bmi.html" style="color:#2563eb; text-decoration:none;">عرض الحاسبة المتقدمة والرسم البياني ←</a>
-                </div>
+            <!-- In-Content Ad Slot -->
+            <div class="ad-slot ad-inline">
+                <!-- Google AdSense In-Article Ad -->
+                <p>In-Content Advertising Slot (Google AdSense In-Feed)</p>
             </div>
 
-            <!-- 3. حاسبة النسبة المئوية -->
-            <div class="calc-card" data-title="حاسبة النسبة المئوية خصم نسبة حساب رياضيات" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
-                <h3 style="color:#0f172a; margin-bottom:15px;">حاسبة النسبة المئوية</h3>
-                <div class="form-group" style="margin-bottom:12px;">
-                    <label for="percentVal" style="display:block; margin-bottom:5px; font-size:0.9rem;">كم نسبة (%):</label>
-                    <input type="number" id="percentVal" placeholder="مثال: 15" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
+            <!-- 5. Affiliate Recommendations Section -->
+            <section class="affiliate-section">
+                <h3 style="font-size: 1.3rem; color: var(--secondary-color);">Recommended Offers & Products</h3>
+                <div class="affiliate-grid">
+                    
+                    <!-- Offer 1: Financial -->
+                    <div class="affiliate-card">
+                        <div>
+                            <span class="tag">Financial Offer</span>
+                            <h4>Best Refinancing Rates</h4>
+                            <p>Get lower interest rates on your mortgage or personal loan with fast approval.</p>
+                        </div>
+                        <a href="https://example.com/loan-affiliate" target="_blank" rel="nofollow sponsored" class="btn-affiliate">Apply Now &rarr;</a>
+                    </div>
+
+                    <!-- Offer 2: Insurance -->
+                    <div class="affiliate-card">
+                        <div>
+                            <span class="tag">Insurance</span>
+                            <h4>Compare Car Insurance</h4>
+                            <p>Save up to 30% by comparing quotes from top insurance providers instantly.</p>
+                        </div>
+                        <a href="https://example.com/insurance-affiliate" target="_blank" rel="nofollow sponsored" class="btn-affiliate">Compare Quotes &rarr;</a>
+                    </div>
+
+                    <!-- Offer 3: Health -->
+                    <div class="affiliate-card">
+                        <div>
+                            <span class="tag">Health & Fitness</span>
+                            <h4>Premium Whey Supplements</h4>
+                            <p>Get exclusive 20% discounts on certified fitness products and supplements.</p>
+                        </div>
+                        <a href="https://example.com/health-affiliate" target="_blank" rel="nofollow sponsored" class="btn-affiliate">Shop Discount &rarr;</a>
+                    </div>
+
                 </div>
-                <div class="form-group" style="margin-bottom:15px;">
-                    <label for="totalVal" style="display:block; margin-bottom:5px; font-size:0.9rem;">من العدد:</label>
-                    <input type="number" id="totalVal" placeholder="مثال: 200" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-                </div>
-                <button onclick="calculatePercentage()" class="btn-action" style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">احسب النسبة</button>
-                <div id="percentResult" class="result-box" style="margin-top:15px; padding:10px; border-radius:6px; display:none;"></div>
+            </section>
+        </main>
+
+        <!-- Sidebar Column -->
+        <aside>
+            <div class="ad-slot ad-sidebar">
+                <!-- Google AdSense Sidebar Display Ad (300x600) -->
+                <p style="padding: 100px 0;">Sidebar Ad Slot (AdSense Skyscraper)</p>
             </div>
+        </aside>
 
-            <!-- 4. حاسبة العمر -->
-            <div class="calc-card" data-title="حاسبة العمر تاريخ الميلاد سن سنوات شهور" style="background:white; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
-                <h3 style="color:#0f172a; margin-bottom:15px;">حاسبة العمر الدقيقة</h3>
-                <div class="form-group" style="margin-bottom:15px;">
-                    <label for="birthdate" style="display:block; margin-bottom:5px; font-size:0.9rem;">تاريخ الميلاد:</label>
-                    <input type="date" id="birthdate" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-                </div>
-                <button onclick="calculateAge()" class="btn-action" style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">احسب العمر</button>
-                <div id="ageResult" class="result-box" style="margin-top:15px; padding:10px; border-radius:6px; display:none;"></div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- 2. مساحة إعلانية وسط المحتوى (In-Content Ad) -->
-    <div class="container ad-slot" style="margin-top: 25px;">
-        <p class="ad-placeholder">مساحة إعلانية وسط الصفحة (Google AdSense)</p>
     </div>
 
-    <!-- شبكة الربط الداخلي والحاسبات ذات الصلة -->
-    <section class="container" style="margin-top: 30px;">
-        <div class="related-calculators" style="background:white; padding:25px; border-radius:12px; border:1px solid #e2e8f0;">
-            <h3 style="font-size:1.15rem; color:#0f172a; margin-bottom:15px;">تصفح أقسام الآلات الحاسبة المخصصة</h3>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
-                <a href="financial.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">💰 الحاسبات المالية والعقارية ←</a>
-                <a href="health.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">🩺 حاسبات الصحة واللياقة ←</a>
-                <a href="math.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">📐 حاسبات الرياضيات والهندسة ←</a>
-                <a href="converters.html" style="padding:12px; background:#f1f5f9; border-radius:8px; text-decoration:none; color:#2563eb; font-weight:bold; font-size:0.9rem; display:block;">🔄 تحويل الوحدات والعملات ←</a>
-            </div>
+    <!-- 6. Bottom Banner Ad -->
+    <div class="container" style="margin-top: 30px;">
+        <div class="ad-slot">
+            <p>Bottom Advertising Slot (Google AdSense Leaderboard)</p>
         </div>
-    </section>
-
-    <!-- منطقة التعريف بالمنصة والمؤلف (Author & E-E-A-T Section) -->
-    <section class="container" style="margin-top: 25px;">
-        <div class="author-card" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:20px; display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
-            <div style="flex:1; min-width:250px;">
-                <h4 style="margin:0 0 5px 0; color:#0f172a; font-size:1rem;">عن منصة الحاسبات الذكية</h4>
-                <p style="margin:0; font-size:0.88rem; color:#64748b; line-height:1.6;">
-                    منصة عربية متخصصة تقدم أدوات وحاسبات دقيقة موثوقة في الماليّة، الصحة، والرياضيات وفق المعايير القياسية والمعادلات البرمجية المعتمدة لتقديم نتائج لحظية وسريعة لكل المستخدمين.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. مساحة إعلانية سفلية (Footer Banner Ad) -->
-    <div class="container ad-slot" style="margin-top: 25px; margin-bottom:25px;">
-        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense - Footer Banner)</p>
     </div>
 
-    <!-- الفوتر -->
-    <footer id="about" style="background:#0f172a; color:white; padding: 25px 0;">
-        <div class="container" style="text-align: center;">
-            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+    <!-- 7. Mobile Sticky Anchor Ad -->
+    <div class="sticky-mobile-ad">
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Mobile Sticky Anchor Ad Slot</span>
+    </div>
+
+    <!-- 8. Footer -->
+    <footer style="background: var(--secondary-color); color: white; padding: 30px 0; margin-top: 40px; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Smart Calculators Hub. All rights reserved.</p>
+            <div style="margin-top: 10px; font-size: 0.85rem;">
+                <a href="privacy.html" style="color: #cbd5e1; margin: 0 10px; text-decoration: none;">Privacy Policy</a> |
+                <a href="terms.html" style="color: #cbd5e1; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript logic for search & calculators -->
+    <script>
+        // Live Filter / Search Function
+        function searchCalculators() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.calc-card');
+
+            cards.forEach(card => {
+                let title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // 1. BMI Calculation
+        function calculateBMI() {
+            let w = parseFloat(document.getElementById('weight').value);
+            let h = parseFloat(document.getElementById('height').value) / 100;
+            let resBox = document.getElementById('bmiResult');
+
+            if (w > 0 && h > 0) {
+                let bmi = (w / (h * h)).toFixed(1);
+                let text = "Your BMI is: " + bmi + " ";
+                if (bmi < 18.5) text += "(Underweight)";
+                else if (bmi < 25) text += "(Normal weight)";
+                else if (bmi < 30) text += "(Overweight)";
+                else text += "(Obesity)";
+
+                resBox.innerText = text;
+                resBox.style.display = "block";
+            } else {
+                alert("Please enter valid positive numbers for weight and height.");
+            }
+        }
+
+        // 2. Percentage Calculation
+        function calculatePercentage() {
+            let p = parseFloat(document.getElementById('percentVal').value);
+            let t = parseFloat(document.getElementById('totalVal').value);
+            let resBox = document.getElementById('percentResult');
+
+            if (!isNaN(p) && !isNaN(t)) {
+                let result = (p / 100) * t;
+                resBox.innerText = p + "% of " + t + " = " + result;
+                resBox.style.display = "block";
+            }
+        }
+
+        // 3. Age Calculation
+        function calculateAge() {
+            let birthdateInput = document.getElementById('birthdate').value;
+            let resBox = document.getElementById('ageResult');
+
+            if (birthdateInput) {
+                let birthdate = new Date(birthdateInput);
+                let today = new Date();
+                let age = today.getFullYear() - birthdate.getFullYear();
+                let m = today.getMonth() - birthdate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+                    age--;
+                }
+                resBox.innerText = "Your age is: " + age + " years old";
+                resBox.style.display = "block";
+            }
+        }
+
+        // 4. Loan Calculation
+        function calculateLoan() {
+            let amount = parseFloat(document.getElementById('loanAmount').value);
+            let years = parseFloat(document.getElementById('loanYears').value);
+            let resBox = document.getElementById('loanResult');
+
+            if (amount > 0 && years > 0) {
+                // Assuming an estimated 5% annual interest
+                let totalWithInterest = amount * 1.25; 
+                let monthly = (totalWithInterest / (years * 12)).toFixed(2);
+                resBox.innerText = "Estimated Monthly Payment: $" + monthly;
+                resBox.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
+
