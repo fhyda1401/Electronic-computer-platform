@@ -4,80 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حاسبة مؤشر كتلة الجسم (BMI) - حساب الوزن الطبيعي أونلاين</title>
-    <meta name="description" content="احسب مؤشر كتلة الجسم (BMI) بدقة وتعرف على الفئة الصحية لوزنك وهل تحتاج لتخسيس أو زيادة الوزن.">
+    <meta name="description" content="احسب مؤشر كتلة الجسم (BMI) بدقة وتعرف على الفئة الصحية لوزنك وهل تحتاج لتخسيس أو زيادة الوزن مع رسم بياني تفاعلي.">
     <link rel="stylesheet" href="style.css">
+    <!-- مكتبة الرسوم البيانية Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="container">
-            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
-            <nav>
-                <a href="index.html">الرئيسية</a>
-                <a href="financial.html">مالية</a>
-                <a href="health.html">صحة ولياقة</a>
-                <a href="math-converters.html">رياضيات وتحويلات</a>
+    <!-- الهيدر المطور وقائمة التنقل ووظيفة البحث -->
+    <header class="navbar" style="background:#1e293b; color:white; padding: 12px 0;">
+        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:15px;">
+            <!-- الشعار -->
+            <h1 class="logo" style="margin:0; font-size:1.5rem;">
+                <a href="index.html" style="color:white; text-decoration:none;">حاسبات<span style="color:#3b82f6;">.com</span></a>
+            </h1>
+
+            <!-- محرك البحث الشامل اللحظي -->
+            <div style="position:relative; flex: 1; max-width: 320px;">
+                <input type="text" id="globalSearchInput" placeholder="🔍 ابحث عن حاسبة..." style="width:100%; padding: 8px 14px; border-radius: 20px; border:1px solid #334155; background:#0f172a; color:white; font-size:0.9rem;">
+                <div id="globalSearchResults" style="display:none; position:absolute; top:110%; right:0; left:0; background:white; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:1000; max-height:280px; overflow-y:auto;"></div>
+            </div>
+
+            <!-- قائمة التنقل الشاملة -->
+            <nav style="display:flex; gap:12px; flex-wrap:wrap; font-size:0.9rem;">
+                <a href="index.html" style="color:white; text-decoration:none;">الرئيسية</a>
+                <a href="financial.html" style="color:#cbd5e1; text-decoration:none;">المالية</a>
+                <a href="health.html" style="color:#cbd5e1; text-decoration:none;">الصحية</a>
+                <a href="math.html" style="color:#cbd5e1; text-decoration:none;">الرياضية</a>
+                <a href="converters.html" style="color:#cbd5e1; text-decoration:none;">التحويل</a>
+                <a href="blog.html" style="color:#3b82f6; text-decoration:none; font-weight:bold;">المدونة</a>
+                <a href="about.html" style="color:#cbd5e1; text-decoration:none;">نبذة عنا</a>
+                <a href="contact.html" style="color:#cbd5e1; text-decoration:none;">اتصل بنا</a>
             </nav>
         </div>
     </header>
 
-    <div class="container ad-slot">
-        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    <!-- مسار التنقل (Breadcrumb) -->
+    <div class="container" style="margin-top: 15px;">
+        <nav aria-label="breadcrumb">
+            <ol style="display:flex; list-style:none; padding:0; margin:0; font-size:0.85rem; color:#64748b; gap:8px;">
+                <li><a href="index.html" style="color:#2563eb; text-decoration:none;">الرئيسية</a></li>
+                <li>/</li>
+                <li><a href="health.html" style="color:#2563eb; text-decoration:none;">الآلات الحاسبة الصحية</a></li>
+                <li>/</li>
+                <li style="color:#0f172a; font-weight:bold;">حاسبة مؤشر كتلة الجسم (BMI)</li>
+            </ol>
+        </nav>
     </div>
 
-    <main class="container" style="max-width: 800px;">
-        <div class="calc-card" style="padding: 30px;">
-            <h2>حاسبة مؤشر كتلة الجسم (BMI)</h2>
-            <p style="margin-bottom: 20px; color: #64748b;">أدخل وزنك بالكيلوجرام وطولك بالسنتيمتر للتعرف على مؤشر كتلة جسمك:</p>
+    <!-- 1. إعلان بانر علوي (Top Banner Ad) -->
+    <div class="container ad-slot" style="margin-top: 15px;">
+        <p class="ad-placeholder">إعلان بانر علوي (Top Banner Ad - 728x90 / Auto)</p>
+    </div>
 
-            <div class="form-group">
-                <label for="bmiWeight">الوزن (كيلوجرام):</label>
-                <input type="number" id="bmiWeight" placeholder="مثال: 75">
+    <!-- المحتوى الرئيسي للموقع (تنسيق شبكي يتيح الشريط الجانبي) -->
+    <main class="container" style="display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+        
+        <!-- قسم الحاسبة والمحتوى الرئيسي -->
+        <section style="flex: 3; min-width: 300px;">
+            <div class="calc-card" style="padding: 25px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                <h2 style="color:#0f172a; margin-bottom:10px;">حاسبة مؤشر كتلة الجسم (BMI)</h2>
+                <p style="margin-bottom: 20px; color: #64748b;">أدخل وزنك بالكيلوجرام وطولك بالسنتيمتر للتعرف فورياً على مؤشر كتلة جسمك والتصنيف الصحي:</p>
+
+                <form id="bmiForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="bmiWeight">الوزن (كيلوجرام):</label>
+                        <input type="number" id="bmiWeight" placeholder="مثال: 75" oninput="calculateBMI()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bmiHeight">الطول (سنتيمتر):</label>
+                        <input type="number" id="bmiHeight" placeholder="مثال: 175" oninput="calculateBMI()">
+                    </div>
+
+                    <!-- أزرار التحكم -->
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button type="button" onclick="calculateBMI()" class="btn-action" style="flex: 2;">احسب مؤشر كتلة الجسم</button>
+                        <button type="reset" onclick="resetBMI()" style="flex: 1; background: #e2e8f0; color: #334155; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">إعادة ضبط</button>
+                    </div>
+                </form>
+
+                <!-- قسم عرض النتائج -->
+                <div id="bmiResult" class="result-box" style="display: none; margin-top: 25px; padding: 20px; border-radius: 8px; background: #f8fafc; border-right: 5px solid #2563eb;">
+                    <!-- النتيجة الرئيسية وتفاصيل الحساب -->
+                    <div id="bmiOutputDetails" style="font-size: 1.1rem; line-height: 1.8;"></div>
+
+                    <!-- الرسم البياني المرئي -->
+                    <div style="margin-top: 25px; height: 220px; position: relative;">
+                        <h4 style="margin-bottom:10px; font-size:0.95rem; color:#475569;">موقعك بالنسبة للنطاقات الصحية:</h4>
+                        <canvas id="bmiChart"></canvas>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="bmiHeight">الطول (سنتيمتر):</label>
-                <input type="number" id="bmiHeight" placeholder="مثال: 175">
+            <!-- 2. إعلان ضمن المحتوى (In-Content Ad) -->
+            <div class="ad-slot" style="margin: 25px 0;">
+                <p class="ad-placeholder">إعلان ضمن المحتوى (In-Content Ad)</p>
             </div>
 
-            <button onclick="calculateBMI()" class="btn-action">احسب مؤشر كتلة الجسم</button>
+            <!-- قسم الشرح التفصيلي والتعليمات (SEO & User Guide) -->
+            <article style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 1.8; color: #334155;">
+                <h3 style="color:#0f172a;">ما هو مؤشر كتلة الجسم (BMI) وكيف يُصنف؟</h3>
+                <p style="margin-top: 10px;">
+                    مؤشر كتلة الجسم (Body Mass Index - BMI) هو أداة قياس طبية معتمدة عالمياً من قبل منظمة الصحة العالمية (WHO) تُستخدم لتقدير كمية الدهون في الجسم بالنسبة للطول والوزن، وتحديد ما إذا كان الشخص يمتلك وزناً صحياً ومثالانياً.
+                </p>
 
-            <div id="bmiResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
-        </div>
+                <h4 style="margin-top: 20px; color:#1e293b;">الصيغة والمعادلة المستخدمة:</h4>
+                <blockquote style="background: #f1f5f9; padding: 12px; border-right: 4px solid #2563eb; margin: 10px 0; font-family: monospace; font-size: 1.05rem;">
+                    مؤشر كتلة الجسم (BMI) = الوزن (كجم) ÷ (الطول بالمتر × الطول بالمتر)
+                </blockquote>
 
-        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h3>ما هو مؤشر كتلة الجسم (BMI) وكيف يُصنف؟</h3>
-            <p style="margin-top: 10px; color: #475569;">
-                مؤشر كتلة الجسم هو أداة تقييم عالمية تُستخدم لتقدير كمية الدهون في الجسم بناءً على النسبة بين الوزن والطول.
-            </p>
-            <ul style="margin-top: 10px; padding-right: 20px; color: #475569; line-height: 1.8;">
-                <li><strong>أقل من 18.5:</strong> نقص في الوزن (نحافة)</li>
-                <li><strong>18.5 - 24.9:</strong> وزن طبيعي ومثالي</li>
-                <li><strong>25 - 29.9:</strong> زيادة في الوزن</li>
-                <li><strong>30 أو أكثر:</strong> سمنة (تستدعي الاهتمام بالحمية)</li>
-            </ul>
-        </article>
+                <h4 style="margin-top: 20px; color:#1e293b;">التصنيفات الصحية لمؤشر كتلة الجسم:</h4>
+                <ul style="margin-top: 10px; padding-right: 20px; color: #475569; line-height: 1.8;">
+                    <li><strong>أقل من 18.5:</strong> نقص في الوزن (نحافة)</li>
+                    <li><strong>18.5 – 24.9:</strong> وزن طبيعي ومثالي</li>
+                    <li><strong>25 – 29.9:</strong> زيادة في الوزن (وزن زائد)</li>
+                    <li><strong>30 أو أكثر:</strong> سمنة (تتطلب متابعة نمط الحياة والحمية)</li>
+                </ul>
+
+                <h4 style="margin-top: 20px; color:#1e293b;">أمثلة توضيحية:</h4>
+                <p>إذا كان وزن شخص <strong>75 كجم</strong> وطوله <strong>175 سم (1.75 متر)</strong>:</p>
+                <p style="background:#fafafa; padding:10px; border-radius:6px; font-size:0.9rem; color:#475569;">
+                    BMI = 75 ÷ (1.75 × 1.75) = 75 ÷ 3.0625 = <strong>24.5</strong> (وزن طبيعي ومثالي).
+                </p>
+
+                <h4 style="margin-top: 20px; color:#1e293b;">حالات استخدام عملية:</h4>
+                <ul>
+                    <li>متابعة البرامج الرياضية وخطط التخسيس أو زيادة الوزن.</li>
+                    <li>التقييم الصحي الأولي قبل البدء في حميات غذائية جديدة.</li>
+                    <li>الاستشارات الطبية والتقييم البدني الدائم.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- الشريط الجانبي (Sidebar) -->
+        <aside style="flex: 1; min-width: 260px;">
+            <!-- 3. إعلان الشريط الجانبي -->
+            <div class="ad-slot" style="min-height: 300px; margin-bottom: 20px;">
+                <p class="ad-placeholder">إعلان الشريط الجانبي<br>(Sidebar Ad - 300x250 / 300x600)</p>
+            </div>
+
+            <!-- آلات حاسبة ذات صلة -->
+            <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                <h4 style="margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; color:#0f172a;">آلات حاسبة ذات صلة</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2.2; font-size:0.95rem;">
+                    <li>🔥 <a href="calc-calories.html" style="text-decoration:none; color:#2563eb;">حاسبة السعرات الحرارية (BMR)</a></li>
+                    <li>💪 <a href="calc-body-fat.html" style="text-decoration:none; color:#2563eb;">حاسبة نسبة الدهون في الجسم</a></li>
+                    <li>💧 <a href="calc-water.html" style="text-decoration:none; color:#2563eb;">حاسبة شرب الماء اليومي</a></li>
+                    <li>🤰 <a href="calc-due-date.html" style="text-decoration:none; color:#2563eb;">حاسبة موعد الولادة والحمل</a></li>
+                </ul>
+            </div>
+        </aside>
     </main>
 
-    <div class="container ad-slot">
-        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    <!-- 4. إعلان أسفل الصفحة (Footer Banner Ad) -->
+    <div class="container ad-slot" style="margin-top: 25px; margin-bottom: 25px;">
+        <p class="ad-placeholder">إعلان أسفل الصفحة (Footer Banner Ad)</p>
     </div>
 
-    <footer>
-        <div class="container">
+    <!-- الفوتر -->
+    <footer style="background:#0f172a; color:white; padding: 20px 0; margin-top: 40px;">
+        <div class="container" style="text-align: center;">
             <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
+    <!-- السكربتات المدمجة للبحث والحسابات والرسوم البيانية -->
     <script src="script.js"></script>
     <script>
+        let bmiChartInstance = null;
+
         function calculateBMI() {
             const weight = parseFloat(document.getElementById('bmiWeight').value);
             const heightCm = parseFloat(document.getElementById('bmiHeight').value);
             const resBox = document.getElementById('bmiResult');
+            const outputDetails = document.getElementById('bmiOutputDetails');
 
             if (isNaN(weight) || isNaN(heightCm) || weight <= 0 || heightCm <= 0) {
-                showResult(resBox, 'يرجى إدخال قيم صحيحة لكل من الوزن والطول.', '#ef4444');
+                resBox.style.display = 'none';
                 return;
             }
 
@@ -103,14 +207,62 @@
             }
 
             resBox.style.display = 'block';
-            resBox.style.backgroundColor = color;
-            resBox.style.color = '#ffffff';
-            resBox.innerHTML = `
-                📊 <strong>مؤشر كتلة الجسم الخاص بك:</strong> ${bmiFormatted}<br>
-                💡 <strong>التصنيف الصحي:</strong> ${status}
+            resBox.style.borderRightColor = color;
+            
+            outputDetails.innerHTML = `
+                <div style="font-size:1.3rem; font-weight:bold; color:${color}; margin-bottom:5px;">
+                    📊 مؤشر كتلة الجسم (BMI): ${bmiFormatted}
+                </div>
+                <div style="font-size:1.05rem; color:#334155;">
+                    💡 <strong>التصنيف الصحي:</strong> <span style="color:${color}; font-weight:bold;">${status}</span>
+                </div>
+                <div style="font-size:0.88rem; color:#64748b; margin-top:6px;">
+                    الوزن الطبيعي المقترح لطولك (${heightCm} سم) هو ما بين <strong>${(18.5 * heightM * heightM).toFixed(1)} كجم</strong> و <strong>${(24.9 * heightM * heightM).toFixed(1)} كجم</strong>.
+                </div>
             `;
+
+            renderBMIChart(bmi);
+        }
+
+        function resetBMI() {
+            document.getElementById('bmiForm').reset();
+            document.getElementById('bmiResult').style.display = 'none';
+            if (bmiChartInstance) bmiChartInstance.destroy();
+        }
+
+        function renderBMIChart(userBMI) {
+            const ctx = document.getElementById('bmiChart').getContext('2d');
+            if (bmiChartInstance) bmiChartInstance.destroy();
+
+            bmiChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['نحافة (<18.5)', 'طبيعي (18.5-24.9)', 'زيادة (25-29.9)', 'سمنة (30+)', 'مؤشر جسمك الحالي'],
+                    datasets: [{
+                        label: 'قيم المؤشر القياسية مقارنة بنتيجتك',
+                        data: [18.5, 24.9, 29.9, 35, userBMI],
+                        backgroundColor: [
+                            '#fde047',
+                            '#4ade80',
+                            '#fb923c',
+                            '#f87171',
+                            '#2563eb'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 40 }
+                    }
+                }
+            });
         }
     </script>
 </body>
 </html>
-
