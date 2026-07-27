@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة الوزن المثالي - حساب الوزن المناسب لطولك أونلاين</title>
+    <meta name="description" content="احسب الوزن المثالي المقترح لجسمك بناءً على الطول والجنس باستخدام المعادلات العلمية المعتمدة.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة الوزن المثالي</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">اختر الجنس وأدخل طولك بالسنتيمتر لمعرفة الوزن المثالي والنطاق الصحي:</p>
+
+            <div class="form-group">
+                <label for="idealGender">الجنس:</label>
+                <select id="idealGender" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="male">ذَكَر</option>
+                    <option value="female">أنثى</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="idealHeight">الطول (سنتيمتر):</label>
+                <input type="number" id="idealHeight" placeholder="مثال: 175">
+            </div>
+
+            <button onclick="calculateIdealWeight()" class="btn-action">احسب الوزن المثالي</button>
+
+            <div id="idealResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>كيف يُحسب الوزن المثالي؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تعتمد حاسبة الوزن المثالي على معادلة ديفين (Devine Formula) التي تُحدد التقدير الأنسب لكتلة الجسم الصحية بناءً على طول القامة والجنس. يُرجى ملاحظة أن النطاق الصحي يعطي مرونة كافية تتناسب مع الكتلة العضلية وطبيعة البنية الجسدية لكل شخص.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateIdealWeight() {
+            const gender = document.getElementById('idealGender').value;
+            const heightCm = parseFloat(document.getElementById('idealHeight').value);
+            const resBox = document.getElementById('idealResult');
+
+            if (isNaN(heightCm) || heightCm < 100 || heightCm > 250) {
+                showResult(resBox, 'يرجى إدخال طول صحيح بالسنتيمتر (بين 100 و 250 سم).', '#ef4444');
+                return;
+            }
+
+            const heightInches = heightCm / 2.54;
+            const inchesOver5Feet = heightInches - 60;
+
+            let idealWeightKg = 0;
+            if (gender === 'male') {
+                idealWeightKg = 50 + (2.3 * (inchesOver5Feet > 0 ? inchesOver5Feet : 0));
+            } else {
+                idealWeightKg = 45.5 + (2.3 * (inchesOver5Feet > 0 ? inchesOver5Feet : 0));
+            }
+
+            // حساب نطاق الوزن الطبيعي المعتمد على BMI (18.5 إلى 24.9)
+            const heightM = heightCm / 100;
+            const minHealthy = 18.5 * (heightM * heightM);
+            const maxHealthy = 24.9 * (heightM * heightM);
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                🎯 <strong>الوزن المثالي المقترح:</strong> ${idealWeightKg.toFixed(1)} كجم<br>
+                📊 <strong>النطاق الصحي لوزنك:</strong> بين ${minHealthy.toFixed(1)} كجم و ${maxHealthy.toFixed(1)} كجم
+            `;
+        }
+    </script>
+</body>
+</html>
+
