@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة الحمل وموعد الولادة - حساب أسابيع الحمل أونلاين</title>
+    <meta name="description" content="احسبي موعد الولادة المتوقع وأسابيع الحمل الحالية بدقة بناءً على تاريخ آخر دورة شهرية.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة الحمل وموعد الولادة المتوقع</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">حدد تاريخ أول يوم من آخر دورة شهرية لحساب موعد الولادة وتتبع أسابيع الحمل:</p>
+
+            <div class="form-group">
+                <label for="lmpDate">تاريخ أول يوم من آخر دورة شهرية:</label>
+                <input type="date" id="lmpDate" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+            </div>
+
+            <button onclick="calculatePregnancy()" class="btn-action">احسبي موعد الولادة</button>
+
+            <div id="pregResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>كيف تُحسب فترة الحمل وموعد الولادة؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تعتمد الحسابات الطبية القياسية على إضافة 280 يوماً (40 أسبوعاً) لليوم الأول من آخر دورة شهرية. يستمر الحمل الطبيعي عادةً ما بين 37 و42 أسبوعاً، ويُقسم إلى ثلاثة أثلاث رئيسية يمر بها الجنين بمراحل نمو مختلفة.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculatePregnancy() {
+            const lmpInput = document.getElementById('lmpDate').value;
+            const resBox = document.getElementById('pregResult');
+
+            if (!lmpInput) {
+                showResult(resBox, 'يرجى تحديد تاريخ أول يوم من آخر دورة شهرية.', '#ef4444');
+                return;
+            }
+
+            const lmpDate = new Date(lmpInput);
+            const today = new Date();
+
+            if (lmpDate > today) {
+                showResult(resBox, 'التاريخ المدخل لا يمكن أن يكون في المستقبل.', '#ef4444');
+                return;
+            }
+
+            // حساب موعد الولادة المتوقع (+280 يوم)
+            const dueDate = new Date(lmpDate.getTime() + (280 * 24 * 60 * 60 * 1000));
+            
+            // حساب الأيام المنقضية
+            const diffTime = Math.abs(today - lmpDate);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            const weeks = Math.floor(diffDays / 7);
+            const days = diffDays % 7;
+
+            if (weeks > 42) {
+                showResult(resBox, 'التاريخ المدخل يتجاوز مدة الحمل الطبيعية (أكثر من 42 أسبوعاً).', '#ef4444');
+                return;
+            }
+
+            let trimester = '';
+            if (weeks < 13) {
+                trimester = 'الثلث الأول (الأشهر 1 - 3)';
+            } else if (weeks < 27) {
+                trimester = 'الثلث الثاني (الأشهر 4 - 6)';
+            } else {
+                trimester = 'الثلث الثالث (الأشهر 7 - 9)';
+            }
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDueDate = dueDate.toLocaleDateString('ar-EG', options);
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                👶 <strong>موعد الولادة المتوقع:</strong> ${formattedDueDate}<br>
+                ⏳ <strong>عمر الحمل الحالي:</strong> ${weeks} أسبوع و ${days} يوم<br>
+                📌 <strong>المرحلة الحالية:</strong> ${trimester}
+            `;
+        }
+    </script>
+</body>
+</html>
+
