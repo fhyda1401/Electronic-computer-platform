@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة تحويل الوحدات - تحويل الطول والوزن أونلاين</title>
+    <meta name="description" content="حول بين وحدات القياس المختلفة بسهولة: الطول (متر، قدم، ميل) والوزن (كيلوجرام، باوند، أونصة).">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة تحويل الوحدات القياسية</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">اختر فئة القياس وأدخل القيمة للتحويل المباشر بين الوحدات:</p>
+
+            <div class="form-group">
+                <label for="categorySelect">فئة القياس:</label>
+                <select id="categorySelect" onchange="updateUnits()" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="length">الطول والمسافة</option>
+                    <option value="weight">الوزن والكتلة</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="unitValue">القيمة المراد تحويلها:</label>
+                <input type="number" id="unitValue" placeholder="مثال: 10">
+            </div>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label for="fromUnit">من وحدة:</label>
+                    <select id="fromUnit" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;"></select>
+                </div>
+
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label for="toUnit">إلى وحدة:</label>
+                    <select id="toUnit" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;"></select>
+                </div>
+            </div>
+
+            <button onclick="convertUnits()" class="btn-action">تحويل القيمة</button>
+
+            <div id="unitResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>أهمية التحويل بين الأنظمة القياسية</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تختلف وحدات القياس المستخدمة حول العالم بين النظام الممتري (المتر والكيلوجرام) والنظام الإمبراطوري الأمريكي (القدم والباوند). تساعدك هذه الحاسبة على الربط السريع بين الوحدات لسهولة الاستخدام الميداني والأكاديمي.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const unitOptions = {
+            length: [
+                { val: 'm', label: 'متر (m)' },
+                { val: 'km', label: 'كيلومتر (km)' },
+                { val: 'cm', label: 'سنتيمتر (cm)' },
+                { val: 'ft', label: 'قدم (ft)' },
+                { val: 'mi', label: 'ميل (mi)' }
+            ],
+            weight: [
+                { val: 'kg', label: 'كيلوجرام (kg)' },
+                { val: 'g', label: 'جرام (g)' },
+                { val: 'lb', label: 'باوند (lb)' },
+                { val: 'oz', label: 'أونصة (oz)' }
+            ]
+        };
+
+        const conversionRates = {
+            // الطول إلى متر
+            m: 1,
+            km: 1000,
+            cm: 0.01,
+            ft: 0.3048,
+            mi: 1609.34,
+            // الوزن إلى كجم
+            kg: 1,
+            g: 0.001,
+            lb: 0.453592,
+            oz: 0.0283495
+        };
+
+        function updateUnits() {
+            const cat = document.getElementById('categorySelect').value;
+            const fromSelect = document.getElementById('fromUnit');
+            const toSelect = document.getElementById('toUnit');
+
+            fromSelect.innerHTML = '';
+            toSelect.innerHTML = '';
+
+            unitOptions[cat].forEach((unit, idx) => {
+                fromSelect.innerHTML += `<option value="${unit.val}">${unit.label}</option>`;
+                toSelect.innerHTML += `<option value="${unit.val}">${unit.label}</option>`;
+            });
+
+            if (unitOptions[cat].length > 1) {
+                toSelect.selectedIndex = 1;
+            }
+        }
+
+        function convertUnits() {
+            const val = parseFloat(document.getElementById('unitValue').value);
+            const from = document.getElementById('fromUnit').value;
+            const to = document.getElementById('toUnit').value;
+            const resBox = document.getElementById('unitResult');
+
+            if (isNaN(val)) {
+                showResult(resBox, 'يرجى إدخال قيمة عددية صحيحة.', '#ef4444');
+                return;
+            }
+
+            // التحويل إلى الوحدة الأساسية ثم إلى الوحدة المستهدفة
+            const baseValue = val * conversionRates[from];
+            const convertedValue = baseValue / conversionRates[to];
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                📏 <strong>النتيجة:</strong> ${val} (${from}) = <strong>${convertedValue.toLocaleString(undefined, {maximumFractionDigits: 4})}</strong> (${to})
+            `;
+        }
+
+        // تهيئة القوائم عند تحميل الصفحة
+        window.onload = updateUnits;
+    </script>
+</body>
+</html>
+
