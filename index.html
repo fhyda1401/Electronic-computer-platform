@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="vsyE5QoGqDFn7PtbwCwDI2XGSxNyYdctIKAbsqUbmgo" />
     
     <title>Smart Calculators Hub - Multi-Category Online Tools</title>
     <meta name="description" content="Scalable and comprehensive online calculator platform. Calculate finance, real estate, health, math, crypto, and engineering easily.">
-    <link rel="canonical" href="https://calculators.com/" />
+    <link rel="canonical" href="https://electronic-computer-platform.pages.dev/" />
     
     <!-- Modern Clean Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,7 +118,7 @@
         }
         .search-box input:focus { border-color: var(--primary-color); }
 
-        /* Category Filter Tabs (Calculator.net style modernized) */
+        /* Category Filter Tabs */
         .category-nav {
             display: flex;
             gap: 10px;
@@ -203,7 +204,7 @@
             margin-bottom: 5px;
             color: var(--text-main);
         }
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 10px 12px;
             border: 1px solid var(--border-color);
@@ -213,7 +214,7 @@
             background: var(--bg-color);
             outline: none;
         }
-        .form-group input:focus { border-color: var(--primary-color); background: white; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary-color); background: white; }
         .form-group .error-text {
             color: var(--danger-color);
             font-size: 0.75rem;
@@ -247,6 +248,29 @@
             text-align: center;
         }
 
+        /* Legal & Info Sections (AdSense Requirements) */
+        .page-section {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-top: 35px;
+            box-shadow: var(--shadow-sm);
+        }
+        .page-section h2 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+        }
+        .page-section p, .page-section ul {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        .page-section ul { padding-left: 20px; }
+
         /* Advertising & Monetization */
         .ad-slot {
             background: #f1f5f9;
@@ -260,46 +284,21 @@
         .ad-banner-top { margin: 20px 0; }
         .ad-sidebar { position: sticky; top: 85px; }
 
-        /* Affiliate Cards */
-        .affiliate-section { margin-top: 40px; }
-        .affiliate-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 18px;
-            margin-top: 15px;
-        }
-        .affiliate-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 18px;
-            box-shadow: var(--shadow-sm);
-        }
-        .btn-affiliate {
-            display: block;
+        /* Footer Section */
+        footer {
+            background: var(--secondary-color);
+            color: #cbd5e1;
+            padding: 30px 0;
+            margin-top: 50px;
             text-align: center;
-            padding: 9px;
-            background: var(--accent-color);
+            font-size: 0.88rem;
+        }
+        footer a {
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-top: 10px;
+            margin: 0 10px;
         }
-
-        /* Mobile Anchor Ad */
-        .sticky-mobile-ad {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            height: 60px;
-            background: white;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
+        footer a:hover { text-decoration: underline; }
 
         /* Responsive Breakpoints */
         @media (max-width: 900px) {
@@ -316,12 +315,10 @@
             <h1 class="logo"><a href="#">SmartCalc<span>.hub</span></a></h1>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#" class="active">All Tools</a></li>
-                    <li><a href="#finance">Finance</a></li>
-                    <li><a href="#realestate">Real Estate</a></li>
-                    <li><a href="#construction">Construction</a></li>
-                    <li><a href="#crypto">Crypto</a></li>
-                    <li><a href="#taxes">Taxes</a></li>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -344,7 +341,7 @@
             <p>Header Ad Slot (Google AdSense Responsive Leaderboard)</p>
         </div>
 
-        <!-- Scalable Category Filters -->
+        <!-- Category Filters -->
         <div class="category-nav">
             <button class="cat-tab active" onclick="filterCategory('all')">All Calculators</button>
             <button class="cat-tab" onclick="filterCategory('finance')">Financial</button>
@@ -352,15 +349,13 @@
             <button class="cat-tab" onclick="filterCategory('construction')">Construction</button>
             <button class="cat-tab" onclick="filterCategory('crypto')">Crypto</button>
             <button class="cat-tab" onclick="filterCategory('taxes')">Taxes & Business</button>
-            <button class="cat-tab" onclick="filterCategory('health')">Health & Fitness</button>
-            <button class="cat-tab" onclick="filterCategory('engineering')">Engineering</button>
         </div>
     </div>
 
     <!-- Main Content & Sidebar -->
     <div class="container main-layout">
-        
         <main>
+            <!-- Calculators Grid -->
             <div class="calculator-grid" id="calculatorGrid">
 
                 <!-- 1. Real Estate Mortgage Calculator -->
@@ -462,28 +457,42 @@
 
             </div>
 
-            <!-- In-Content Ad -->
-            <div class="ad-slot" style="margin-top: 25px;">
-                <p>In-Feed Native Ad Slot (Google AdSense)</p>
-            </div>
+            <!-- AdSense Mandatory Legal Pages Sections -->
+            
+            <!-- Privacy Policy -->
+            <section id="privacy" class="page-section">
+                <h2>Privacy Policy</h2>
+                <p>At SmartCalc Hub, accessible from electronic-computer-platform.pages.dev, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by SmartCalc Hub and how we use it.</p>
+                <p><strong>Log Files & Cookies:</strong> Like many other Web sites, we make use of log files and cookies to store information about visitors' preferences, to record user-specific information on which pages the site visitor accesses or visits.</p>
+                <p><strong>Google DoubleClick DART Cookie:</strong> Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.</p>
+            </section>
 
-            <!-- Affiliate Section -->
-            <section class="affiliate-section">
-                <h3 style="font-size: 1.2rem; color: var(--secondary-color);">Featured Offers & Tools</h3>
-                <div class="affiliate-grid">
-                    <div class="affiliate-card">
-                        <span class="badge" style="background: #d1fae5; color: var(--accent-color);">Real Estate</span>
-                        <h4 style="margin: 8px 0;">Pre-Approve Mortgage</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted);">Compare lowest mortgage rates across national banks.</p>
-                        <a href="https://example.com" target="_blank" rel="nofollow sponsored" class="btn-affiliate">Compare Rates &rarr;</a>
+            <!-- Terms of Service -->
+            <section id="terms" class="page-section">
+                <h2>Terms of Service</h2>
+                <p>By accessing and using SmartCalc Hub, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                <p><strong>Disclaimer:</strong> All calculations provided by these online tools are for estimation and informational purposes only. While we endeavor to keep the information accurate, we make no representations or warranties of any kind regarding completeness or reliability.</p>
+            </section>
+
+            <!-- Contact Us Form -->
+            <section id="contact" class="page-section">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, feedback, or inquiries regarding our calculation tools, feel free to contact us below:</p>
+                <form onsubmit="alert('Thank you! Your message has been sent.'); return false;">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" required placeholder="Your Name">
                     </div>
-                    <div class="affiliate-card">
-                        <span class="badge" style="background: #d1fae5; color: var(--accent-color);">Crypto</span>
-                        <h4 style="margin: 8px 0;">Hardware Wallet Discount</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted);">Secure your crypto assets with high-tier offline security.</p>
-                        <a href="https://example.com" target="_blank" rel="nofollow sponsored" class="btn-affiliate">Get Discount &rarr;</a>
+                    <div class="form-group">
+                        <label>Email Address:</label>
+                        <input type="email" required placeholder="name@example.com">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Message:</label>
+                        <textarea rows="4" required placeholder="Write your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-action">Send Message</button>
+                </form>
             </section>
         </main>
 
@@ -493,17 +502,23 @@
                 <p style="padding: 120px 0;">Sidebar Skyscraper Ad (300x600)</p>
             </div>
         </aside>
-
     </div>
 
-    <!-- Mobile Anchor Ad -->
-    <div class="sticky-mobile-ad">
-        <span style="font-size: 0.8rem; color: var(--text-muted);">Mobile Sticky Ad Space</span>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SmartCalc Hub. All rights reserved.</p>
+            <p style="margin-top: 10px;">
+                <a href="#">Home</a> | 
+                <a href="#privacy">Privacy Policy</a> | 
+                <a href="#terms">Terms of Service</a> | 
+                <a href="#contact">Contact Us</a>
+            </p>
+        </div>
+    </footer>
 
     <!-- JavaScript Architecture -->
     <script>
-        // Validation Helper
         function validateInput(id, min = 0) {
             const input = document.getElementById(id);
             const val = parseFloat(input.value);
@@ -520,25 +535,22 @@
             }
         }
 
-        // Output Result Helper
         function showResult(boxId, text) {
             const box = document.getElementById(boxId);
             box.innerText = text;
             box.style.display = "block";
         }
 
-        // 1. Mortgage Logic
         function calcMortgage() {
             let price = validateInput('homePrice', 1);
             let down = parseFloat(document.getElementById('downPayment').value) || 0;
             if (price === null) return;
 
             let principal = price - down;
-            let monthly = (principal * 0.06) / 12; // Standard estimated baseline calculation
+            let monthly = (principal * 0.06) / 12;
             showResult('resMortgage', `Est. Monthly Principal: $${monthly.toFixed(2)}`);
         }
 
-        // 2. Crypto Logic
         function calcCrypto() {
             let inv = parseFloat(document.getElementById('cryptoInv').value);
             let buy = parseFloat(document.getElementById('cryptoBuy').value);
@@ -550,11 +562,10 @@
             }
         }
 
-        // 3. Construction Logic
         function calcConcrete() {
             let l = parseFloat(document.getElementById('slabL').value);
             let w = parseFloat(document.getElementById('slabW').value);
-            let t = parseFloat(document.getElementById('slabT').value) / 12; // Inches to feet
+            let t = parseFloat(document.getElementById('slabT').value) / 12;
 
             if (l > 0 && w > 0 && t > 0) {
                 let cubicYards = (l * w * t) / 27;
@@ -562,7 +573,6 @@
             }
         }
 
-        // 4. Tax Logic
         function calcTax() {
             let amount = parseFloat(document.getElementById('taxAmount').value);
             let rate = parseFloat(document.getElementById('taxRate').value);
@@ -573,7 +583,6 @@
             }
         }
 
-        // Filtering Tools by Search Input
         function filterTools() {
             let query = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.querySelectorAll('.calc-card');
@@ -588,7 +597,6 @@
             });
         }
 
-        // Filtering Tools by Category Tabs
         function filterCategory(cat) {
             let tabs = document.querySelectorAll('.cat-tab');
             tabs.forEach(t => t.classList.remove('active'));
