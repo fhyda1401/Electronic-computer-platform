@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة للاحتمالات - حساب احتمال الأحداث أونلاين</title>
+    <meta name="description" content="حاسبة الاحتمالات أونلاين لإيجاد احتمال حدوث الأحداث البسيطة والمكملة بالنسبة المئوية والكسور.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>آلة حاسبة للاحتمالات</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل عدد النتائج المرغوبة وعدد إجمالي النتائج الممكنة:</p>
+
+            <div class="form-group">
+                <label for="successEvents">عدد حالات النجاح (الحدث A):</label>
+                <input type="number" id="successEvents" placeholder="مثال: 3">
+            </div>
+
+            <div class="form-group">
+                <label for="totalEvents">إجمالي النواتج الممكنة (عينة الفضاء):</label>
+                <input type="number" id="totalEvents" placeholder="مثال: 10">
+            </div>
+
+            <button onclick="calculateProbability()" class="btn-action">احسب الاحتمال</button>
+
+            <div id="probResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>ما هو قانون الاحتمال البسيط؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                يُحسب احتمال وقوع حدث معين نقسمة عدد الحالات الناجحة التي تحقق هذا الحدث على العدد الإجمالي للحالات المتوقعة والممكنة. وتتراوح قيمة الاحتمال دائماً بين 0 (حدث مستحيل) و 1 (حدث مؤكد الوقوع)، أو بين 0% و 100%.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateProbability() {
+            const success = parseFloat(document.getElementById('successEvents').value);
+            const total = parseFloat(document.getElementById('totalEvents').value);
+            const resBox = document.getElementById('probResult');
+
+            if (isNaN(success) || isNaN(total) || total <= 0) {
+                showResult(resBox, 'يرجى إدخال أرقام صحيحة مع التأكد أن إجمالي النواتج أكبر من صفر.', '#ef4444');
+                return;
+            }
+
+            if (success > total) {
+                showResult(resBox, 'عدد حالات النجاح لا يمكن أن يتجاوز إجمالي النواتج الممكنة!', '#ef4444');
+                return;
+            }
+
+            const p = success / total;
+            const percentage = (p * 100).toFixed(2);
+            const complement = ((1 - p) * 100).toFixed(2);
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                🎯 <strong>احتمال وقوع الحدث P(A):</strong> ${p.toFixed(4)} (${percentage}%)<br>
+                ❌ <strong>الاحتمال المكمل (عدم الوقوع):</strong> ${complement}%<br>
+                📊 <strong>الصورة الكسرية:</strong> ${success} / ${total}
+            `;
+        }
+    </script>
+</body>
+</html>
+
