@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة للأعداد العشرية - حساب وتحويل الأعداد العشرية</title>
+    <meta name="description" content="آلة حاسبة للأعداد العشرية مجانية وسريعة لإجراء كافة العمليات الحسابية وتقريب النتائج بدقة عالية.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>آلة حاسبة للأعداد العشرية</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل الأعداد العشرية واختر العملية الحسابية المطلوب تنفيذها:</p>
+
+            <div class="form-group">
+                <label for="dec1">العدد العشري الأول:</label>
+                <input type="number" step="any" id="dec1" placeholder="مثال: 12.45">
+            </div>
+
+            <div class="form-group">
+                <label for="decOp">العملية الحسابية:</label>
+                <select id="decOp" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem;">
+                    <option value="+">جمع (+)</option>
+                    <option value="-">طرح (-)</option>
+                    <option value="*">ضرب (×)</option>
+                    <option value="/">قسمة (÷)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dec2">العدد العشري الثاني:</label>
+                <input type="number" step="any" id="dec2" placeholder="مثال: 3.14">
+            </div>
+
+            <button onclick="calculateDecimals()" class="btn-action">احسب الناتج</button>
+
+            <div id="decResult" class="result-box" style="margin-top: 20px; font-size: 1.2rem;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>ما هي الأعداد العشرية وكيف يتم حسابها؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                الأعداد العشرية هي أعداد تستخدم الفاصلة العشرية للفصل بين الجزء الصحيح والجزء الكسري. تُسهم هذه الحاسبة في التغلب على أخطاء التقريب اليدوي وإعادة صياغة النتائج بدقة رياضية متناهية لتناسب الطلاب والمحاسبين.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateDecimals() {
+            const num1 = parseFloat(document.getElementById('dec1').value);
+            const num2 = parseFloat(document.getElementById('dec2').value);
+            const op = document.getElementById('decOp').value;
+            const resBox = document.getElementById('decResult');
+
+            if (isNaN(num1) || isNaN(num2)) {
+                showResult(resBox, 'يرجى إدخال أعداد عشرية صحيحة.', '#ef4444');
+                return;
+            }
+
+            let result = 0;
+            if (op === '+') result = num1 + num2;
+            else if (op === '-') result = num1 - num2;
+            else if (op === '*') result = num1 * num2;
+            else if (op === '/') {
+                if (num2 === 0) {
+                    showResult(resBox, 'لا يمكن القسمة على الصفر!', '#ef4444');
+                    return;
+                }
+                result = num1 / num2;
+            }
+
+            // تقريب الناتج لأقرب 4 خانات عشرية لتفادي أخطاء البرمجة الفلوت
+            const formattedResult = Number(Math.round(result + 'e4') + 'e-4');
+            showResult(resBox, `النتيجة: ${formattedResult}`, '#10b981');
+        }
+    </script>
+</body>
+</html>
+
