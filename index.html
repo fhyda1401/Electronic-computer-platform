@@ -10,6 +10,9 @@
     <!-- Google AdSense Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3189975826319105"
          crossorigin="anonymous"></script>
+
+    <!-- Pi Network SDK -->
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     
     <title>Smart Calculators Hub - Multi-Category Online Tools</title>
     <meta name="description" content="Scalable and comprehensive online calculator platform. Calculate finance, real estate, health, math, crypto, and engineering easily.">
@@ -78,6 +81,11 @@
             font-weight: 800;
         }
         .logo span { color: var(--primary-color); }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
         .nav-links {
             display: flex;
             gap: 15px;
@@ -93,6 +101,20 @@
             transition: color 0.2s;
         }
         .nav-links a:hover, .nav-links a.active { color: white; }
+
+        .pi-btn {
+            background-color: #7b1fa2;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .pi-btn:hover { background-color: #6a1b9a; }
 
         /* Hero & Search */
         .hero {
@@ -317,14 +339,17 @@
     <header class="navbar">
         <div class="container">
             <h1 class="logo"><a href="#">SmartCalc<span>.hub</span></a></h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#privacy">Privacy Policy</a></li>
-                    <li><a href="#terms">Terms of Service</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
+            <div class="nav-right">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button id="pi-signin-btn" class="pi-btn">Sign in with Pi</button>
+            </div>
         </div>
     </header>
 
@@ -523,6 +548,69 @@
 
     <!-- JavaScript Architecture -->
     <script>
+        // Pi Network Authentication Integration
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                // Await Pi.init fully before calling Pi.authenticate
+                await Pi.init({ version: "2.0", sandbox: false });
+                
+                // Trigger Pi authentication automatically when the app loads
+                await authenticatePiUser();
+            } catch (error) {
+                console.error("Pi SDK Initialization Failed:", error);
+            }
+
+            // Manual sign-in trigger via button
+            const signInButton = document.getElementById("pi-signin-btn");
+            if (signInButton) {
+                signInButton.addEventListener("click", async () => {
+                    await authenticatePiUser();
+                });
+            }
+        });
+
+        async function authenticatePiUser() {
+            try {
+                const scopes = ['username'];
+                
+                const onIncompletePaymentFound = (payment) => {
+                    console.log("Incomplete payment found:", payment);
+                };
+
+                // Request authentication with username scope
+                const authResult = await Pi.authenticate(scopes, onIncompletePaymentFound);
+                const accessToken = authResult.accessToken;
+
+                // Send access token to backend to validate via GET https://api.minepi.com/v2/me
+                await validateTokenWithBackend(accessToken);
+
+            } catch (error) {
+                console.error("Pi Authentication Error:", error);
+            }
+        }
+
+        async function validateTokenWithBackend(accessToken) {
+            try {
+                const response = await fetch('/api/verify-pi-user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ accessToken })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log("User authenticated successfully:", data);
+                } else {
+                    console.error("Backend validation failed.");
+                }
+            } catch (err) {
+                console.error("Error connecting to backend:", err);
+            }
+        }
+
+        // Calculator Logic & Filters
         function validateInput(id, min = 0) {
             const input = document.getElementById(id);
             const val = parseFloat(input.value);
