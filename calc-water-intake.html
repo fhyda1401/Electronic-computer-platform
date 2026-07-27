@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة شرب الماء اليومي - حساب كمية الماء المناسبة لجسدك أونلاين</title>
+    <meta name="description" content="احسب احتياجك اليومي الموصى به من الماء باللتر والأكواب بناءً على وزنك، مستويات نشاطك، والمناخ.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة الاحتياج اليومي من الماء</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل وزنك ومستوى نشاطك للحصول على الكمية الموصى بها يومياً من الماء:</p>
+
+            <div class="form-group">
+                <label for="waterWeight">الوزن (كيلوجرام):</label>
+                <input type="number" id="waterWeight" placeholder="مثال: 70">
+            </div>
+
+            <div class="form-group">
+                <label for="waterExercise">مدة التمرين / النشاط اليومي (بالدقائق):</label>
+                <input type="number" id="waterExercise" placeholder="مثال: 30">
+            </div>
+
+            <div class="form-group">
+                <label for="waterClimate">طبيعة المناخ والطقس:</label>
+                <select id="waterClimate" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="normal">معتدل / عادي</option>
+                    <option value="hot">حار / استوائي</option>
+                </select>
+            </div>
+
+            <button onclick="calculateWaterIntake()" class="btn-action">احسب الاحتياج من الماء</button>
+
+            <div id="waterResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>أهمية شرب الكمية الكافية من الماء يومياً</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                يشكل الماء أكثر من 60% من تركيب جسم الإنسان. يساعد تناول القَدْر الكافي من الماء يومياً على تحسين عملية الهضم، وتنشيط الدورة الدموية، والحفاظ على صحة البشرة والكلى، بالإضافة إلى تعويض السوائل المفقودة أثناء التعرق والأنشطة البدنية.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateWaterIntake() {
+            const weight = parseFloat(document.getElementById('waterWeight').value);
+            const exerciseMins = parseFloat(document.getElementById('waterExercise').value) || 0;
+            const climate = document.getElementById('waterClimate').value;
+            const resBox = document.getElementById('waterResult');
+
+            if (isNaN(weight) || weight <= 0) {
+                showResult(resBox, 'يرجى إدخال وزن صحيح بالكيلوجرام.', '#ef4444');
+                return;
+            }
+
+            // الأساس: 35 مل لكل كجم
+            let baseWaterMl = weight * 35;
+
+            // إضافة تعويض التمرين: حوالي 350 مل لكل 30 دقيقة تمرين
+            let exerciseWaterMl = (exerciseMins / 30) * 350;
+
+            let totalWaterMl = baseWaterMl + exerciseWaterMl;
+
+            // إضافة للطقس الحار (15% إضافية)
+            if (climate === 'hot') {
+                totalWaterMl *= 1.15;
+            }
+
+            const totalLiters = (totalWaterMl / 1000).toFixed(2);
+            const glasses = Math.round(totalWaterMl / 250); // كوب قياسي سعة 250 مل
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                💧 <strong>احتياجك اليومي الموصى به:</strong> ${totalLiters} لتر<br>
+                🥤 <strong>يعادل تقريباً:</strong> ${glasses} كوب ماء (سعة الكوب 250 مل)
+            `;
+        }
+    </script>
+</body>
+</html>
+
