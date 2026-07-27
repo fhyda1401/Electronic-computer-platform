@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة المساحة والأشكال الهندسية - حساب المساحة والمحيط أونلاين</title>
+    <meta name="description" content="احسب مساحة ومحيط الأشكال الهندسية المختلفة (المربع، المستطيل، المثلث، الدائرة) بسهولة وبدقة.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة المساحة والمحيط للأشكال الهندسية</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">اختر الشكل الهندسي وأدخل أبعاده لحساب المساحة والمحيط:</p>
+
+            <div class="form-group">
+                <label for="shapeSelect">اختر الشكل الهندسي:</label>
+                <select id="shapeSelect" onchange="toggleShapeInputs()" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="rectangle">مستطيل</option>
+                    <option value="square">مربع</option>
+                    <option value="circle">دائرة</option>
+                    <option value="triangle">مثلث</option>
+                </select>
+            </div>
+
+            <!-- مدخلات المستودع/الشكل -->
+            <div id="inputGroup1" class="form-group">
+                <label id="lblInput1" for="val1">الطول:</label>
+                <input type="number" id="val1" placeholder="مثال: 10">
+            </div>
+
+            <div id="inputGroup2" class="form-group">
+                <label id="lblInput2" for="val2">العرض:</label>
+                <input type="number" id="val2" placeholder="مثال: 5">
+            </div>
+
+            <div id="inputGroup3" class="form-group" style="display: none;">
+                <label id="lblInput3" for="val3">الضلع الثالث (حساب المحيط):</label>
+                <input type="number" id="val3" placeholder="مثال: 6">
+            </div>
+
+            <button onclick="calculateArea()" class="btn-action">احسب المساحة والمحيط</button>
+
+            <div id="areaResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>قوانين المساحة والمحيط للأشكال الهندسية</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تُحسب المساحة بمقدار السطح الثنائي الأبعاد المعنون داخل حدود الشكل، بينما يُمثل المحيط طول الخط الخارجي المحيط به. يُستخدم حساب المساحة بكثرة في البناء والتصميم والزراعة والهندسة.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleShapeInputs() {
+            const shape = document.getElementById('shapeSelect').value;
+            const group1 = document.getElementById('inputGroup1');
+            const group2 = document.getElementById('inputGroup2');
+            const group3 = document.getElementById('inputGroup3');
+            const lbl1 = document.getElementById('lblInput1');
+            const lbl2 = document.getElementById('lblInput2');
+
+            if (shape === 'rectangle') {
+                group1.style.display = 'block';
+                group2.style.display = 'block';
+                group3.style.display = 'none';
+                lbl1.innerText = 'الطول:';
+                lbl2.innerText = 'العرض:';
+            } else if (shape === 'square') {
+                group1.style.display = 'block';
+                group2.style.display = 'none';
+                group3.style.display = 'none';
+                lbl1.innerText = 'طول الضلع:';
+            } else if (shape === 'circle') {
+                group1.style.display = 'block';
+                group2.style.display = 'none';
+                group3.style.display = 'none';
+                lbl1.innerText = 'نصف القطر (r):';
+            } else if (shape === 'triangle') {
+                group1.style.display = 'block';
+                group2.style.display = 'block';
+                group3.style.display = 'block';
+                lbl1.innerText = 'القاعدة (أو الضلع الأول):';
+                lbl2.innerText = 'الارتفاع (أو الضلع الثاني):';
+            }
+        }
+
+        function calculateArea() {
+            const shape = document.getElementById('shapeSelect').value;
+            const v1 = parseFloat(document.getElementById('val1').value);
+            const v2 = parseFloat(document.getElementById('val2').value);
+            const v3 = parseFloat(document.getElementById('val3').value);
+            const resBox = document.getElementById('areaResult');
+
+            if (isNaN(v1) || v1 <= 0) {
+                showResult(resBox, 'يرجى إدخال قيم صحيحة وموجبة.', '#ef4444');
+                return;
+            }
+
+            let area = 0;
+            let perimeter = 0;
+
+            if (shape === 'rectangle') {
+                if (isNaN(v2) || v2 <= 0) {
+                    showResult(resBox, 'يرجى إدخال العرض بشكل صحيح.', '#ef4444');
+                    return;
+                }
+                area = v1 * v2;
+                perimeter = 2 * (v1 + v2);
+            } else if (shape === 'square') {
+                area = v1 * v1;
+                perimeter = 4 * v1;
+            } else if (shape === 'circle') {
+                area = Math.PI * v1 * v1;
+                perimeter = 2 * Math.PI * v1;
+            } else if (shape === 'triangle') {
+                if (isNaN(v2) || v2 <= 0) {
+                    showResult(resBox, 'يرجى إدخال الارتفاع/الضلع الثاني.', '#ef4444');
+                    return;
+                }
+                area = 0.5 * v1 * v2; // المساحة بناء على القاعدة والارتفاع
+                if (!isNaN(v3) && v3 > 0) {
+                    perimeter = v1 + v2 + v3;
+                } else {
+                    perimeter = 'يتطلب الضلع الثالث لحسابه';
+                }
+            }
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                📐 <strong>المساحة:</strong> ${typeof area === 'number' ? area.toFixed(2) : area}<br>
+                📏 <strong>المحيط:</strong> ${typeof perimeter === 'number' ? perimeter.toFixed(2) : perimeter}
+            `;
+        }
+
+        window.onload = toggleShapeInputs;
+    </script>
+</body>
+</html>
+
