@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة للمتوسطات - حساب المتوسط الحسابي والوسيط والمنوال</title>
+    <meta name="description" content="آلة حاسبة للمتوسطات أونلاين لحساب المتوسط الحسابي، الوسيط، والمنوال لمجموعة أرقام بسرعة ودقة.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>آلة حاسبة للمتوسطات الإحصائية</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل الأرقام مفصولة بفاصلة (مثل: 10, 20, 30, 40) لإيجاد المتوسط، الوسيط، والمنوال:</p>
+
+            <div class="form-group">
+                <label for="numbersInput">مجموعة الأرقام:</label>
+                <input type="text" id="numbersInput" placeholder="مثال: 5, 10, 15, 20, 20, 25">
+            </div>
+
+            <button onclick="calculateAverages()" class="btn-action">احسب المتوسطات</button>
+
+            <div id="avgResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>ما الفرق بين المتوسط، الوسيط، والمنوال؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                - <strong>المتوسط الحسابي:</strong> مجموع قيم البيانات مقسوماً على عددها.<br>
+                - <strong>الوسيط:</strong> القيمة التي تقع في المنتصف تماماً بعد ترتيب الأعداد تصاعدياً أو تنازلياً.<br>
+                - <strong>المنوال:</strong> القيمة الأكثر تكراراً وشيوعاً بين الأرقام المدخلة.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateAverages() {
+            const input = document.getElementById('numbersInput').value;
+            const resBox = document.getElementById('avgResult');
+
+            if (!input.trim()) {
+                showResult(resBox, 'يرجى إدخال أرقام مفصولة بفاصلة.', '#ef4444');
+                return;
+            }
+
+            const arr = input.split(/[,،]+/).map(n => parseFloat(n.trim())).filter(n => !isNaN(n));
+
+            if (arr.length === 0) {
+                showResult(resBox, 'لم يتم العثور على أرقام صالحة الحساب.', '#ef4444');
+                return;
+            }
+
+            // 1. المتوسط الحسابي
+            const sum = arr.reduce((a, b) => a + b, 0);
+            const mean = (sum / arr.length).toFixed(2);
+
+            // 2. الوسيط
+            const sorted = [...arr].sort((a, b) => a - b);
+            const mid = Math.floor(sorted.length / 2);
+            const median = sorted.length % 2 !== 0 ? sorted[mid] : ((sorted[mid - 1] + sorted[mid]) / 2).toFixed(2);
+
+            // 3. المنوال
+            const freq = {};
+            let maxFreq = 0;
+            let modes = [];
+            arr.forEach(num => {
+                freq[num] = (freq[num] || 0) + 1;
+                if (freq[num] > maxFreq) maxFreq = freq[num];
+            });
+
+            if (maxFreq > 1) {
+                for (let k in freq) {
+                    if (freq[k] === maxFreq) modes.push(k);
+                }
+            }
+
+            const modeText = modes.length > 0 ? modes.join(', ') : 'لا يوجد (جميع الأرقام تكررت بنفس القدر)';
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                📌 <strong>المتوسط الحسابي:</strong> ${mean}<br>
+                📌 <strong>الوسيط:</strong> ${median}<br>
+                📌 <strong>المنوال:</strong> ${modeText}<br>
+                📌 <strong>عدد الأرقام:</strong> ${arr.length}
+            `;
+        }
+    </script>
+</body>
+</html>
+
