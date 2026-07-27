@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحاسبة العلمية اونلاين - حساب الدوال واللوجاريتمات</title>
+    <meta name="description" content="آلة حاسبة علمية متقدمة أونلاين لحساب الدوال المثلثية، اللوجاريتمات، الجذور، والأسس بدقة وسهولة.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .sci-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .sci-buttons button {
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #f8fafc;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .sci-buttons button:hover {
+            background-color: #e2e8f0;
+        }
+        .sci-buttons .btn-sci-op {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>الحاسبة العلمية المتقدمة</h2>
+            <p style="margin-bottom: 15px; color: #64748b;">استخدم الأدوات المتقدمة لحساب الدوال المثلثية والرياضية:</p>
+
+            <input type="text" id="sciDisplay" readonly placeholder="0" style="width: 100%; height: 50px; font-size: 1.5rem; text-align: right; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; background-color: #f8fafc; margin-bottom: 10px;">
+
+            <div class="sci-buttons">
+                <button onclick="sciFunc('sin')" class="btn-sci-op">sin</button>
+                <button onclick="sciFunc('cos')" class="btn-sci-op">cos</button>
+                <button onclick="sciFunc('tan')" class="btn-sci-op">tan</button>
+                <button onclick="sciFunc('log')" class="btn-sci-op">log</button>
+                <button onclick="clearSci()" style="background-color: #fee2e2; color: #991b1b;">C</button>
+
+                <button onclick="sciFunc('sqrt')" class="btn-sci-op">√</button>
+                <button onclick="appendSci('**')" class="btn-sci-op">x^y</button>
+                <button onclick="sciFunc('pi')" class="btn-sci-op">π</button>
+                <button onclick="sciFunc('e')" class="btn-sci-op">e</button>
+                <button onclick="deleteSci()">⌫</button>
+
+                <button onclick="appendSci('7')">7</button>
+                <button onclick="appendSci('8')">8</button>
+                <button onclick="appendSci('9')">9</button>
+                <button onclick="appendSci('/')" class="btn-sci-op">÷</button>
+                <button onclick="appendSci('*')" class="btn-sci-op">×</button>
+
+                <button onclick="appendSci('4')">4</button>
+                <button onclick="appendSci('5')">5</button>
+                <button onclick="appendSci('6')">6</button>
+                <button onclick="appendSci('-')" class="btn-sci-op">-</button>
+                <button onclick="appendSci('+')" class="btn-sci-op">+</button>
+
+                <button onclick="appendSci('1')">1</button>
+                <button onclick="appendSci('2')">2</button>
+                <button onclick="appendSci('3')">3</button>
+                <button onclick="appendSci('(')" class="btn-sci-op">(</button>
+                <button onclick="appendSci(')')" class="btn-sci-op">)</button>
+
+                <button onclick="appendSci('0')" style="grid-column: span 2;">0</button>
+                <button onclick="appendSci('.')">.</button>
+                <button onclick="calculateSci()" class="btn-equal" style="grid-column: span 2; background-color: #10b981; color: white;">=</button>
+            </div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>فوائد واستخدامات الحاسبة العلمية</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تُعد الحاسبة العلمية أداة لا غنى عنها لطلاب الهندسية والرياضيات والفيزياء. تتيح لك إجراء المعادلة المعقدة، وحساب النسب المثلثية واللوجاريتم الطبيعي بدقة عالية مباشرة عبر المتصفح دون الحاجة لتثبيت برامج إضافية.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const display = document.getElementById('sciDisplay');
+
+        function appendSci(val) {
+            display.value += val;
+        }
+
+        function clearSci() {
+            display.value = '';
+        }
+
+        function deleteSci() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function sciFunc(type) {
+            try {
+                let val = parseFloat(display.value) || 0;
+                if (type === 'sin') display.value = Math.sin(val * Math.PI / 180).toFixed(6);
+                if (type === 'cos') display.value = Math.cos(val * Math.PI / 180).toFixed(6);
+                if (type === 'tan') display.value = Math.tan(val * Math.PI / 180).toFixed(6);
+                if (type === 'log') display.value = Math.log10(val).toFixed(6);
+                if (type === 'sqrt') display.value = Math.sqrt(val).toFixed(6);
+                if (type === 'pi') display.value += Math.PI.toFixed(4);
+                if (type === 'e') display.value += Math.E.toFixed(4);
+            } catch (e) {
+                display.value = 'خطأ';
+            }
+        }
+
+        function calculateSci() {
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                display.value = 'خطأ';
+            }
+        }
+    </script>
+</body>
+</html>
+
