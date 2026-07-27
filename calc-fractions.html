@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة للكسور - حساب وجمع الكسور اونلاين</title>
+    <meta name="description" content="آلة حاسبة للكسور مجانية وسريعة لإجراء عمليات جمع، طرح، ضرب، وقسمة الكسور الاعتيادية وتبسيط النتائج.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>آلة حاسبة للكسور الاعتيادية</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل البسط والمقام للكسرين واختر العملية الحسابية:</p>
+
+            <div style="display: flex; gap: 15px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+                <!-- الكسر الأول -->
+                <div style="display: flex; flex-direction: column; width: 80px;">
+                    <input type="number" id="num1" placeholder="البسط 1" style="padding: 8px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">
+                    <hr style="margin: 5px 0;">
+                    <input type="number" id="den1" placeholder="المقام 1" style="padding: 8px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">
+                </div>
+
+                <!-- العملية -->
+                <select id="fractionOp" style="padding: 10px; font-size: 1.2rem; border-radius: 6px; border: 1px solid #cbd5e1;">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">×</option>
+                    <option value="/">÷</option>
+                </select>
+
+                <!-- الكسر الثاني -->
+                <div style="display: flex; flex-direction: column; width: 80px;">
+                    <input type="number" id="num2" placeholder="البسط 2" style="padding: 8px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">
+                    <hr style="margin: 5px 0;">
+                    <input type="number" id="den2" placeholder="المقام 2" style="padding: 8px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">
+                </div>
+            </div>
+
+            <button onclick="calculateFractions()" class="btn-action">احسب الكسر</button>
+
+            <div id="fractionResult" class="result-box" style="margin-top: 20px; font-size: 1.2rem;"></div>
+        </div>
+
+        <!-- شرح وأهمية الحاسبة لدعم SEO -->
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>كيف تعمل حاسبة الكسور؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                تتيح لك هذه الأداة تنفيذ كافة العمليات الرياضية على الكسور بسهولة. عند جمع أو طرح كسور ذات مقادير مختلفة، تتبع الأداة توحيد المقامات تلقائياً عبر إيجاد المضاعف المشترك الأصغر، ثم تبسيط الناتج لأبسط صورة ميكانيكياً.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // كود حساب الكسور الخاص بالصفحة
+        function calculateFractions() {
+            const n1 = parseInt(document.getElementById('num1').value);
+            const d1 = parseInt(document.getElementById('den1').value);
+            const n2 = parseInt(document.getElementById('num2').value);
+            const d2 = parseInt(document.getElementById('den2').value);
+            const op = document.getElementById('fractionOp').value;
+            const resBox = document.getElementById('fractionResult');
+
+            if (isNaN(n1) || isNaN(d1) || isNaN(n2) || isNaN(d2) || d1 === 0 || d2 === 0) {
+                showResult(resBox, 'يرجى إدخال أرقام صحيحة وأن لا يكون المقام صفراً.', '#ef4444');
+                return;
+            }
+
+            let numRes, denRes;
+
+            if (op === '+') {
+                numRes = (n1 * d2) + (n2 * d1);
+                denRes = d1 * d2;
+            } else if (op === '-') {
+                numRes = (n1 * d2) - (n2 * d1);
+                denRes = d1 * d2;
+            } else if (op === '*') {
+                numRes = n1 * n2;
+                denRes = d1 * d2;
+            } else if (op === '/') {
+                numRes = n1 * d2;
+                denRes = d1 * n2;
+            }
+
+            if (denRes === 0) {
+                showResult(resBox, 'العملية غير معرفة (القسمة على صفر).', '#ef4444');
+                return;
+            }
+
+            // تبسيط الكسر
+            const gcd = (a, b) => b === 0 ? Math.abs(a) : gcd(b, a % b);
+            const common = gcd(numRes, denRes);
+            numRes /= common;
+            denRes /= common;
+
+            showResult(resBox, `النتيجة: ${numRes} / ${denRes}`, '#10b981');
+        }
+    </script>
+</body>
+</html>
+
