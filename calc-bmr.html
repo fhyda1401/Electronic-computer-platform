@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة السعرات الحرارية (BMR) - حساب الاحتياج اليومي أونلاين</title>
+    <meta name="description" content="احسب معدل الأيض الأساسي (BMR) واحتياجك اليومي من السعرات الحرارية للحفاظ على الوزن أو التنشيف أو زيادة الوزن.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة السعرات الحرارية (BMR & TDEE)</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل بياناتك لحساب احتياجك اليومي من السعرات الحرارية:</p>
+
+            <div class="form-group">
+                <label for="bmrGender">الجنس:</label>
+                <select id="bmrGender" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="male">ذَكَر</option>
+                    <option value="female">أنثى</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bmrAge">العمر (بالسنوات):</label>
+                <input type="number" id="bmrAge" placeholder="مثال: 25">
+            </div>
+
+            <div class="form-group">
+                <label for="bmrWeight">الوزن (كيلوجرام):</label>
+                <input type="number" id="bmrWeight" placeholder="مثال: 70">
+            </div>
+
+            <div class="form-group">
+                <label for="bmrHeight">الطول (سنتيمتر):</label>
+                <input type="number" id="bmrHeight" placeholder="مثال: 175">
+            </div>
+
+            <div class="form-group">
+                <label for="bmrActivity">مستوى النشاط البدني:</label>
+                <select id="bmrActivity" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    <option value="1.2">خامل (قليل أو لا يمارس التمارين)</option>
+                    <option value="1.375">نشاط خفيف (تمارين 1-3 أيام في الأسبوع)</option>
+                    <option value="1.55">نشاط متوسط (تمارين 3-5 أيام في الأسبوع)</option>
+                    <option value="1.725">نشاط عالٍ (تمارين 6-7 أيام في الأسبوع)</option>
+                    <option value="1.9">نشاط شاق جداً (تمارين شاقة يومياً أو عمل بدني)</option>
+                </select>
+            </div>
+
+            <button onclick="calculateBMR()" class="btn-action">احسب السعرات الحرارية</button>
+
+            <div id="bmrResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>ما هو معدل الأيض الأساسي (BMR) والاحتياج اليومي (TDEE)؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                معدل الأيض الأساسي (BMR) هو كمية السعرات الحرارية التي يحرقها جسمك في حالة الراحة التامة للبقاء على قيد الحياة. أما الاحتياج اليومي (TDEE) فهو السعرات المطلوبة مع إضافة نشاطك اليومي والرياضي لحفظ وزنك أو إنقاصه.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateBMR() {
+            const gender = document.getElementById('bmrGender').value;
+            const age = parseFloat(document.getElementById('bmrAge').value);
+            const weight = parseFloat(document.getElementById('bmrWeight').value);
+            const height = parseFloat(document.getElementById('bmrHeight').value);
+            const activity = parseFloat(document.getElementById('bmrActivity').value);
+            const resBox = document.getElementById('bmrResult');
+
+            if (isNaN(age) || isNaN(weight) || isNaN(height) || age <= 0 || weight <= 0 || height <= 0) {
+                showResult(resBox, 'يرجى إدخال قيم صحيحة للسن، الوزن، والطول.', '#ef4444');
+                return;
+            }
+
+            // معادلة Mifflin-St Jeor
+            let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+            if (gender === 'male') {
+                bmr += 5;
+            } else {
+                bmr -= 161;
+            }
+
+            const tdee = bmr * activity;
+            const loseWeight = tdee - 500;
+            const gainWeight = tdee + 500;
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                🔥 <strong>معدل الأيض الأساسي (BMR):</strong> ${Math.round(bmr)} سعرة/يوم<br>
+                ⚡ <strong>للحفاظ على الوزن الحالي:</strong> ${Math.round(tdee)} سعرة/يوم<br>
+                📉 <strong>لإنقاص الوزن (تنزيل ~0.5 كجم/أسبوع):</strong> ${Math.round(loseWeight)} سعرة/يوم<br>
+                📈 <strong>لزيادة الوزن (زيادة ~0.5 كجم/أسبوع):</strong> ${Math.round(gainWeight)} سعرة/يوم
+            `;
+        }
+    </script>
+</body>
+</html>
+
