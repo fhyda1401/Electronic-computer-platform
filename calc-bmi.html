@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة مؤشر كتلة الجسم (BMI) - حساب الوزن الطبيعي أونلاين</title>
+    <meta name="description" content="احسب مؤشر كتلة الجسم (BMI) بدقة وتعرف على الفئة الصحية لوزنك وهل تحتاج لتخسيس أو زيادة الوزن.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة مؤشر كتلة الجسم (BMI)</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل وزنك بالكيلوجرام وطولك بالسنتيمتر للتعرف على مؤشر كتلة جسمك:</p>
+
+            <div class="form-group">
+                <label for="bmiWeight">الوزن (كيلوجرام):</label>
+                <input type="number" id="bmiWeight" placeholder="مثال: 75">
+            </div>
+
+            <div class="form-group">
+                <label for="bmiHeight">الطول (سنتيمتر):</label>
+                <input type="number" id="bmiHeight" placeholder="مثال: 175">
+            </div>
+
+            <button onclick="calculateBMI()" class="btn-action">احسب مؤشر كتلة الجسم</button>
+
+            <div id="bmiResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>ما هو مؤشر كتلة الجسم (BMI) وكيف يُصنف؟</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                مؤشر كتلة الجسم هو أداة تقييم عالمية تُستخدم لتقدير كمية الدهون في الجسم بناءً على النسبة بين الوزن والطول.
+            </p>
+            <ul style="margin-top: 10px; padding-right: 20px; color: #475569; line-height: 1.8;">
+                <li><strong>أقل من 18.5:</strong> نقص في الوزن (نحافة)</li>
+                <li><strong>18.5 - 24.9:</strong> وزن طبيعي ومثالي</li>
+                <li><strong>25 - 29.9:</strong> زيادة في الوزن</li>
+                <li><strong>30 أو أكثر:</strong> سمنة (تستدعي الاهتمام بالحمية)</li>
+            </ul>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('bmiWeight').value);
+            const heightCm = parseFloat(document.getElementById('bmiHeight').value);
+            const resBox = document.getElementById('bmiResult');
+
+            if (isNaN(weight) || isNaN(heightCm) || weight <= 0 || heightCm <= 0) {
+                showResult(resBox, 'يرجى إدخال قيم صحيحة لكل من الوزن والطول.', '#ef4444');
+                return;
+            }
+
+            const heightM = heightCm / 100;
+            const bmi = weight / (heightM * heightM);
+            const bmiFormatted = bmi.toFixed(1);
+
+            let status = '';
+            let color = '#10b981';
+
+            if (bmi < 18.5) {
+                status = 'نقص في الوزن (نحافة)';
+                color = '#f59e0b';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                status = 'وزن طبيعي ومثالي';
+                color = '#10b981';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                status = 'زيادة في الوزن';
+                color = '#f59e0b';
+            } else {
+                status = 'سمنة';
+                color = '#ef4444';
+            }
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = color;
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                📊 <strong>مؤشر كتلة الجسم الخاص بك:</strong> ${bmiFormatted}<br>
+                💡 <strong>التصنيف الصحي:</strong> ${status}
+            `;
+        }
+    </script>
+</body>
+</html>
+
