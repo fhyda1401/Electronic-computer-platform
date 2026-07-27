@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة تحويل درجات الحرارة - سيليزيوس وفهرنهايت وكلفن أونلاين</title>
+    <meta name="description" content="حول درجات الحرارة بسهولة بين سيليزيوس (C°)، فهرنهايت (F°)، وكلفن (K) بدقة مع الشرح.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">حاسبات<span>.com</span></a></h1>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="financial.html">مالية</a>
+                <a href="health.html">صحة ولياقة</a>
+                <a href="math-converters.html">رياضيات وتحويلات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية علوية (Google AdSense)</p>
+    </div>
+
+    <main class="container" style="max-width: 800px;">
+        <div class="calc-card" style="padding: 30px;">
+            <h2>حاسبة تحويل درجات الحرارة</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">أدخل درجة الحرارة واختر الوحدات المراد التحويل بينها:</p>
+
+            <div class="form-group">
+                <label for="tempValue">درجة الحرارة:</label>
+                <input type="number" id="tempValue" placeholder="مثال: 37">
+            </div>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label for="fromTemp">من وحدة:</label>
+                    <select id="fromTemp" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                        <option value="C">سيليزيوس / مئوية (°C)</option>
+                        <option value="F">فهرنهايت (°F)</option>
+                        <option value="K">كلفن (K)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label for="toTemp">إلى وحدة:</label>
+                    <select id="toTemp" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                        <option value="F">فهرنهايت (°F)</option>
+                        <option value="C">سيليزيوس / مئوية (°C)</option>
+                        <option value="K">كلفن (K)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="convertTemperature()" class="btn-action">تحويل درجة الحرارة</button>
+
+            <div id="tempResult" class="result-box" style="margin-top: 20px; font-size: 1.1rem; text-align: right; line-height: 1.8;"></div>
+        </div>
+
+        <article style="background: white; padding: 25px; border-radius: 12px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3>مقاييس الحرارة المختلفة</h3>
+            <p style="margin-top: 10px; color: #475569;">
+                يُعتبر نظام <strong>سيليزيوس</strong> الأكثر استخداماً عالمياً وفي الملاحة الجوية والطبية، بينما يُستخدم نظام <strong>فهرنهايت</strong> بشكل رئيسي في الولايات المتحدة. أما نظام <strong>كلفن</strong> فهو المقياس المعتمد في التطبيقات والأبحاث العلمية والفيزيائية.
+            </p>
+        </article>
+    </main>
+
+    <div class="container ad-slot">
+        <p class="ad-placeholder">مساحة إعلانية سفلية (Google AdSense)</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 منصة الحاسبات الذكية - جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function convertTemperature() {
+            const val = parseFloat(document.getElementById('tempValue').value);
+            const from = document.getElementById('fromTemp').value;
+            const to = document.getElementById('toTemp').value;
+            const resBox = document.getElementById('tempResult');
+
+            if (isNaN(val)) {
+                showResult(resBox, 'يرجى إدخال قيمة حرارية صحيحة.', '#ef4444');
+                return;
+            }
+
+            let result = 0;
+
+            if (from === to) {
+                result = val;
+            } else if (from === 'C' && to === 'F') {
+                result = (val * 9/5) + 32;
+            } else if (from === 'C' && to === 'K') {
+                result = val + 273.15;
+            } else if (from === 'F' && to === 'C') {
+                result = (val - 32) * 5/9;
+            } else if (from === 'F' && to === 'K') {
+                result = ((val - 32) * 5/9) + 273.15;
+            } else if (from === 'K' && to === 'C') {
+                result = val - 273.15;
+            } else if (from === 'K' && to === 'F') {
+                result = ((val - 273.15) * 9/5) + 32;
+            }
+
+            const unitLabels = { C: '°C', F: '°F', K: 'K' };
+
+            resBox.style.display = 'block';
+            resBox.style.backgroundColor = '#10b981';
+            resBox.style.color = '#ffffff';
+            resBox.innerHTML = `
+                🌡️ <strong>النتيجة:</strong> ${val} ${unitLabels[from]} = <strong>${result.toFixed(2)} ${unitLabels[to]}</strong>
+            `;
+        }
+    </script>
+</body>
+</html>
+
