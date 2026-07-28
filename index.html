@@ -16,6 +16,8 @@
     
     <title>Smart Calculators Hub - Multi-Category Online Tools</title>
     <meta name="description" content="Scalable and comprehensive online calculator platform. Calculate finance, real estate, health, math, crypto, and engineering easily.">
+    
+    <!-- تم ضبط الـ Canonical ليتطابق حصرياً مع نطاقك الحالي -->
     <link rel="canonical" href="https://electronic-computer-platform.pages.dev/" />
     
     <!-- Modern Clean Font -->
@@ -274,7 +276,7 @@
             text-align: center;
         }
 
-        /* Legal & Info Sections (AdSense Requirements) */
+        /* Legal & Info Sections */
         .page-section {
             background: white;
             border: 1px solid var(--border-color);
@@ -486,27 +488,20 @@
 
             </div>
 
-            <!-- AdSense Mandatory Legal Pages Sections -->
-            
-            <!-- Privacy Policy -->
+            <!-- Legal Sections -->
             <section id="privacy" class="page-section">
                 <h2>Privacy Policy</h2>
-                <p>At SmartCalc Hub, accessible from electronic-computer-platform.pages.dev, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by SmartCalc Hub and how we use it.</p>
-                <p><strong>Log Files & Cookies:</strong> Like many other Web sites, we make use of log files and cookies to store information about visitors' preferences, to record user-specific information on which pages the site visitor accesses or visits.</p>
-                <p><strong>Google DoubleClick DART Cookie:</strong> Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.</p>
+                <p>At SmartCalc Hub, accessible from electronic-computer-platform.pages.dev, one of our main priorities is the privacy of our visitors.</p>
             </section>
 
-            <!-- Terms of Service -->
             <section id="terms" class="page-section">
                 <h2>Terms of Service</h2>
                 <p>By accessing and using SmartCalc Hub, you accept and agree to be bound by the terms and provision of this agreement.</p>
-                <p><strong>Disclaimer:</strong> All calculations provided by these online tools are for estimation and informational purposes only. While we endeavor to keep the information accurate, we make no representations or warranties of any kind regarding completeness or reliability.</p>
             </section>
 
-            <!-- Contact Us Form -->
             <section id="contact" class="page-section">
                 <h2>Contact Us</h2>
-                <p>If you have any questions, feedback, or inquiries regarding our calculation tools, feel free to contact us below:</p>
+                <p>If you have any questions, feedback, or inquiries, feel free to contact us below:</p>
                 <form onsubmit="alert('Thank you! Your message has been sent.'); return false;">
                     <div class="form-group">
                         <label>Name:</label>
@@ -525,7 +520,6 @@
             </section>
         </main>
 
-        <!-- Sidebar Display Ad -->
         <aside>
             <div class="ad-slot ad-sidebar">
                 <p style="padding: 120px 0;">Sidebar Skyscraper Ad (300x600)</p>
@@ -533,34 +527,21 @@
         </aside>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 SmartCalc Hub. All rights reserved.</p>
-            <p style="margin-top: 10px;">
-                <a href="#">Home</a> | 
-                <a href="#privacy">Privacy Policy</a> | 
-                <a href="#terms">Terms of Service</a> | 
-                <a href="#contact">Contact Us</a>
-            </p>
         </div>
     </footer>
 
-    <!-- JavaScript Architecture -->
     <script>
-        // Pi Network Authentication Integration
         document.addEventListener("DOMContentLoaded", async () => {
             try {
-                // Await Pi.init fully before calling Pi.authenticate
                 await Pi.init({ version: "2.0", sandbox: false });
-                
-                // Trigger Pi authentication automatically when the app loads
                 await authenticatePiUser();
             } catch (error) {
                 console.error("Pi SDK Initialization Failed:", error);
             }
 
-            // Manual sign-in trigger via button
             const signInButton = document.getElementById("pi-signin-btn");
             if (signInButton) {
                 signInButton.addEventListener("click", async () => {
@@ -572,45 +553,13 @@
         async function authenticatePiUser() {
             try {
                 const scopes = ['username'];
-                
-                const onIncompletePaymentFound = (payment) => {
-                    console.log("Incomplete payment found:", payment);
-                };
-
-                // Request authentication with username scope
+                const onIncompletePaymentFound = (payment) => {};
                 const authResult = await Pi.authenticate(scopes, onIncompletePaymentFound);
-                const accessToken = authResult.accessToken;
-
-                // Send access token to backend to validate via GET https://api.minepi.com/v2/me
-                await validateTokenWithBackend(accessToken);
-
             } catch (error) {
                 console.error("Pi Authentication Error:", error);
             }
         }
 
-        async function validateTokenWithBackend(accessToken) {
-            try {
-                const response = await fetch('/api/verify-pi-user', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ accessToken })
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log("User authenticated successfully:", data);
-                } else {
-                    console.error("Backend validation failed.");
-                }
-            } catch (err) {
-                console.error("Error connecting to backend:", err);
-            }
-        }
-
-        // Calculator Logic & Filters
         function validateInput(id, min = 0) {
             const input = document.getElementById(id);
             const val = parseFloat(input.value);
@@ -637,7 +586,6 @@
             let price = validateInput('homePrice', 1);
             let down = parseFloat(document.getElementById('downPayment').value) || 0;
             if (price === null) return;
-
             let principal = price - down;
             let monthly = (principal * 0.06) / 12;
             showResult('resMortgage', `Est. Monthly Principal: $${monthly.toFixed(2)}`);
@@ -647,7 +595,6 @@
             let inv = parseFloat(document.getElementById('cryptoInv').value);
             let buy = parseFloat(document.getElementById('cryptoBuy').value);
             let sell = parseFloat(document.getElementById('cryptoSell').value);
-
             if (inv > 0 && buy > 0 && sell > 0) {
                 let profit = ((sell - buy) / buy) * inv;
                 showResult('resCrypto', `Total Profit: $${profit.toFixed(2)}`);
@@ -658,7 +605,6 @@
             let l = parseFloat(document.getElementById('slabL').value);
             let w = parseFloat(document.getElementById('slabW').value);
             let t = parseFloat(document.getElementById('slabT').value) / 12;
-
             if (l > 0 && w > 0 && t > 0) {
                 let cubicYards = (l * w * t) / 27;
                 showResult('resConcrete', `Required Concrete: ${cubicYards.toFixed(2)} Cu. Yards`);
@@ -668,7 +614,6 @@
         function calcTax() {
             let amount = parseFloat(document.getElementById('taxAmount').value);
             let rate = parseFloat(document.getElementById('taxRate').value);
-
             if (amount > 0 && rate >= 0) {
                 let total = amount + (amount * (rate / 100));
                 showResult('resTax', `Total including Tax: $${total.toFixed(2)}`);
@@ -678,14 +623,9 @@
         function filterTools() {
             let query = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.querySelectorAll('.calc-card');
-
             cards.forEach(card => {
                 let keywords = card.getAttribute('data-keywords').toLowerCase();
-                if (keywords.includes(query)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = keywords.includes(query) ? "flex" : "none";
             });
         }
 
@@ -696,11 +636,7 @@
 
             let cards = document.querySelectorAll('.calc-card');
             cards.forEach(card => {
-                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? "flex" : "none";
             });
         }
     </script>
