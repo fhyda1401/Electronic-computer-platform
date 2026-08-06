@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://pages.dev" />
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -160,12 +160,17 @@
             border-color: var(--primary-color);
         }
 
-        /* تنسيقات الإعلانات المباحة المضافة */
+        /* تنسيقات الإعلانات الذكية لضمان تخطي الحجب والظهور الدائم */
         .ad-header-wrapper { text-align: center; margin: 25px auto 10px auto; max-width: 728px; width: 100%; padding: 0 20px; }
-        .ad-container { background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center; box-shadow: var(--shadow-sm); transition: border-color 0.2s; }
-        .ad-container:hover { border-color: var(--primary-color); }
-        .ad-container img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 6px; }
-        .ad-label { display: block; font-size: 0.68rem; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+        .native-ad-box { background: linear-gradient(90deg, #ff4757, #ff6b81); color: white; border-radius: var(--radius-md); padding: 15px; text-align: center; box-shadow: var(--shadow-md); text-decoration: none; display: block; transition: transform 0.2s; position: relative; overflow: hidden; }
+        .native-ad-box:hover { transform: scale(1.01); }
+        .native-ad-box h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 5px; }
+        .native-ad-box p { font-size: 0.9rem; opacity: 0.9; }
+        .ad-badge-native { position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.2); color: white; font-size: 0.6rem; padding: 2px 8px; border-bottom-right-radius: 6px; text-transform: uppercase; font-weight: bold; }
+
+        .native-sidebar-ad { background: linear-gradient(180deg, #1e293b, #0f172a); color: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px 20px; text-align: center; box-shadow: var(--shadow-md); text-decoration: none; display: flex; flex-direction: column; justify-content: center; height: 600px; width: 300px; box-sizing: border-box; transition: border-color 0.2s; }
+        .native-sidebar-ad:hover { border-color: var(--primary-color); }
+        .native-sidebar-ad .btn-ad { background: #ff4757; color: white; padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 25px; display: block; text-transform: uppercase; }
 
         /* Main Layout Grid */
         .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 25px; margin-top: 25px; }
@@ -184,6 +189,7 @@
 
         @media (max-width: 991px) {
             .main-layout { grid-template-columns: 1fr; }
+            .native-sidebar-ad { width: 100%; height: auto; padding: 40px 20px; }
         }
     </style>
 </head>
@@ -207,36 +213,9 @@
         </div>
     </nav>
 
-    <!-- الإعلان الأول: الهيدر في الأعلى (رابط العمولات d987c32b) -->
+    <!-- الإعلان الأول المطور: الهيدر في الأعلى (رابط العمولات d987c32b) -->
     <div class="ad-header-wrapper">
-        <div class="ad-container">
-            <span class="ad-label">Sponsored Dynamic Offer</span>
-            <a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=d987c32b" target="_blank" rel="noopener">
-                <img src="https://deliveryhero.io" width="728" height="90" alt="AliExpress Big Discounts">
-            </a>
-        </div>
-    </div>
-
-    <header class="hero">
-        <div class="container">
-            <h2>Calculators for Every Decision</h2>
-            <p>Accurate and instant calculations across multiple fields to help you make smart choices.</p>
-            <div class="search-box">
-                <input type="text" placeholder="Search for calculators (e.g., Loan, BMI, Crypto)...">
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="category-nav">
-            <div class="cat-tab active">All Calculators</div>
-            <div class="cat-tab">Finance</div>
-            <div class="cat-tab">Real Estate</div>
-            <div class="cat-tab">Health</div>
-            <div class="cat-tab">Crypto</div>
-            <div class="cat-tab">Engineering</div>
-        </div>
-
-        <div class="main-layout">
-            <div class="content-area">
-
+        <a href="https://linkaraby.com" target="_blank" rel="noopener" class="native-ad-box">
+            <span class="ad-badge-native">Sponsored Offer</span>
+            <h4>عروض علي إكسبرس الحصرية تصل إلى 70% خصم!</h4>
+            <p>تسوق ملايين المنتجات الذكية والإلكترونيات بأقل الأسعار وشحن سريع للخليج والعالم العربي.</p>
