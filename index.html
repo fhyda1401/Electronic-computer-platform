@@ -172,8 +172,8 @@
         .native-sidebar-ad:hover { border-color: var(--primary-color); }
         .native-sidebar-ad .btn-ad { background: #ff4757; color: white; padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 25px; display: block; text-transform: uppercase; }
 
-        /* تقسيم التنسيق الشبكي */
-        .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 25px; margin-top: 25px; }
+        /* تعديل وتقسيم الـ Layout الرئيسي */
+        .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 25px; margin-top: 25px; align-items: flex-start; }
         .content-area { min-width: 0; }
         .calculator-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .calc-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 22px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
@@ -182,7 +182,7 @@
         .calc-card h3 { font-size: 1.15rem; color: var(--secondary-color); font-weight: 700; }
         .badge { font-size: 0.72rem; padding: 3px 8px; border-radius: 6px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; text-transform: uppercase; }
 
-        /* المكونات الداخلية للحاسبات */
+        /* المكونات الداخلية */
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-main); }
         .form-group input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: var(--bg-color); outline: none; }
@@ -214,7 +214,7 @@
         </div>
     </nav>
 
-    <!-- الإعلان الأول: الهيدر في الأعلى (رابط العمولات d987c32b) -->
+    <!-- الإعلان الأول: الهيدر في الأعلى -->
     <div class="ad-header-wrapper">
         <a href="https://linkaraby.com" target="_blank" rel="noopener" class="native-ad-box">
             <span class="ad-badge-native">Sponsored Offer</span>
