@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://pages.dev" />
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -160,7 +160,7 @@
             border-color: var(--primary-color);
         }
 
-        /* تنسيقات الإعلانات الذكية لضمان تخطي الحجب والظهور الدائم */
+        /* تنسيقات الإعلانات الذكية */
         .ad-header-wrapper { text-align: center; margin: 25px auto 10px auto; max-width: 728px; width: 100%; padding: 0 20px; }
         .native-ad-box { background: linear-gradient(90deg, #ff4757, #ff6b81); color: white; border-radius: var(--radius-md); padding: 15px; text-align: center; box-shadow: var(--shadow-md); text-decoration: none; display: block; transition: transform 0.2s; position: relative; overflow: hidden; }
         .native-ad-box:hover { transform: scale(1.01); }
@@ -172,8 +172,9 @@
         .native-sidebar-ad:hover { border-color: var(--primary-color); }
         .native-sidebar-ad .btn-ad { background: #ff4757; color: white; padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 25px; display: block; text-transform: uppercase; }
 
-        /* Main Layout Grid */
+        /* تقسيم التنسيق الشبكي */
         .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 25px; margin-top: 25px; }
+        .content-area { min-width: 0; }
         .calculator-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .calc-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 22px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
         .calc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
@@ -181,7 +182,7 @@
         .calc-card h3 { font-size: 1.15rem; color: var(--secondary-color); font-weight: 700; }
         .badge { font-size: 0.72rem; padding: 3px 8px; border-radius: 6px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; text-transform: uppercase; }
 
-        /* Form Components */
+        /* المكونات الداخلية للحاسبات */
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-main); }
         .form-group input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: var(--bg-color); outline: none; }
@@ -213,9 +214,8 @@
         </div>
     </nav>
 
-    <!-- الإعلان الأول المطور: الهيدر في الأعلى (رابط العمولات d987c32b) -->
+    <!-- الإعلان الأول: الهيدر في الأعلى (رابط العمولات d987c32b) -->
     <div class="ad-header-wrapper">
         <a href="https://linkaraby.com" target="_blank" rel="noopener" class="native-ad-box">
             <span class="ad-badge-native">Sponsored Offer</span>
             <h4>عروض علي إكسبرس الحصرية تصل إلى 70% خصم!</h4>
-            <p>تسوق ملايين المنتجات الذكية والإلكترونيات بأقل الأسعار وشحن سريع للخليج والعالم العربي.</p>
