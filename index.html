@@ -172,6 +172,13 @@
             border-color: var(--primary-color);
         }
 
+        /* تنسيقات مخصصة لتنظيم المساحات الإعلانية المباحة للموقع الجديد */
+        .ad-header-wrapper { text-align: center; margin: 25px auto 10px auto; max-width: 728px; width: 100%; padding: 0 20px; }
+        .ad-container { background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center; box-shadow: var(--shadow-sm); transition: border-color 0.2s; }
+        .ad-container:hover { border-color: var(--primary-color); }
+        .ad-container img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 6px; }
+        .ad-label { display: block; font-size: 0.68rem; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+
         /* Main Layout Grid */
         .main-layout {
             display: grid;
@@ -250,395 +257,33 @@
             display: none;
         }
 
-        .btn-action {
-            width: 100%;
-            padding: 11px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 5px;
-        }
-        .btn-action:hover { background: var(--primary-dark); }
-
-        .result-box {
-            margin-top: 12px;
-            padding: 10px;
-            background: var(--primary-light);
-            border-radius: 8px;
-            color: var(--primary-dark);
-            font-weight: 700;
-            font-size: 0.92rem;
-            display: none;
-            text-align: center;
-        }
-
-        /* Legal & Info Sections */
-        .page-section {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 30px;
-            margin-top: 35px;
-            box-shadow: var(--shadow-sm);
-        }
-        .page-section h2 {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 8px;
-        }
-        .page-section p, .page-section ul {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-        .page-section ul { padding-left: 20px; }
-
-        /* Advertising & Monetization */
-        .ad-slot {
-            background: #f1f5f9;
-            border: 1px dashed #cbd5e1;
-            border-radius: var(--radius-md);
-            text-align: center;
-            padding: 15px;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-        }
-        .ad-banner-top { margin: 20px 0; }
-        .ad-sidebar { position: sticky; top: 85px; }
-
-        /* Footer Section */
-        footer {
-            background: var(--secondary-color);
-            color: #cbd5e1;
-            padding: 30px 0;
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.88rem;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        footer a:hover { text-decoration: underline; }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 900px) {
+        /* التجاوب مع الهواتف للشاشات الصغيرة */
+        @media (max-width: 991px) {
             .main-layout { grid-template-columns: 1fr; }
-            .ad-sidebar { display: none; }
+            .sidebar-ads { position: static !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header class="navbar">
+    <!-- Navbar -->
+    <nav class="navbar">
         <div class="container">
-            <h1 class="logo"><a href="#">SmartCalc<span>.hub</span></a></h1>
+            <div class="logo">
+                <a href="#">Smart<span>Calculators</span></a>
+            </div>
             <div class="nav-right">
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <button id="pi-signin-btn" class="pi-btn">Sign in with Pi</button>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Finance</a></li>
+                    <li><a href="#">Health</a></li>
+                    <li><a href="#">Math</a></li>
+                </ul>
+                <button class="pi-btn">Pi Connect</button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Hero Search -->
-    <section class="hero">
-        <div class="container">
-            <h2>Calculators for Every Decision</h2>
-            <p>Search over hundreds of precise online tools for finance, building, crypto, and health.</p>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search (e.g. Mortgage, Crypto Profit, BMI, Concrete...)" onkeyup="filterTools()">
-            </div>
-        </div>
-    </section>
-
-    <!-- Top Banner Ad Slot -->
-    <div class="container">
-        <div class="ad-slot ad-banner-top">
-            <p>Header Ad Slot (Google AdSense Responsive Leaderboard)</p>
-        </div>
-
-        <!-- Category Filters -->
-        <div class="category-nav">
-            <button class="cat-tab active" onclick="filterCategory('all')">All Calculators</button>
-            <button class="cat-tab" onclick="filterCategory('finance')">Financial</button>
-            <button class="cat-tab" onclick="filterCategory('realestate')">Real Estate</button>
-            <button class="cat-tab" onclick="filterCategory('construction')">Construction</button>
-            <button class="cat-tab" onclick="filterCategory('crypto')">Crypto</button>
-            <button class="cat-tab" onclick="filterCategory('taxes')">Taxes & Business</button>
-        </div>
-    </div>
-
-    <!-- Main Content & Sidebar -->
-    <div class="container main-layout">
-        <main>
-            <!-- Calculators Grid -->
-            <div class="calculator-grid" id="calculatorGrid">
-
-                <!-- 1. Real Estate Mortgage Calculator -->
-                <div class="calc-card" data-cat="realestate" data-keywords="mortgage house real estate property loan">
-                    <div>
-                        <div class="calc-header">
-                            <h3>Mortgage Payment</h3>
-                            <span class="badge">Real Estate</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Home Price ($):</label>
-                            <input type="number" id="homePrice" placeholder="e.g. 350000">
-                            <span class="error-text" id="err-homePrice">Please enter a valid price</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Down Payment ($):</label>
-                            <input type="number" id="downPayment" placeholder="e.g. 50000">
-                        </div>
-                    </div>
-                    <div>
-                        <button onclick="calcMortgage()" class="btn-action">Calculate Mortgage</button>
-                        <div id="resMortgage" class="result-box"></div>
-                    </div>
-                </div>
-
-                <!-- 2. Crypto Profit Calculator -->
-                <div class="calc-card" data-cat="crypto" data-keywords="crypto bitcoin ethereum profit tax investment">
-                    <div>
-                        <div class="calc-header">
-                            <h3>Crypto Profit</h3>
-                            <span class="badge">Crypto</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Investment Amount ($):</label>
-                            <input type="number" id="cryptoInv" placeholder="e.g. 1000">
-                        </div>
-                        <div class="form-group">
-                            <label>Buy Price ($):</label>
-                            <input type="number" id="cryptoBuy" placeholder="e.g. 30000">
-                        </div>
-                        <div class="form-group">
-                            <label>Sell Price ($):</label>
-                            <input type="number" id="cryptoSell" placeholder="e.g. 45000">
-                        </div>
-                    </div>
-                    <div>
-                        <button onclick="calcCrypto()" class="btn-action">Calculate Profit</button>
-                        <div id="resCrypto" class="result-box"></div>
-                    </div>
-                </div>
-
-                <!-- 3. Construction Concrete Calculator -->
-                <div class="calc-card" data-cat="construction" data-keywords="construction concrete slab building material">
-                    <div>
-                        <div class="calc-header">
-                            <h3>Concrete Slab (Cubic Yards)</h3>
-                            <span class="badge">Construction</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Length (Feet):</label>
-                            <input type="number" id="slabL" placeholder="e.g. 10">
-                        </div>
-                        <div class="form-group">
-                            <label>Width (Feet):</label>
-                            <input type="number" id="slabW" placeholder="e.g. 10">
-                        </div>
-                        <div class="form-group">
-                            <label>Thickness (Inches):</label>
-                            <input type="number" id="slabT" placeholder="e.g. 4">
-                        </div>
-                    </div>
-                    <div>
-                        <button onclick="calcConcrete()" class="btn-action">Estimate Concrete</button>
-                        <div id="resConcrete" class="result-box"></div>
-                    </div>
-                </div>
-
-                <!-- 4. Taxes & Business Sales Tax Calculator -->
-                <div class="calc-card" data-cat="taxes" data-keywords="tax sales tax business finance vat">
-                    <div>
-                        <div class="calc-header">
-                            <h3>Sales Tax / VAT</h3>
-                            <span class="badge">Taxes</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Amount ($):</label>
-                            <input type="number" id="taxAmount" placeholder="e.g. 150">
-                        </div>
-                        <div class="form-group">
-                            <label>Tax Rate (%):</label>
-                            <input type="number" id="taxRate" placeholder="e.g. 15">
-                        </div>
-                    </div>
-                    <div>
-                        <button onclick="calcTax()" class="btn-action">Calculate Total</button>
-                        <div id="resTax" class="result-box"></div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Legal Sections -->
-            <section id="privacy" class="page-section">
-                <h2>Privacy Policy</h2>
-                <p>At SmartCalc Hub, accessible from electronic-computer-platform.pages.dev, one of our main priorities is the privacy of our visitors.</p>
-            </section>
-
-            <section id="terms" class="page-section">
-                <h2>Terms of Service</h2>
-                <p>By accessing and using SmartCalc Hub, you accept and agree to be bound by the terms and provision of this agreement.</p>
-            </section>
-
-            <section id="contact" class="page-section">
-                <h2>Contact Us</h2>
-                <p>If you have any questions, feedback, or inquiries, feel free to contact us below:</p>
-                <form onsubmit="alert('Thank you! Your message has been sent.'); return false;">
-                    <div class="form-group">
-                        <label>Name:</label>
-                        <input type="text" required placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address:</label>
-                        <input type="email" required placeholder="name@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Message:</label>
-                        <textarea rows="4" required placeholder="Write your message here..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-action">Send Message</button>
-                </form>
-            </section>
-        </main>
-
-        <aside>
-            <div class="ad-slot ad-sidebar">
-                <p style="padding: 120px 0;">Sidebar Skyscraper Ad (300x600)</p>
-            </div>
-        </aside>
-    </div>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 SmartCalc Hub. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            try {
-                await Pi.init({ version: "2.0", sandbox: false });
-                await authenticatePiUser();
-            } catch (error) {
-                console.error("Pi SDK Initialization Failed:", error);
-            }
-
-            const signInButton = document.getElementById("pi-signin-btn");
-            if (signInButton) {
-                signInButton.addEventListener("click", async () => {
-                    await authenticatePiUser();
-                });
-            }
-        });
-
-        async function authenticatePiUser() {
-            try {
-                const scopes = ['username'];
-                const onIncompletePaymentFound = (payment) => {};
-                const authResult = await Pi.authenticate(scopes, onIncompletePaymentFound);
-            } catch (error) {
-                console.error("Pi Authentication Error:", error);
-            }
-        }
-
-        function validateInput(id, min = 0) {
-            const input = document.getElementById(id);
-            const val = parseFloat(input.value);
-            const err = document.getElementById('err-' + id);
-
-            if (isNaN(val) || val < min) {
-                input.style.borderColor = "var(--danger-color)";
-                if(err) err.style.display = "block";
-                return null;
-            } else {
-                input.style.borderColor = "var(--border-color)";
-                if(err) err.style.display = "none";
-                return val;
-            }
-        }
-
-        function showResult(boxId, text) {
-            const box = document.getElementById(boxId);
-            box.innerText = text;
-            box.style.display = "block";
-        }
-
-        function calcMortgage() {
-            let price = validateInput('homePrice', 1);
-            let down = parseFloat(document.getElementById('downPayment').value) || 0;
-            if (price === null) return;
-            let principal = price - down;
-            let monthly = (principal * 0.06) / 12;
-            showResult('resMortgage', `Est. Monthly Principal: $${monthly.toFixed(2)}`);
-        }
-
-        function calcCrypto() {
-            let inv = parseFloat(document.getElementById('cryptoInv').value);
-            let buy = parseFloat(document.getElementById('cryptoBuy').value);
-            let sell = parseFloat(document.getElementById('cryptoSell').value);
-            if (inv > 0 && buy > 0 && sell > 0) {
-                let profit = ((sell - buy) / buy) * inv;
-                showResult('resCrypto', `Total Profit: $${profit.toFixed(2)}`);
-            }
-        }
-
-        function calcConcrete() {
-            let l = parseFloat(document.getElementById('slabL').value);
-            let w = parseFloat(document.getElementById('slabW').value);
-            let t = parseFloat(document.getElementById('slabT').value) / 12;
-            if (l > 0 && w > 0 && t > 0) {
-                let cubicYards = (l * w * t) / 27;
-                showResult('resConcrete', `Required Concrete: ${cubicYards.toFixed(2)} Cu. Yards`);
-            }
-        }
-
-        function calcTax() {
-            let amount = parseFloat(document.getElementById('taxAmount').value);
-            let rate = parseFloat(document.getElementById('taxRate').value);
-            if (amount > 0 && rate >= 0) {
-                let total = amount + (amount * (rate / 100));
-                showResult('resTax', `Total including Tax: $${total.toFixed(2)}`);
-            }
-        }
-
-        function filterTools() {
-            let query = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.querySelectorAll('.calc-card');
-            cards.forEach(card => {
-                let keywords = card.getAttribute('data-keywords').toLowerCase();
-                card.style.display = keywords.includes(query) ? "flex" : "none";
-            });
-        }
-
-        function filterCategory(cat) {
-            let tabs = document.querySelectorAll('.cat-tab');
-            tabs.forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-
-            let cards = document.querySelectorAll('.calc-card');
-            cards.forEach(card => {
-                card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? "flex" : "none";
-            });
-        }
-    </script>
-</body>
-</html>
+    <!-- 1. مساحة إعلان الهيدر المباح (Header Ad Slot - 728x90) -->
+    <div class="ad-header-wrapper">
+        <div class="ad-container">
