@@ -7,11 +7,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SmartCalc Hub</title>
+<title>SmartCalc Hub | منصة الحاسبات الذكية</title>
+
+<meta name="description" content="منصة SmartCalc Hub تضم أفضل الحاسبات الإلكترونية والمالية والصحية مع عروض AliExpress الحصرية.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
 
 <style>
 
@@ -19,15 +22,18 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Inter,sans-serif;
+font-family:Inter,Tahoma,sans-serif;
 }
+
 
 body{
 
 background:#f5f7fb;
-color:#222;
+color:#1e293b;
+line-height:1.7;
 
 }
+
 
 a{
 
@@ -35,35 +41,34 @@ text-decoration:none;
 
 }
 
+
+/* =====================
+NAVBAR
+===================== */
+
+
 .navbar{
 
 background:#0f172a;
-
 padding:18px 40px;
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
-
 position:sticky;
-
 top:0;
-
-z-index:999;
+z-index:1000;
 
 }
+
 
 .logo{
 
-font-size:28px;
-
+font-size:30px;
 font-weight:800;
-
-color:#fff;
+color:white;
 
 }
+
 
 .logo span{
 
@@ -71,193 +76,283 @@ color:#3b82f6;
 
 }
 
+
 .menu{
 
 display:flex;
-
 gap:25px;
 
 }
 
+
 .menu a{
 
-color:#fff;
-
+color:white;
 font-weight:600;
-
-}
-
-.hero{
-
-padding:70px 20px;
-
-text-align:center;
-
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
-
-color:#fff;
-
-}
-
-.hero h1{
-
-font-size:52px;
-
-margin-bottom:20px;
-
-}
-
-.hero p{
-
-font-size:20px;
-
-opacity:.9;
-
-max-width:850px;
-
-margin:auto;
-
-}
-
-.hero-btn{
-
-display:inline-block;
-
-margin-top:35px;
-
-padding:16px 40px;
-
-background:#2563eb;
-
-color:#fff;
-
-border-radius:12px;
-
-font-weight:bold;
-
 transition:.3s;
 
 }
 
-.hero-btn:hover{
 
-background:#1d4ed8;
+.menu a:hover{
+
+color:#60a5fa;
 
 }
+
+
+
+/* =====================
+HERO
+===================== */
+
+
+.hero{
+
+padding:80px 20px;
+text-align:center;
+background:
+linear-gradient(135deg,#0f172a,#1d4ed8);
+color:white;
+
+}
+
+
+.hero h1{
+
+font-size:52px;
+font-weight:800;
+margin-bottom:20px;
+
+}
+
+
+.hero p{
+
+font-size:21px;
+max-width:850px;
+margin:auto;
+opacity:.9;
+
+}
+
+
+.hero-btn{
+
+display:inline-block;
+margin-top:30px;
+padding:15px 38px;
+background:#2563eb;
+color:white;
+border-radius:12px;
+font-weight:bold;
+transition:.3s;
+
+}
+
+
+.hero-btn:hover{
+
+background:#1e40af;
+transform:translateY(-3px);
+
+}
+
+
+
+/* =====================
+ALIEXPRESS SLIDER
+===================== */
+
 
 .banner-slider{
 
-margin:45px auto;
-
-width:95%;
-
 max-width:1250px;
-
+width:95%;
+margin:45px auto;
 overflow:hidden;
-
-border-radius:18px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.12);
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
 
 }
+
 
 .banner-track{
 
 display:flex;
-
 width:300%;
-
-animation:slideBanner 15s infinite;
+animation:moveBanner 15s infinite;
 
 }
+
 
 .banner{
 
-min-width:100%;
-
-padding:55px;
-
-color:#fff;
-
+width:33.333%;
+min-height:260px;
+padding:55px 30px;
 text-align:center;
+color:white;
 
 }
 
+
 .banner h2{
 
-font-size:34px;
-
+font-size:36px;
 margin-bottom:15px;
 
 }
 
+
 .banner p{
 
-font-size:18px;
-
+font-size:19px;
 margin-bottom:25px;
 
 }
 
+
 .banner a{
 
 display:inline-block;
-
-padding:15px 35px;
-
-background:#fff;
-
+background:white;
 color:#111;
-
-border-radius:10px;
-
+padding:14px 35px;
+border-radius:12px;
 font-weight:bold;
 
 }
 
+
+
 .banner1{
 
-background:linear-gradient(135deg,#ff4747,#ff8c00);
+background:
+linear-gradient(135deg,#ef4444,#f97316);
 
 }
+
 
 .banner2{
 
-background:linear-gradient(135deg,#ff0066,#ff4d94);
+background:
+linear-gradient(135deg,#ec4899,#8b5cf6);
 
 }
+
 
 .banner3{
 
-background:linear-gradient(135deg,#ff6a00,#ffb000);
+background:
+linear-gradient(135deg,#f59e0b,#16a34a);
 
 }
 
-@keyframes slideBanner{
 
-0%{transform:translateX(0);}
 
-30%{transform:translateX(0);}
+@keyframes moveBanner{
 
-33%{transform:translateX(-100%);}
 
-63%{transform:translateX(-100%);}
+0%{
+transform:translateX(0);
+}
 
-66%{transform:translateX(-200%);}
 
-96%{transform:translateX(-200%);}
+30%{
+transform:translateX(0);
+}
 
-100%{transform:translateX(0);}
+
+33%{
+transform:translateX(-33.333%);
+}
+
+
+63%{
+transform:translateX(-33.333%);
+}
+
+
+66%{
+transform:translateX(-66.666%);
+}
+
+
+96%{
+transform:translateX(-66.666%);
+}
+
+
+100%{
+transform:translateX(0);
+}
+
 
 }
+
+
+
+/* =====================
+ADS PLACE
+===================== */
+
+
+.ad-box{
+
+max-width:1000px;
+min-height:100px;
+margin:40px auto;
+padding:20px;
+background:white;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+}
+
+
+/* =====================
+SECTION TITLE
+===================== */
+
+
+.section-title{
+
+text-align:center;
+margin:60px 20px 35px;
+
+}
+
+
+.section-title h2{
+
+font-size:40px;
+font-weight:800;
+
+}
+
+
+.section-title p{
+
+color:#64748b;
+font-size:18px;
+
+}
+
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <nav class="navbar">
+
 
 <div class="logo">
 
@@ -265,21 +360,38 @@ Smart<span>Calc</span>
 
 </div>
 
+
 <div class="menu">
 
-<a href="#">الرئيسية</a>
+<a href="index.html">
+الرئيسية
+</a>
 
-<a href="#">الحاسبات</a>
 
-<a href="#">المقالات</a>
+<a href="#calculators">
+الحاسبات
+</a>
 
-<a href="#">اتصل بنا</a>
+
+<a href="blog.html">
+المقالات
+</a>
+
+
+<a href="#contact">
+اتصل بنا
+</a>
+
 
 </div>
 
+
 </nav>
 
+
+
 <section class="hero">
+
 
 <h1>
 
@@ -287,47 +399,64 @@ Smart<span>Calc</span>
 
 </h1>
 
+
 <p>
 
-أفضل منصة للحاسبات الإلكترونية مع عروض AliExpress الحصرية.
+منصة إلكترونية تجمع الحاسبات المالية والصحية والرياضية في مكان واحد مع عروض AliExpress المميزة.
 
 </p>
+
 
 <a href="#calculators" class="hero-btn">
 
-ابدأ الآن
+ابدأ الحساب الآن
 
 </a>
 
+
 </section>
+
+
 
 <div class="banner-slider">
 
+
 <div class="banner-track">
+
+
 
 <div class="banner banner1">
 
+
 <h2>
 
-🔥 خصومات AliExpress حتى 70%
+🔥 عروض AliExpress الكبرى
 
 </h2>
 
+
 <p>
 
-آلاف المنتجات بعروض حصرية لفترة محدودة.
+خصومات تصل إلى 70% على آلاف المنتجات.
 
 </p>
 
-<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=d987c32b" target="_blank">
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=d987c32b"
+target="_blank">
 
 تسوق الآن
 
 </a>
 
+
 </div>
 
+
+
+
 <div class="banner banner2">
+
 
 <h2>
 
@@ -335,369 +464,1333 @@ Smart<span>Calc</span>
 
 </h2>
 
+
 <p>
 
-هواتف، ساعات ذكية، وإكسسوارات بأسعار مذهلة.
+هواتف وأجهزة ذكية بأسعار مميزة.
 
 </p>
 
-<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=58dc81f3" target="_blank">
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=58dc81f3"
+target="_blank">
 
 شاهد العروض
 
 </a>
 
+
 </div>
+
+
+
+
 
 <div class="banner banner3">
 
+
 <h2>
 
-🎁 عروض اليوم فقط
+🎁 عروض اليوم
 
 </h2>
 
+
 <p>
 
-لا تفوت أفضل التخفيضات على ملايين المنتجات.
+أفضل التخفيضات لفترة محدودة.
 
 </p>
 
-<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=0f80f9bb" target="_blank">
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=0f80f9bb"
+target="_blank">
 
 احصل على الخصم
 
 </a>
 
+
+</div>
+
+
+
 </div>
 
 </div>
 
-</div>
 
-<section id="calculators" style="max-width:1200px;margin:60px auto;padding:20px;">
+<!-- يتبع في الجزء 2/4 -->
 
-<h2 style="text-align:center;font-size:38px;margin-bottom:15px;">
-الحاسبات الأكثر استخدامًا
+<!-- =====================
+SEARCH
+===================== -->
+
+
+<section style="max-width:900px;margin:50px auto;padding:20px;">
+
+
+<div style="
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+">
+
+
+<h2 style="
+text-align:center;
+margin-bottom:20px;
+">
+
+🔍 ابحث عن الحاسبة
+
 </h2>
 
-<p style="text-align:center;color:#666;margin-bottom:40px;">
-اختر الحاسبة المناسبة لك وابدأ الحساب خلال ثوانٍ.
-</p>
 
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-">
+<input 
+id="searchInput"
+type="text"
+placeholder="اكتب اسم الحاسبة..."
+style="
+width:100%;
+padding:16px;
+border:2px solid #e2e8f0;
+border-radius:12px;
+font-size:18px;
+outline:none;
+direction:rtl;
+"
+>
 
-<div style="
-background:#fff;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-">
-
-<h3>🧮 حاسبة النسبة المئوية</h3>
-
-<p style="margin:15px 0;color:#666;">
-احسب الخصومات والزيادات بسهولة.
-</p>
-
-<a href="#" class="hero-btn">
-فتح الحاسبة
-</a>
 
 </div>
 
-<div style="
-background:#fff;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-">
 
-<h3>💰 حاسبة القروض</h3>
+</section>
 
-<p style="margin:15px 0;color:#666;">
-احسب قيمة الأقساط الشهرية بسرعة.
+
+
+
+<!-- =====================
+CALCULATORS
+===================== -->
+
+
+<section id="calculators">
+
+
+<div class="section-title">
+
+
+<h2>
+
+🧮 جميع الحاسبات
+
+</h2>
+
+
+<p>
+
+اختر الحاسبة المناسبة لك وابدأ الحساب بسهولة
+
 </p>
 
-<a href="#" class="hero-btn">
-فتح الحاسبة
-</a>
 
 </div>
 
-<div style="
-background:#fff;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-">
 
-<h3>📈 حاسبة الاستثمار</h3>
 
-<p style="margin:15px 0;color:#666;">
-احسب الأرباح المتوقعة للاستثمار.
+<div class="calculator-grid">
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+%
+</div>
+
+
+<h3>
+حاسبة النسبة المئوية
+</h3>
+
+
+<p>
+حساب الخصومات والنسب والزيادات.
 </p>
 
-<a href="#" class="hero-btn">
+
+<a href="calc-percentage.html">
 فتح الحاسبة
 </a>
 
-</div>
-
-<div style="
-background:#fff;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-">
-
-<h3>🏦 حاسبة الرهن العقاري</h3>
-
-<p style="margin:15px 0;color:#666;">
-اعرف قيمة الدفعات الشهرية بسهولة.
-</p>
-
-<a href="#" class="hero-btn">
-فتح الحاسبة
-</a>
 
 </div>
 
-<div style="
-background:#fff;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-">
 
-<h3>💱 محول العملات</h3>
 
-<p style="margin:15px 0;color:#666;">
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+💱
+</div>
+
+
+<h3>
+محول العملات
+</h3>
+
+
+<p>
 تحويل العملات العالمية بسرعة.
 </p>
 
-<a href="#" class="hero-btn">
+
+<a href="calc-currency.html">
 فتح الحاسبة
 </a>
 
+
 </div>
 
-<div style="
-background:#fff;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-">
 
-<h3>⚡ حاسبة الكهرباء</h3>
 
-<p style="margin:15px 0;color:#666;">
-احسب استهلاك الكهرباء الشهري.
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+📐
+</div>
+
+
+<h3>
+حاسبة المساحة
+</h3>
+
+
+<p>
+حساب مساحة الأشكال الهندسية.
 </p>
 
-<a href="#" class="hero-btn">
+
+<a href="calc-area.html">
 فتح الحاسبة
 </a>
 
-</div>
 
 </div>
 
-</section> 
 
-<!-- =======================
-     AliExpress Deals
-======================= -->
 
-<section style="background:#f8fafc;padding:70px 20px;">
 
-<div style="max-width:1200px;margin:auto;">
 
-<h2 style="text-align:center;font-size:40px;font-weight:800;margin-bottom:15px;">
+<div class="calc-card">
+
+
+<div class="icon">
+⚖️
+</div>
+
+
+<h3>
+الوزن المثالي
+</h3>
+
+
+<p>
+حساب الوزن المناسب للجسم.
+</p>
+
+
+<a href="calc-ideal-weight.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🏃
+</div>
+
+
+<h3>
+مؤشر كتلة الجسم BMI
+</h3>
+
+
+<p>
+حساب حالة الجسم الصحية.
+</p>
+
+
+<a href="calc-bmi.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🔥
+</div>
+
+
+<h3>
+BMR معدل الحرق
+</h3>
+
+
+<p>
+حساب السعرات اليومية.
+</p>
+
+
+<a href="calc-bmr.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+💧
+</div>
+
+
+<h3>
+حاسبة الماء اليومية
+</h3>
+
+
+<p>
+كمية الماء المناسبة يومياً.
+</p>
+
+
+<a href="calc-water-intake.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🤰
+</div>
+
+
+<h3>
+حاسبة الحمل
+</h3>
+
+
+<p>
+حساب موعد الولادة المتوقع.
+</p>
+
+
+<a href="calc-pregnancy.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🔢
+</div>
+
+
+<h3>
+حاسبة الكسور
+</h3>
+
+
+<p>
+إجراء العمليات على الكسور.
+</p>
+
+
+<a href="calc-fractions.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+²
+</div>
+
+
+<h3>
+حاسبة الأسس
+</h3>
+
+
+<p>
+حساب القوى والأسس الرياضية.
+</p>
+
+
+<a href="calc-exponents.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+√
+</div>
+
+
+<h3>
+حاسبة الجذور
+</h3>
+
+
+<p>
+حساب الجذور الرياضية.
+</p>
+
+
+<a href="calc-roots.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🔬
+</div>
+
+
+<h3>
+الحاسبة العلمية
+</h3>
+
+
+<p>
+عمليات رياضية متقدمة.
+</p>
+
+
+<a href="calc-scientific.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+📊
+</div>
+
+
+<h3>
+حاسبة الإحصاء
+</h3>
+
+
+<p>
+المتوسط والانحراف والتباين.
+</p>
+
+
+<a href="calc-statistics.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🌡️
+</div>
+
+
+<h3>
+تحويل الحرارة
+</h3>
+
+
+<p>
+تحويل بين درجات الحرارة.
+</p>
+
+
+<a href="calc-temperature.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+📦
+</div>
+
+
+<h3>
+حاسبة الحجم
+</h3>
+
+
+<p>
+حساب أحجام الأشكال ثلاثية الأبعاد.
+</p>
+
+
+<a href="calc-volume.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🔄
+</div>
+
+
+<h3>
+تحويل الوحدات
+</h3>
+
+
+<p>
+تحويل وحدات القياس المختلفة.
+</p>
+
+
+<a href="calc-unit-converter.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+📈
+</div>
+
+
+<h3>
+المتوسطات
+</h3>
+
+
+<p>
+حساب المتوسط والوسيط والمنوال.
+</p>
+
+
+<a href="calc-averages.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🎲
+</div>
+
+
+<h3>
+الاحتمالات
+</h3>
+
+
+<p>
+حساب احتمالات الأحداث.
+</p>
+
+
+<a href="calc-probability.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+⚖️
+</div>
+
+
+<h3>
+النسب والتناسب
+</h3>
+
+
+<p>
+حل مسائل النسبة والتناسب.
+</p>
+
+
+<a href="calc-ratios.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="calc-card">
+
+
+<div class="icon">
+🔢
+</div>
+
+
+<h3>
+الأرقام العشرية
+</h3>
+
+
+<p>
+عمليات الحساب العشري.
+</p>
+
+
+<a href="calc-decimals.html">
+فتح الحاسبة
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+<!-- يتبع في الجزء 3/4 -->
+
+<style>
+
+/* =====================
+CALCULATOR CARDS
+===================== */
+
+
+.calculator-grid{
+
+max-width:1200px;
+margin:0 auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+
+}
+
+
+
+.calc-card{
+
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:center;
+transition:.3s;
+
+}
+
+
+.calc-card:hover{
+
+transform:translateY(-8px);
+box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+}
+
+
+
+.calc-card .icon{
+
+width:70px;
+height:70px;
+margin:0 auto 20px;
+border-radius:50%;
+background:#eff6ff;
+color:#2563eb;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+font-weight:bold;
+
+}
+
+
+.calc-card h3{
+
+font-size:22px;
+margin-bottom:12px;
+
+}
+
+
+.calc-card p{
+
+color:#64748b;
+margin-bottom:20px;
+
+}
+
+
+.calc-card a{
+
+display:inline-block;
+background:#2563eb;
+color:white;
+padding:12px 28px;
+border-radius:10px;
+font-weight:bold;
+
+}
+
+
+.calc-card a:hover{
+
+background:#1d4ed8;
+
+}
+
+
+
+/* =====================
+ADVERTISEMENTS
+===================== */
+
+
+.ad-area{
+
+max-width:1100px;
+margin:50px auto;
+padding:20px;
+
+}
+
+
+
+.ad-title{
+
+text-align:center;
+color:#64748b;
+font-size:14px;
+margin-bottom:10px;
+
+}
+
+
+.fake-ad{
+
+height:120px;
+background:white;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#94a3b8;
+box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+}
+
+
+
+/* =====================
+ALIEXPRESS DEALS
+===================== */
+
+
+.deals-section{
+
+background:#f8fafc;
+padding:70px 20px;
+margin-top:50px;
+
+}
+
+
+
+.deals-container{
+
+max-width:1200px;
+margin:auto;
+
+}
+
+
+
+.deals-container h2{
+
+text-align:center;
+font-size:40px;
+font-weight:800;
+margin-bottom:15px;
+
+}
+
+
+
+.deals-container>p{
+
+text-align:center;
+color:#64748b;
+font-size:18px;
+margin-bottom:45px;
+
+}
+
+
+
+.deals-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+
+}
+
+
+
+.deal-card{
+
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+transition:.3s;
+
+}
+
+
+
+.deal-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.deal-image{
+
+height:220px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:70px;
+color:white;
+
+}
+
+
+
+.electronics{
+
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+}
+
+
+.fashion{
+
+background:linear-gradient(135deg,#ec4899,#f43f5e);
+
+}
+
+
+.home{
+
+background:linear-gradient(135deg,#16a34a,#84cc16);
+
+}
+
+
+
+.deal-content{
+
+padding:25px;
+
+}
+
+
+
+.deal-content h3{
+
+font-size:24px;
+margin-bottom:15px;
+
+}
+
+
+
+.deal-content p{
+
+color:#64748b;
+margin-bottom:20px;
+
+}
+
+
+
+.deal-button{
+
+display:inline-block;
+padding:12px 25px;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-weight:bold;
+
+}
+
+
+</style>
+
+
+
+<!-- =====================
+AD 1
+===================== -->
+
+
+<section class="ad-area">
+
+
+<div class="ad-title">
+
+إعلان
+
+</div>
+
+
+<div class="fake-ad">
+
+مساحة إعلانية
+
+</div>
+
+
+</section>
+
+
+
+
+<!-- =====================
+ALIEXPRESS DEALS
+===================== -->
+
+
+<section class="deals-section">
+
+
+<div class="deals-container">
+
+
+<h2>
 
 🔥 أحدث عروض AliExpress
 
 </h2>
 
-<p style="text-align:center;color:#64748b;font-size:18px;margin-bottom:45px;">
 
-تسوق أفضل المنتجات العالمية بأسعار مخفضة مع عروض حصرية يتم تحديثها باستمرار.
+<p>
+
+منتجات مختارة بأسعار مخفضة عبر روابط العمولة.
 
 </p>
 
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
-">
 
-<!-- البطاقة الأولى -->
+
+<div class="deals-grid">
+
+
+
+<!-- DEAL 1 -->
+
+
+<div class="deal-card">
+
 
 <a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=d987c32b"
-target="_blank"
-style="
-background:#fff;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 15px 35px rgba(0,0,0,.08);
-transition:.35s;
-text-decoration:none;
-color:#111;
-display:block;
-">
+target="_blank">
 
-<img
-src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900"
-style="width:100%;height:230px;object-fit:cover;">
 
-<div style="padding:25px;">
+<div class="deal-image electronics">
 
-<h3>📱 إلكترونيات ذكية</h3>
+📱
 
-<p style="color:#666;margin:15px 0;">
+</div>
 
-هواتف، ساعات ذكية، سماعات، وإكسسوارات بأسعار مميزة.
+
+<div class="deal-content">
+
+
+<h3>
+
+إلكترونيات ذكية
+
+</h3>
+
+
+<p>
+
+هواتف، سماعات، ساعات ذكية وإكسسوارات.
 
 </p>
 
-<span style="
-display:inline-block;
-padding:12px 24px;
-background:#2563eb;
-color:#fff;
-border-radius:10px;
-font-weight:bold;
-">
+
+<span class="deal-button">
 
 تسوق الآن
 
 </span>
 
+
 </div>
+
 
 </a>
 
-<!-- البطاقة الثانية -->
+
+</div>
+
+
+
+
+
+
+<!-- DEAL 2 -->
+
+
+<div class="deal-card">
+
 
 <a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=58dc81f3"
-target="_blank"
-style="
-background:#fff;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 15px 35px rgba(0,0,0,.08);
-transition:.35s;
-text-decoration:none;
-color:#111;
-display:block;
-">
+target="_blank">
 
-<img
-src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900"
-style="width:100%;height:230px;object-fit:cover;">
 
-<div style="padding:25px;">
+<div class="deal-image fashion">
 
-<h3>👕 الموضة والأزياء</h3>
+👕
 
-<p style="color:#666;margin:15px 0;">
 
-ملابس، أحذية، حقائب، وإكسسوارات بخصومات كبيرة.
+</div>
+
+
+<div class="deal-content">
+
+
+<h3>
+
+الموضة والأزياء
+
+</h3>
+
+
+<p>
+
+ملابس وأحذية وحقائب بخصومات رائعة.
 
 </p>
 
-<span style="
-display:inline-block;
-padding:12px 24px;
-background:#ec4899;
-color:#fff;
-border-radius:10px;
-font-weight:bold;
-">
 
-عرض اليوم
+<span class="deal-button">
+
+شاهد العروض
 
 </span>
 
+
 </div>
+
 
 </a>
 
-<!-- البطاقة الثالثة -->
+
+</div>
+
+
+
+
+
+
+
+<!-- DEAL 3 -->
+
+
+<div class="deal-card">
+
 
 <a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=0f80f9bb"
-target="_blank"
-style="
-background:#fff;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 15px 35px rgba(0,0,0,.08);
-transition:.35s;
-text-decoration:none;
-color:#111;
-display:block;
-">
+target="_blank">
 
-<img
-src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?w=900"
-style="width:100%;height:230px;object-fit:cover;">
 
-<div style="padding:25px;">
+<div class="deal-image home">
 
-<h3>🏠 المنزل والمطبخ</h3>
+🏠
 
-<p style="color:#666;margin:15px 0;">
 
-أفضل المنتجات المنزلية مع شحن عالمي وأسعار منافسة.
+</div>
+
+
+<div class="deal-content">
+
+
+<h3>
+
+المنزل والمطبخ
+
+</h3>
+
+
+<p>
+
+أفضل المنتجات المنزلية بأسعار مميزة.
 
 </p>
 
-<span style="
-display:inline-block;
-padding:12px 24px;
-background:#16a34a;
-color:#fff;
-border-radius:10px;
-font-weight:bold;
-">
+
+<span class="deal-button">
 
 احصل على الخصم
 
 </span>
 
+
 </div>
+
 
 </a>
 
-</div>
 
 </div>
+
+
+
+
+</div>
+
+
+</div>
+
 
 </section>
 
-<!-- =========================
-        Footer
-========================= -->
+
+
+
+<!-- يتبع في الجزء 4/4 -->
+
+<!-- =====================
+AD 2
+===================== -->
+
+
+<section class="ad-area">
+
+
+<div class="ad-title">
+
+إعلان
+
+</div>
+
+
+<div class="fake-ad">
+
+مساحة إعلانية
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- =====================
+AFFILIATE NOTICE
+===================== -->
+
+
+<section style="
+max-width:1000px;
+margin:40px auto;
+padding:20px;
+text-align:center;
+color:#64748b;
+font-size:14px;
+">
+
+
+<p>
+
+قد يحتوي هذا الموقع على روابط تسويقية. عند الشراء من خلال بعض الروابط قد نحصل على عمولة بدون أي تكلفة إضافية عليك.
+
+</p>
+
+
+</section>
+
+
+
+
+
+<!-- =====================
+FOOTER
+===================== -->
+
 
 <footer style="
 background:#0f172a;
-color:#fff;
+color:white;
 padding:70px 20px 30px;
 ">
+
 
 <div style="
 max-width:1200px;
 margin:auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:40px;
 ">
 
+
+
 <div>
+
 
 <h2 style="margin-bottom:20px;">
 
@@ -705,40 +1798,83 @@ SmartCalc Hub
 
 </h2>
 
-<p style="color:#cbd5e1;line-height:1.8;">
 
-منصة حديثة تضم أفضل الحاسبات الإلكترونية
-مع عروض ومنتجات AliExpress المختارة.
+<p style="
+color:#cbd5e1;
+line-height:1.8;
+">
+
+منصة إلكترونية تضم أفضل الحاسبات المالية والصحية والرياضية مع عروض ومنتجات مختارة.
 
 </p>
 
+
 </div>
+
+
+
+
 
 <div>
 
-<h3 style="margin-bottom:18px;">
+
+<h3 style="margin-bottom:20px;">
 
 روابط سريعة
 
 </h3>
 
-<p><a href="#" style="color:#cbd5e1;">الرئيسية</a></p>
 
-<p><a href="#calculators" style="color:#cbd5e1;">الحاسبات</a></p>
+<p>
 
-<p><a href="#" style="color:#cbd5e1;">سياسة الخصوصية</a></p>
+<a href="index.html" style="color:#cbd5e1;">
 
-<p><a href="#" style="color:#cbd5e1;">اتصل بنا</a></p>
+الرئيسية
+
+</a>
+
+</p>
+
+
+<p>
+
+<a href="#calculators" style="color:#cbd5e1;">
+
+الحاسبات
+
+</a>
+
+</p>
+
+
+<p>
+
+<a href="blog.html" style="color:#cbd5e1;">
+
+المقالات
+
+</a>
+
+</p>
+
 
 </div>
 
-<div>
 
-<h3 style="margin-bottom:18px;">
 
-أفضل العروض
+
+
+
+
+<div id="contact">
+
+
+<h3 style="margin-bottom:20px;">
+
+العروض
 
 </h3>
+
 
 <p>
 
@@ -746,11 +1882,13 @@ SmartCalc Hub
 target="_blank"
 style="color:#cbd5e1;">
 
-🔥 إلكترونيات
+📱 الإلكترونيات
 
 </a>
 
 </p>
+
+
 
 <p>
 
@@ -764,6 +1902,8 @@ style="color:#cbd5e1;">
 
 </p>
 
+
+
 <p>
 
 <a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=0f80f9bb"
@@ -776,9 +1916,14 @@ style="color:#cbd5e1;">
 
 </p>
 
-</div>
 
 </div>
+
+
+
+</div>
+
+
 
 <hr style="
 margin:40px 0;
@@ -787,42 +1932,121 @@ height:1px;
 background:#334155;
 ">
 
+
+
 <p style="
 text-align:center;
 color:#94a3b8;
 ">
 
-© 2026 SmartCalc Hub.
-جميع الحقوق محفوظة.
+© 2026 SmartCalc Hub - جميع الحقوق محفوظة
 
 </p>
 
+
+
 </footer>
+
+
+
+
+
+<!-- =====================
+JAVASCRIPT
+===================== -->
+
 
 <script>
 
-/* تأثير عند المرور على بطاقات العروض */
 
-document.querySelectorAll("a").forEach(card=>{
+// البحث في الحاسبات
+
+const searchInput = document.getElementById("searchInput");
+
+
+const cards = document.querySelectorAll(".calc-card");
+
+
+
+if(searchInput){
+
+
+searchInput.addEventListener("input",function(){
+
+
+let value=this.value.toLowerCase();
+
+
+
+cards.forEach(card=>{
+
+
+let text=card.innerText.toLowerCase();
+
+
+
+if(text.includes(value)){
+
+
+card.style.display="block";
+
+
+}else{
+
+
+card.style.display="none";
+
+
+}
+
+
+
+});
+
+
+
+});
+
+
+}
+
+
+
+
+
+// تأثير البطاقات
+
+
+document.querySelectorAll(".calc-card,.deal-card")
+.forEach(card=>{
+
 
 card.addEventListener("mouseenter",()=>{
 
+
 card.style.transform="translateY(-8px)";
 
-card.style.transition=".35s";
 
 });
+
 
 card.addEventListener("mouseleave",()=>{
 
-card.style.transform="translateY(0px)";
+
+card.style.transform="translateY(0)";
+
 
 });
 
+
 });
+
+
 
 </script>
 
+
+
 </body>
 
-</html>    
+</html>     
