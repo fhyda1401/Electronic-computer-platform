@@ -1,225 +1,828 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="vsyE5QoGqDFn7PtbwCwDI2XGSxNyYdctIKAbsqUbmgo" />
-    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
-    <script src="https://minepi.com"></script>
-    <title>Smart Calculators Hub - Multi-Category Online Tools</title>
-    <meta name="description" content="Scalable and comprehensive online calculator platform. Calculate finance, real estate, health, math, crypto, and engineering easily.">
-    <link rel="canonical" href="https://pages.dev" />
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #eff6ff;
-            --secondary-color: #0f172a;
-            --accent-color: #059669;
-            --danger-color: #dc2626;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
-            --radius-md: 12px;
-            --radius-lg: 16px;
-        }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 70px;
-        }
+<meta charset="UTF-8">
 
-        .container {
-            max-width: 1250px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* Navbar */
-        .navbar {
-            background: var(--secondary-color);
-            color: white;
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-md);
-        }
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
-        .logo a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-        .logo span { color: var(--primary-color); }
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        .nav-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover, .nav-links a.active { color: white; }
+<title>SmartCalc Hub</title>
 
-        .pi-btn {
-            background-color: #7b1fa2;
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            white-space: nowrap;
-        }
-        .pi-btn:hover { background-color: #6a1b9a; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-        /* Hero & Search */
-        .hero {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            padding: 45px 0;
-            text-align: center;
-            border-bottom-left-radius: var(--radius-lg);
-            border-bottom-right-radius: var(--radius-lg);
-        }
-        .hero h2 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 800; }
-        .hero p { color: #94a3b8; margin-bottom: 25px; font-size: 1rem; }
-        .search-box {
-            max-width: 550px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 14px 20px;
-            border-radius: 30px;
-            border: 2px solid transparent;
-            font-size: 1rem;
-            font-family: inherit;
-            box-shadow: var(--shadow-lg);
-            outline: none;
-        }
-        .search-box input:focus { border-color: var(--primary-color); }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-        /* Category Filter Tabs */
-        .category-nav {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 20px 0 10px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .cat-tab {
-            padding: 8px 16px;
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .cat-tab.active, .cat-tab:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
+<style>
 
-        /* تنسيق الإعلانات النصية المدمجة لتطابق مساحات موقعك الأصلية تماماً */
-        .ad-header-wrapper { text-align: center; margin: 25px auto 10px auto; max-width: 1250px; width: 100%; padding: 0 20px; }
-        .native-ad-box { background: linear-gradient(90deg, #ff4757, #ff6b81); color: white; border-radius: var(--radius-md); padding: 18px; text-align: center; box-shadow: var(--shadow-sm); text-decoration: none; display: block; transition: transform 0.2s; position: relative; overflow: hidden; }
-        .native-ad-box:hover { transform: scale(1.005); }
-        .native-ad-box h4 { font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; }
-        .native-ad-box p { font-size: 0.85rem; opacity: 0.95; }
-        .ad-badge-native { position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.15); color: white; font-size: 0.6rem; padding: 2px 8px; border-bottom-right-radius: 6px; text-transform: uppercase; font-weight: bold; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
 
-        .native-sidebar-ad { background: linear-gradient(180deg, #1e293b, #0f172a); color: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px 20px; text-align: center; box-shadow: var(--shadow-md); text-decoration: none; display: flex; flex-direction: column; justify-content: center; height: 100%; min-height: 450px; box-sizing: border-box; transition: border-color 0.2s; }
-        .native-sidebar-ad:hover { border-color: var(--primary-color); }
-        .native-sidebar-ad .btn-ad { background: #ff4757; color: white; padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 25px; display: block; text-transform: uppercase; }
+body{
 
-        /* هيكلة المحتوى الأساسي والجانبي */
-        .main-layout { display: grid; grid-template-columns: 1fr 320px; gap: 25px; margin-top: 25px; align-items: flex-start; }
-        .content-area { min-width: 0; }
-        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
-        
-        .calc-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 22px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); display: flex; flex-direction: column; justify-content: space-between; }
-        .calc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .calc-card h3 { font-size: 1.15rem; color: var(--secondary-color); font-weight: 700; }
-        .badge { font-size: 0.72rem; padding: 3px 8px; border-radius: 6px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; text-transform: uppercase; }
+background:#f5f7fb;
+color:#222;
 
-        /* عناصر النماذج */
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-main); }
-        .form-group input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: var(--bg-color); outline: none; }
-        .form-group input:focus { border-color: var(--primary-color); background: white; }
+}
 
-        @media (max-width: 991px) {
-            .main-layout { grid-template-columns: 1fr; }
-        }
-    </style>
+a{
+
+text-decoration:none;
+
+}
+
+.navbar{
+
+background:#0f172a;
+
+padding:18px 40px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:800;
+
+color:#fff;
+
+}
+
+.logo span{
+
+color:#3b82f6;
+
+}
+
+.menu{
+
+display:flex;
+
+gap:25px;
+
+}
+
+.menu a{
+
+color:#fff;
+
+font-weight:600;
+
+}
+
+.hero{
+
+padding:70px 20px;
+
+text-align:center;
+
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+
+color:#fff;
+
+}
+
+.hero h1{
+
+font-size:52px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+opacity:.9;
+
+max-width:850px;
+
+margin:auto;
+
+}
+
+.hero-btn{
+
+display:inline-block;
+
+margin-top:35px;
+
+padding:16px 40px;
+
+background:#2563eb;
+
+color:#fff;
+
+border-radius:12px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.hero-btn:hover{
+
+background:#1d4ed8;
+
+}
+
+.banner-slider{
+
+margin:45px auto;
+
+width:95%;
+
+max-width:1250px;
+
+overflow:hidden;
+
+border-radius:18px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.banner-track{
+
+display:flex;
+
+width:300%;
+
+animation:slideBanner 15s infinite;
+
+}
+
+.banner{
+
+min-width:100%;
+
+padding:55px;
+
+color:#fff;
+
+text-align:center;
+
+}
+
+.banner h2{
+
+font-size:34px;
+
+margin-bottom:15px;
+
+}
+
+.banner p{
+
+font-size:18px;
+
+margin-bottom:25px;
+
+}
+
+.banner a{
+
+display:inline-block;
+
+padding:15px 35px;
+
+background:#fff;
+
+color:#111;
+
+border-radius:10px;
+
+font-weight:bold;
+
+}
+
+.banner1{
+
+background:linear-gradient(135deg,#ff4747,#ff8c00);
+
+}
+
+.banner2{
+
+background:linear-gradient(135deg,#ff0066,#ff4d94);
+
+}
+
+.banner3{
+
+background:linear-gradient(135deg,#ff6a00,#ffb000);
+
+}
+
+@keyframes slideBanner{
+
+0%{transform:translateX(0);}
+
+30%{transform:translateX(0);}
+
+33%{transform:translateX(-100%);}
+
+63%{transform:translateX(-100%);}
+
+66%{transform:translateX(-200%);}
+
+96%{transform:translateX(-200%);}
+
+100%{transform:translateX(0);}
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#">Smart<span>Calc.hub</span></a>
-            </div>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-                <button class="pi-btn" style="background-color: #7b1fa2;">Sign in with PI</button>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar">
 
-    <!-- الإعلان العلوي المدمج بدقة في مساحة الـ Header القديمة -->
-    <div class="ad-header-wrapper">
-        <a href="https://linkaraby.com" target="_blank" rel="noopener" class="native-ad-box">
-            <span class="ad-badge-native">Sponsored Offer</span>
-            <h4>عروض علي إكسبرس الحصرية تصل إلى 70% خصم!</h4>
-            <p>تسوق ملايين المنتجات الذكية والإلكترونيات بأقل الأسعار وشحن سريع ومباشر للخليج والعالم العربي.</p>
-        </a>
-    </div>
+<div class="logo">
 
-    <header class="hero">
+Smart<span>Calc</span>
+
+</div>
+
+<div class="menu">
+
+<a href="#">الرئيسية</a>
+
+<a href="#">الحاسبات</a>
+
+<a href="#">المقالات</a>
+
+<a href="#">اتصل بنا</a>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>
+
+حاسبات ذكية لكل احتياجاتك
+
+</h1>
+
+<p>
+
+أفضل منصة للحاسبات الإلكترونية مع عروض AliExpress الحصرية.
+
+</p>
+
+<a href="#calculators" class="hero-btn">
+
+ابدأ الآن
+
+</a>
+
+</section>
+
+<div class="banner-slider">
+
+<div class="banner-track">
+
+<div class="banner banner1">
+
+<h2>
+
+🔥 خصومات AliExpress حتى 70%
+
+</h2>
+
+<p>
+
+آلاف المنتجات بعروض حصرية لفترة محدودة.
+
+</p>
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=d987c32b" target="_blank">
+
+تسوق الآن
+
+</a>
+
+</div>
+
+<div class="banner banner2">
+
+<h2>
+
+📱 أحدث الإلكترونيات
+
+</h2>
+
+<p>
+
+هواتف، ساعات ذكية، وإكسسوارات بأسعار مذهلة.
+
+</p>
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=58dc81f3" target="_blank">
+
+شاهد العروض
+
+</a>
+
+</div>
+
+<div class="banner banner3">
+
+<h2>
+
+🎁 عروض اليوم فقط
+
+</h2>
+
+<p>
+
+لا تفوت أفضل التخفيضات على ملايين المنتجات.
+
+</p>
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=0f80f9bb" target="_blank">
+
+احصل على الخصم
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<section id="calculators" style="max-width:1200px;margin:60px auto;padding:20px;">
+
+<h2 style="text-align:center;font-size:38px;margin-bottom:15px;">
+الحاسبات الأكثر استخدامًا
+</h2>
+
+<p style="text-align:center;color:#666;margin-bottom:40px;">
+اختر الحاسبة المناسبة لك وابدأ الحساب خلال ثوانٍ.
+</p>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+">
+
+<div style="
+background:#fff;
+padding:30px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+">
+
+<h3>🧮 حاسبة النسبة المئوية</h3>
+
+<p style="margin:15px 0;color:#666;">
+احسب الخصومات والزيادات بسهولة.
+</p>
+
+<a href="#" class="hero-btn">
+فتح الحاسبة
+</a>
+
+</div>
+
+<div style="
+background:#fff;
+padding:30px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+">
+
+<h3>💰 حاسبة القروض</h3>
+
+<p style="margin:15px 0;color:#666;">
+احسب قيمة الأقساط الشهرية بسرعة.
+</p>
+
+<a href="#" class="hero-btn">
+فتح الحاسبة
+</a>
+
+</div>
+
+<div style="
+background:#fff;
+padding:30px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+">
+
+<h3>📈 حاسبة الاستثمار</h3>
+
+<p style="margin:15px 0;color:#666;">
+احسب الأرباح المتوقعة للاستثمار.
+</p>
+
+<a href="#" class="hero-btn">
+فتح الحاسبة
+</a>
+
+</div>
+
+<div style="
+background:#fff;
+padding:30px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+">
+
+<h3>🏦 حاسبة الرهن العقاري</h3>
+
+<p style="margin:15px 0;color:#666;">
+اعرف قيمة الدفعات الشهرية بسهولة.
+</p>
+
+<a href="#" class="hero-btn">
+فتح الحاسبة
+</a>
+
+</div>
+
+<div style="
+background:#fff;
+padding:30px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+">
+
+<h3>💱 محول العملات</h3>
+
+<p style="margin:15px 0;color:#666;">
+تحويل العملات العالمية بسرعة.
+</p>
+
+<a href="#" class="hero-btn">
+فتح الحاسبة
+</a>
+
+</div>
+
+<div style="
+background:#fff;
+padding:30px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+">
+
+<h3>⚡ حاسبة الكهرباء</h3>
+
+<p style="margin:15px 0;color:#666;">
+احسب استهلاك الكهرباء الشهري.
+</p>
+
+<a href="#" class="hero-btn">
+فتح الحاسبة
+</a>
+
+</div>
+
+</div>
+
+</section> 
+
+<!-- =======================
+     AliExpress Deals
+======================= -->
+
+<section style="background:#f8fafc;padding:70px 20px;">
+
+<div style="max-width:1200px;margin:auto;">
+
+<h2 style="text-align:center;font-size:40px;font-weight:800;margin-bottom:15px;">
+
+🔥 أحدث عروض AliExpress
+
+</h2>
+
+<p style="text-align:center;color:#64748b;font-size:18px;margin-bottom:45px;">
+
+تسوق أفضل المنتجات العالمية بأسعار مخفضة مع عروض حصرية يتم تحديثها باستمرار.
+
+</p>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+">
+
+<!-- البطاقة الأولى -->
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=d987c32b"
+target="_blank"
+style="
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+transition:.35s;
+text-decoration:none;
+color:#111;
+display:block;
+">
+
+<img
+src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900"
+style="width:100%;height:230px;object-fit:cover;">
+
+<div style="padding:25px;">
+
+<h3>📱 إلكترونيات ذكية</h3>
+
+<p style="color:#666;margin:15px 0;">
+
+هواتف، ساعات ذكية، سماعات، وإكسسوارات بأسعار مميزة.
+
+</p>
+
+<span style="
+display:inline-block;
+padding:12px 24px;
+background:#2563eb;
+color:#fff;
+border-radius:10px;
+font-weight:bold;
+">
+
+تسوق الآن
+
+</span>
+
+</div>
+
+</a>
+
+<!-- البطاقة الثانية -->
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=58dc81f3"
+target="_blank"
+style="
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+transition:.35s;
+text-decoration:none;
+color:#111;
+display:block;
+">
+
+<img
+src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900"
+style="width:100%;height:230px;object-fit:cover;">
+
+<div style="padding:25px;">
+
+<h3>👕 الموضة والأزياء</h3>
+
+<p style="color:#666;margin:15px 0;">
+
+ملابس، أحذية، حقائب، وإكسسوارات بخصومات كبيرة.
+
+</p>
+
+<span style="
+display:inline-block;
+padding:12px 24px;
+background:#ec4899;
+color:#fff;
+border-radius:10px;
+font-weight:bold;
+">
+
+عرض اليوم
+
+</span>
+
+</div>
+
+</a>
+
+<!-- البطاقة الثالثة -->
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=0f80f9bb"
+target="_blank"
+style="
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+transition:.35s;
+text-decoration:none;
+color:#111;
+display:block;
+">
+
+<img
+src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?w=900"
+style="width:100%;height:230px;object-fit:cover;">
+
+<div style="padding:25px;">
+
+<h3>🏠 المنزل والمطبخ</h3>
+
+<p style="color:#666;margin:15px 0;">
+
+أفضل المنتجات المنزلية مع شحن عالمي وأسعار منافسة.
+
+</p>
+
+<span style="
+display:inline-block;
+padding:12px 24px;
+background:#16a34a;
+color:#fff;
+border-radius:10px;
+font-weight:bold;
+">
+
+احصل على الخصم
+
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+        Footer
+========================= -->
+
+<footer style="
+background:#0f172a;
+color:#fff;
+padding:70px 20px 30px;
+">
+
+<div style="
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+">
+
+<div>
+
+<h2 style="margin-bottom:20px;">
+
+SmartCalc Hub
+
+</h2>
+
+<p style="color:#cbd5e1;line-height:1.8;">
+
+منصة حديثة تضم أفضل الحاسبات الإلكترونية
+مع عروض ومنتجات AliExpress المختارة.
+
+</p>
+
+</div>
+
+<div>
+
+<h3 style="margin-bottom:18px;">
+
+روابط سريعة
+
+</h3>
+
+<p><a href="#" style="color:#cbd5e1;">الرئيسية</a></p>
+
+<p><a href="#calculators" style="color:#cbd5e1;">الحاسبات</a></p>
+
+<p><a href="#" style="color:#cbd5e1;">سياسة الخصوصية</a></p>
+
+<p><a href="#" style="color:#cbd5e1;">اتصل بنا</a></p>
+
+</div>
+
+<div>
+
+<h3 style="margin-bottom:18px;">
+
+أفضل العروض
+
+</h3>
+
+<p>
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=d987c32b"
+target="_blank"
+style="color:#cbd5e1;">
+
+🔥 إلكترونيات
+
+</a>
+
+</p>
+
+<p>
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=58dc81f3"
+target="_blank"
+style="color:#cbd5e1;">
+
+👕 الموضة
+
+</a>
+
+</p>
+
+<p>
+
+<a href="https://www.linkaraby.com/scripts/2xch8l8dq0?a_aid=gbi7p49h2hetp&a_bid=0f80f9bb"
+target="_blank"
+style="color:#cbd5e1;">
+
+🏠 المنزل
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<hr style="
+margin:40px 0;
+border:none;
+height:1px;
+background:#334155;
+">
+
+<p style="
+text-align:center;
+color:#94a3b8;
+">
+
+© 2026 SmartCalc Hub.
+جميع الحقوق محفوظة.
+
+</p>
+
+</footer>
+
+<script>
+
+/* تأثير عند المرور على بطاقات العروض */
+
+document.querySelectorAll("a").forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.transform="translateY(-8px)";
+
+card.style.transition=".35s";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="translateY(0px)";
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>    
