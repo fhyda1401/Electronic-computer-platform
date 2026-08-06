@@ -160,29 +160,29 @@
             border-color: var(--primary-color);
         }
 
-        /* تنسيقات الإعلانات الذكية */
-        .ad-header-wrapper { text-align: center; margin: 25px auto 10px auto; max-width: 728px; width: 100%; padding: 0 20px; }
-        .native-ad-box { background: linear-gradient(90deg, #ff4757, #ff6b81); color: white; border-radius: var(--radius-md); padding: 15px; text-align: center; box-shadow: var(--shadow-md); text-decoration: none; display: block; transition: transform 0.2s; position: relative; overflow: hidden; }
-        .native-ad-box:hover { transform: scale(1.01); }
-        .native-ad-box h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 5px; }
-        .native-ad-box p { font-size: 0.9rem; opacity: 0.9; }
-        .ad-badge-native { position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.2); color: white; font-size: 0.6rem; padding: 2px 8px; border-bottom-right-radius: 6px; text-transform: uppercase; font-weight: bold; }
+        /* تنسيق الإعلانات النصية المدمجة لتطابق مساحات موقعك الأصلية تماماً */
+        .ad-header-wrapper { text-align: center; margin: 25px auto 10px auto; max-width: 1250px; width: 100%; padding: 0 20px; }
+        .native-ad-box { background: linear-gradient(90deg, #ff4757, #ff6b81); color: white; border-radius: var(--radius-md); padding: 18px; text-align: center; box-shadow: var(--shadow-sm); text-decoration: none; display: block; transition: transform 0.2s; position: relative; overflow: hidden; }
+        .native-ad-box:hover { transform: scale(1.005); }
+        .native-ad-box h4 { font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; }
+        .native-ad-box p { font-size: 0.85rem; opacity: 0.95; }
+        .ad-badge-native { position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.15); color: white; font-size: 0.6rem; padding: 2px 8px; border-bottom-right-radius: 6px; text-transform: uppercase; font-weight: bold; }
 
-        .native-sidebar-ad { background: linear-gradient(180deg, #1e293b, #0f172a); color: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px 20px; text-align: center; box-shadow: var(--shadow-md); text-decoration: none; display: flex; flex-direction: column; justify-content: center; height: 600px; width: 300px; box-sizing: border-box; transition: border-color 0.2s; }
+        .native-sidebar-ad { background: linear-gradient(180deg, #1e293b, #0f172a); color: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px 20px; text-align: center; box-shadow: var(--shadow-md); text-decoration: none; display: flex; flex-direction: column; justify-content: center; height: 100%; min-height: 450px; box-sizing: border-box; transition: border-color 0.2s; }
         .native-sidebar-ad:hover { border-color: var(--primary-color); }
         .native-sidebar-ad .btn-ad { background: #ff4757; color: white; padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 25px; display: block; text-transform: uppercase; }
 
-        /* تعديل وتقسيم الـ Layout الرئيسي */
-        .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 25px; margin-top: 25px; align-items: flex-start; }
+        /* هيكلة المحتوى الأساسي والجانبي */
+        .main-layout { display: grid; grid-template-columns: 1fr 320px; gap: 25px; margin-top: 25px; align-items: flex-start; }
         .content-area { min-width: 0; }
-        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-        .calc-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 22px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-        .calc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+        
+        .calc-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 22px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); display: flex; flex-direction: column; justify-content: space-between; }
         .calc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .calc-card h3 { font-size: 1.15rem; color: var(--secondary-color); font-weight: 700; }
         .badge { font-size: 0.72rem; padding: 3px 8px; border-radius: 6px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; text-transform: uppercase; }
 
-        /* المكونات الداخلية */
+        /* عناصر النماذج */
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-main); }
         .form-group input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: var(--bg-color); outline: none; }
@@ -190,7 +190,6 @@
 
         @media (max-width: 991px) {
             .main-layout { grid-template-columns: 1fr; }
-            .native-sidebar-ad { width: 100%; height: auto; padding: 40px 20px; }
         }
     </style>
 </head>
@@ -200,22 +199,27 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="#">Smart<span>Calculators</span></a>
+                <a href="#">Smart<span>Calc.hub</span></a>
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Finance</a></li>
-                    <li><a href="#">Health</a></li>
-                    <li><a href="#">Math</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
-                <button class="pi-btn">Pi Connect</button>
+                <button class="pi-btn" style="background-color: #7b1fa2;">Sign in with PI</button>
             </div>
         </div>
     </nav>
 
-    <!-- الإعلان الأول: الهيدر في الأعلى -->
+    <!-- الإعلان العلوي المدمج بدقة في مساحة الـ Header القديمة -->
     <div class="ad-header-wrapper">
         <a href="https://linkaraby.com" target="_blank" rel="noopener" class="native-ad-box">
             <span class="ad-badge-native">Sponsored Offer</span>
             <h4>عروض علي إكسبرس الحصرية تصل إلى 70% خصم!</h4>
+            <p>تسوق ملايين المنتجات الذكية والإلكترونيات بأقل الأسعار وشحن سريع ومباشر للخليج والعالم العربي.</p>
+        </a>
+    </div>
+
+    <header class="hero">
