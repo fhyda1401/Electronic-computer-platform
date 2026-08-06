@@ -8,22 +8,22 @@
     <meta name="google-site-verification" content="vsyE5QoGqDFn7PtbwCwDI2XGSxNyYdctIKAbsqUbmgo" />
 
     <!-- Google AdSense Code -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3189975826319105"
+    <script async src="https://googlesyndication.com"
          crossorigin="anonymous"></script>
 
     <!-- Pi Network SDK -->
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <script src="https://minepi.com"></script>
     
     <title>Smart Calculators Hub - Multi-Category Online Tools</title>
     <meta name="description" content="Scalable and comprehensive online calculator platform. Calculate finance, real estate, health, math, crypto, and engineering easily.">
     
     <!-- تم ضبط الـ Canonical ليتطابق حصرياً مع نطاقك الحالي -->
-    <link rel="canonical" href="https://electronic-computer-platform.pages.dev/" />
+    <link rel="canonical" href="https://pages.dev" />
     
     <!-- Modern Clean Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -172,7 +172,7 @@
             border-color: var(--primary-color);
         }
 
-        /* تنسيقات مخصصة لتنظيم المساحات الإعلانية المباحة للموقع الجديد */
+        /* تنسيقات الإعلانات المباحة */
         .ad-header-wrapper { text-align: center; margin: 25px auto 10px auto; max-width: 728px; width: 100%; padding: 0 20px; }
         .ad-container { background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 10px; text-align: center; box-shadow: var(--shadow-sm); transition: border-color 0.2s; }
         .ad-container:hover { border-color: var(--primary-color); }
@@ -180,87 +180,22 @@
         .ad-label { display: block; font-size: 0.68rem; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
 
         /* Main Layout Grid */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 25px;
-            margin-top: 25px;
-        }
+        .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 25px; margin-top: 25px; }
+        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+        .calc-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 22px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .calc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .calc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .calc-card h3 { font-size: 1.15rem; color: var(--secondary-color); font-weight: 700; }
+        .badge { font-size: 0.72rem; padding: 3px 8px; border-radius: 6px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; text-transform: uppercase; }
 
-        /* Grid Cards */
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .calc-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-md);
-            padding: 22px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-md);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .calc-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        .calc-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .calc-card h3 {
-            font-size: 1.15rem;
-            color: var(--secondary-color);
-            font-weight: 700;
-        }
-        .badge {
-            font-size: 0.72rem;
-            padding: 3px 8px;
-            border-radius: 6px;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        /* Form Components & Validation */
+        /* Form Components */
         .form-group { margin-bottom: 12px; }
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text-main);
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            background: var(--bg-color);
-            outline: none;
-        }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary-color); background: white; }
-        .form-group .error-text {
-            color: var(--danger-color);
-            font-size: 0.75rem;
-            margin-top: 4px;
-            display: none;
-        }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-main); }
+        .form-group input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: var(--bg-color); outline: none; }
+        .form-group input:focus { border-color: var(--primary-color); background: white; }
 
-        /* التجاوب مع الهواتف للشاشات الصغيرة */
         @media (max-width: 991px) {
             .main-layout { grid-template-columns: 1fr; }
-            .sidebar-ads { position: static !important; }
         }
     </style>
 </head>
@@ -284,6 +219,29 @@
         </div>
     </nav>
 
-    <!-- 1. مساحة إعلان الهيدر المباح (Header Ad Slot - 728x90) -->
+    <!-- 1. إعلان الهيدر (السطر 182) -->
     <div class="ad-header-wrapper">
         <div class="ad-container">
+            <span class="ad-label">Sponsored Dynamic Offer</span>
+            <a href="YOUR_ALI_EXPRESS_AFFILIATE_LINK_HERE" target="_blank" rel="noopener">
+                <img src="https://deliveryhero.io" width="728" height="90" alt="AliExpress Big Discounts">
+            </a>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="container">
+            <h2>Calculators for Every Decision</h2>
+            <p>Accurate and instant calculations across multiple fields to help you make smart choices.</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search for calculators (e.g., Loan, BMI, Crypto)...">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="category-nav">
+            <div class="cat-tab active">All Calculators</div>
+            <div class="cat-tab">Finance</div>
+            <div class="cat-tab">Real Estate</div>
+            <div class="cat-tab">Health</div>
