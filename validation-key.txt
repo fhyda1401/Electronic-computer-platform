@@ -1,5 +1,1 @@
-Serve a plain-text file at https://electroniccomput9581.pinet.com/validation-key.txt whose entire content is:
-
 84107452d475cf2455765a6fa49afa6f129cc8e7b172a7d831568711caf6c21f2a81cf470c45e49c8d7bec25e54a095dd5aeab33c39d2cbf60bf66b1e5d33bed
-
-Then redeploy the app so Pi can verify that I own this domain.
